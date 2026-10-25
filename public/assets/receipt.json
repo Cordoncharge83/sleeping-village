@@ -1,0 +1,654 @@
+{
+  "note": "Local prototype subset. Original CC0 licenses retained; hashes checked after copy. No game-dev CLI admission claimed.",
+  "files": [
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\Workbench.gltf",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\Workbench.gltf",
+      "sha256": "518fc5c955def18cfcb781b3b955da0e8edcf4f37830a21561ef32c03ad0397e",
+      "runtime_sha256": "518fc5c955def18cfcb781b3b955da0e8edcf4f37830a21561ef32c03ad0397e"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\Workbench.bin",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\Workbench.bin",
+      "sha256": "d26f2a0ba01b4a8db8d6820d1bd0d281297fea30e48c9952484167d18a637b39",
+      "runtime_sha256": "d26f2a0ba01b4a8db8d6820d1bd0d281297fea30e48c9952484167d18a637b39"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Furniture_Normal.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Furniture_Normal.png",
+      "sha256": "3340c4cc47ff06d5e94a2dbe2a2a12d914d0ef055fcf66f63d876666bd160e42",
+      "runtime_sha256": "0cd5173a475dc9d225f02a8c185b8f0e18a95fb9cd0d1d63ebf79cdb14a05d32"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Furniture_BaseColor.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Furniture_BaseColor.png",
+      "sha256": "075fbc9ec2fabc15732bd4025b6f63a0b25762df38440d06bf30437565d39bab",
+      "runtime_sha256": "abd386b12651d7dc34afc0529a35bc3314e41ebc62c7ca3f4897c36ec15289d2"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Furniture_ORM.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Furniture_ORM.png",
+      "sha256": "7bf417e82baf313793c5791bf48cdc8e573f1f7136197785bf0eb235cb0f8153",
+      "runtime_sha256": "a9261c486564f048629f7dec2bb997884b1b421a6bc3231e35279601d4439ca1"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Metal_Normal.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Metal_Normal.png",
+      "sha256": "ab7315c864c9a9e6d716c940a599928506e1569d3b0c9085f8f1a64ec520d790",
+      "runtime_sha256": "028d8662825f7072e4d9b8f821a53483b2d9cb3353abe93f40f0a7b53b8a40fe"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Metal_BaseColor.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Metal_BaseColor.png",
+      "sha256": "50422bbda9661effc259caf8b386224cac4b5ca811d2c5b3b8b25ae8efc714db",
+      "runtime_sha256": "0b96070d0350cb0fc5d759fa292e5dedb68a0d4ce6c717d74c8e44f236edc8e4"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Metal_ORM.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Metal_ORM.png",
+      "sha256": "7407bccfc39ca74ecd68a61217395959bf56ac2063e6c93b384b11f07f5687c5",
+      "runtime_sha256": "57c79199ca4edb73fc77bccc75fa1b1c84dfb12af37904b48fd5ea1b3649c966"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\Anvil_Log.gltf",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\Anvil_Log.gltf",
+      "sha256": "878f803a0d8d7a4db5ad31f4839bc87ac03fd409cb69e30aa078c00729a38df2",
+      "runtime_sha256": "878f803a0d8d7a4db5ad31f4839bc87ac03fd409cb69e30aa078c00729a38df2"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\Anvil_Log.bin",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\Anvil_Log.bin",
+      "sha256": "7d3d078f1be72c9c56abc0ee2fc5dfa23826b8a03beaaa756d27054a7443919c",
+      "runtime_sha256": "7d3d078f1be72c9c56abc0ee2fc5dfa23826b8a03beaaa756d27054a7443919c"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Furniture_Normal.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Furniture_Normal.png",
+      "sha256": "3340c4cc47ff06d5e94a2dbe2a2a12d914d0ef055fcf66f63d876666bd160e42",
+      "runtime_sha256": "0cd5173a475dc9d225f02a8c185b8f0e18a95fb9cd0d1d63ebf79cdb14a05d32"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Furniture_BaseColor.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Furniture_BaseColor.png",
+      "sha256": "075fbc9ec2fabc15732bd4025b6f63a0b25762df38440d06bf30437565d39bab",
+      "runtime_sha256": "abd386b12651d7dc34afc0529a35bc3314e41ebc62c7ca3f4897c36ec15289d2"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Furniture_ORM.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Furniture_ORM.png",
+      "sha256": "7bf417e82baf313793c5791bf48cdc8e573f1f7136197785bf0eb235cb0f8153",
+      "runtime_sha256": "a9261c486564f048629f7dec2bb997884b1b421a6bc3231e35279601d4439ca1"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Metal_Normal.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Metal_Normal.png",
+      "sha256": "ab7315c864c9a9e6d716c940a599928506e1569d3b0c9085f8f1a64ec520d790",
+      "runtime_sha256": "028d8662825f7072e4d9b8f821a53483b2d9cb3353abe93f40f0a7b53b8a40fe"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Metal_BaseColor.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Metal_BaseColor.png",
+      "sha256": "50422bbda9661effc259caf8b386224cac4b5ca811d2c5b3b8b25ae8efc714db",
+      "runtime_sha256": "0b96070d0350cb0fc5d759fa292e5dedb68a0d4ce6c717d74c8e44f236edc8e4"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Metal_ORM.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Metal_ORM.png",
+      "sha256": "7407bccfc39ca74ecd68a61217395959bf56ac2063e6c93b384b11f07f5687c5",
+      "runtime_sha256": "57c79199ca4edb73fc77bccc75fa1b1c84dfb12af37904b48fd5ea1b3649c966"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Props_Normal.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Props_Normal.png",
+      "sha256": "c4b28a8ba8efe3108cd11356ecab67e8bf75a10cebf29c78ee7724552c305a3e",
+      "runtime_sha256": "63f969f465975644c527d9c4a9a5d5a4a9d6f045519a180bee5af382085ac7d7"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Props_BaseColor.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Props_BaseColor.png",
+      "sha256": "75225a4ccfd8cc358c871de7a7a3cab7118ef197419a88464e807b81716215c8",
+      "runtime_sha256": "f827198ec373c851dfcdd4a3c3de4a76f1368ff37f213116bf73275694346b96"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Props_ORM.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Props_ORM.png",
+      "sha256": "2d83d8df79aca2c8f630d389b43f09113afee98e746dfd42ddc3ce3302a136a2",
+      "runtime_sha256": "1c0ca0be96731ae1ac731b9dfadcd2455df8953a222d8c2f6e667ca00d71e908"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\Shelf_Simple.gltf",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\Shelf_Simple.gltf",
+      "sha256": "aaddd9bf393cf4ed685a810f1d03cfe2a27dba98c060f889e09a968f91d91106",
+      "runtime_sha256": "aaddd9bf393cf4ed685a810f1d03cfe2a27dba98c060f889e09a968f91d91106"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\Shelf_Simple.bin",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\Shelf_Simple.bin",
+      "sha256": "0064b2a3fc0f3252c55587ec582a49e085b2aa05dca2aa33e9e6a313f88139c6",
+      "runtime_sha256": "0064b2a3fc0f3252c55587ec582a49e085b2aa05dca2aa33e9e6a313f88139c6"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Furniture_Normal.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Furniture_Normal.png",
+      "sha256": "3340c4cc47ff06d5e94a2dbe2a2a12d914d0ef055fcf66f63d876666bd160e42",
+      "runtime_sha256": "0cd5173a475dc9d225f02a8c185b8f0e18a95fb9cd0d1d63ebf79cdb14a05d32"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Furniture_BaseColor.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Furniture_BaseColor.png",
+      "sha256": "075fbc9ec2fabc15732bd4025b6f63a0b25762df38440d06bf30437565d39bab",
+      "runtime_sha256": "abd386b12651d7dc34afc0529a35bc3314e41ebc62c7ca3f4897c36ec15289d2"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Furniture_ORM.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Furniture_ORM.png",
+      "sha256": "7bf417e82baf313793c5791bf48cdc8e573f1f7136197785bf0eb235cb0f8153",
+      "runtime_sha256": "a9261c486564f048629f7dec2bb997884b1b421a6bc3231e35279601d4439ca1"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\Stool.gltf",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\Stool.gltf",
+      "sha256": "55a111d97463adb71a59eddb8bbee777c5743e66a58403b06e869cc35e4da670",
+      "runtime_sha256": "55a111d97463adb71a59eddb8bbee777c5743e66a58403b06e869cc35e4da670"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\Stool.bin",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\Stool.bin",
+      "sha256": "6ca3a6bc9b415409d842a338a74c174d0efe4d4972bf8a924fda87c8bda40191",
+      "runtime_sha256": "6ca3a6bc9b415409d842a338a74c174d0efe4d4972bf8a924fda87c8bda40191"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Furniture_Normal.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Furniture_Normal.png",
+      "sha256": "3340c4cc47ff06d5e94a2dbe2a2a12d914d0ef055fcf66f63d876666bd160e42",
+      "runtime_sha256": "0cd5173a475dc9d225f02a8c185b8f0e18a95fb9cd0d1d63ebf79cdb14a05d32"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Furniture_BaseColor.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Furniture_BaseColor.png",
+      "sha256": "075fbc9ec2fabc15732bd4025b6f63a0b25762df38440d06bf30437565d39bab",
+      "runtime_sha256": "abd386b12651d7dc34afc0529a35bc3314e41ebc62c7ca3f4897c36ec15289d2"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Furniture_ORM.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Furniture_ORM.png",
+      "sha256": "7bf417e82baf313793c5791bf48cdc8e573f1f7136197785bf0eb235cb0f8153",
+      "runtime_sha256": "a9261c486564f048629f7dec2bb997884b1b421a6bc3231e35279601d4439ca1"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\Barrel.gltf",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\Barrel.gltf",
+      "sha256": "cececb2da345addb21567e3ce1b30a9da071b689bcec59d85cd7a4446f531e87",
+      "runtime_sha256": "cececb2da345addb21567e3ce1b30a9da071b689bcec59d85cd7a4446f531e87"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\Barrel.bin",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\Barrel.bin",
+      "sha256": "d8f963e2975b6bbd4b631b5cd7ade2d5dfc76dfb9f8387e2d398935f5405cf20",
+      "runtime_sha256": "d8f963e2975b6bbd4b631b5cd7ade2d5dfc76dfb9f8387e2d398935f5405cf20"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Furniture_Normal.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Furniture_Normal.png",
+      "sha256": "3340c4cc47ff06d5e94a2dbe2a2a12d914d0ef055fcf66f63d876666bd160e42",
+      "runtime_sha256": "0cd5173a475dc9d225f02a8c185b8f0e18a95fb9cd0d1d63ebf79cdb14a05d32"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Furniture_BaseColor.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Furniture_BaseColor.png",
+      "sha256": "075fbc9ec2fabc15732bd4025b6f63a0b25762df38440d06bf30437565d39bab",
+      "runtime_sha256": "abd386b12651d7dc34afc0529a35bc3314e41ebc62c7ca3f4897c36ec15289d2"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Furniture_ORM.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Furniture_ORM.png",
+      "sha256": "7bf417e82baf313793c5791bf48cdc8e573f1f7136197785bf0eb235cb0f8153",
+      "runtime_sha256": "a9261c486564f048629f7dec2bb997884b1b421a6bc3231e35279601d4439ca1"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Metal_Normal.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Metal_Normal.png",
+      "sha256": "ab7315c864c9a9e6d716c940a599928506e1569d3b0c9085f8f1a64ec520d790",
+      "runtime_sha256": "028d8662825f7072e4d9b8f821a53483b2d9cb3353abe93f40f0a7b53b8a40fe"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Metal_BaseColor.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Metal_BaseColor.png",
+      "sha256": "50422bbda9661effc259caf8b386224cac4b5ca811d2c5b3b8b25ae8efc714db",
+      "runtime_sha256": "0b96070d0350cb0fc5d759fa292e5dedb68a0d4ce6c717d74c8e44f236edc8e4"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Metal_ORM.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Metal_ORM.png",
+      "sha256": "7407bccfc39ca74ecd68a61217395959bf56ac2063e6c93b384b11f07f5687c5",
+      "runtime_sha256": "57c79199ca4edb73fc77bccc75fa1b1c84dfb12af37904b48fd5ea1b3649c966"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\Crate_Wooden.gltf",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\Crate_Wooden.gltf",
+      "sha256": "fb06d4b7b9bbfbb9dc51fa56ecff3fe7ba8e9142d643cabedd17a55d7ea46ee5",
+      "runtime_sha256": "fb06d4b7b9bbfbb9dc51fa56ecff3fe7ba8e9142d643cabedd17a55d7ea46ee5"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\Crate_Wooden.bin",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\Crate_Wooden.bin",
+      "sha256": "7ae016386790e5998fbdf1656a5dc53a3f1374c3525b22798d84397a36ae937b",
+      "runtime_sha256": "7ae016386790e5998fbdf1656a5dc53a3f1374c3525b22798d84397a36ae937b"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Furniture_Normal.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Furniture_Normal.png",
+      "sha256": "3340c4cc47ff06d5e94a2dbe2a2a12d914d0ef055fcf66f63d876666bd160e42",
+      "runtime_sha256": "0cd5173a475dc9d225f02a8c185b8f0e18a95fb9cd0d1d63ebf79cdb14a05d32"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Furniture_BaseColor.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Furniture_BaseColor.png",
+      "sha256": "075fbc9ec2fabc15732bd4025b6f63a0b25762df38440d06bf30437565d39bab",
+      "runtime_sha256": "abd386b12651d7dc34afc0529a35bc3314e41ebc62c7ca3f4897c36ec15289d2"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Furniture_ORM.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Furniture_ORM.png",
+      "sha256": "7bf417e82baf313793c5791bf48cdc8e573f1f7136197785bf0eb235cb0f8153",
+      "runtime_sha256": "a9261c486564f048629f7dec2bb997884b1b421a6bc3231e35279601d4439ca1"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Metal_Normal.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Metal_Normal.png",
+      "sha256": "ab7315c864c9a9e6d716c940a599928506e1569d3b0c9085f8f1a64ec520d790",
+      "runtime_sha256": "028d8662825f7072e4d9b8f821a53483b2d9cb3353abe93f40f0a7b53b8a40fe"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Metal_BaseColor.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Metal_BaseColor.png",
+      "sha256": "50422bbda9661effc259caf8b386224cac4b5ca811d2c5b3b8b25ae8efc714db",
+      "runtime_sha256": "0b96070d0350cb0fc5d759fa292e5dedb68a0d4ce6c717d74c8e44f236edc8e4"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Metal_ORM.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Metal_ORM.png",
+      "sha256": "7407bccfc39ca74ecd68a61217395959bf56ac2063e6c93b384b11f07f5687c5",
+      "runtime_sha256": "57c79199ca4edb73fc77bccc75fa1b1c84dfb12af37904b48fd5ea1b3649c966"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\Book_Stack_1.gltf",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\Book_Stack_1.gltf",
+      "sha256": "aac90f5a6859acb1edf12b248e12a914f652e8a0a0af0fa6cee6dda3225a7fd2",
+      "runtime_sha256": "aac90f5a6859acb1edf12b248e12a914f652e8a0a0af0fa6cee6dda3225a7fd2"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\Book_Stack_1.bin",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\Book_Stack_1.bin",
+      "sha256": "cdbe0b7f468ac1713989e0c7f67c93dd83a899825d518b4911d56f4613c85fb7",
+      "runtime_sha256": "cdbe0b7f468ac1713989e0c7f67c93dd83a899825d518b4911d56f4613c85fb7"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Props_Normal.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Props_Normal.png",
+      "sha256": "c4b28a8ba8efe3108cd11356ecab67e8bf75a10cebf29c78ee7724552c305a3e",
+      "runtime_sha256": "63f969f465975644c527d9c4a9a5d5a4a9d6f045519a180bee5af382085ac7d7"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Props_BaseColor.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Props_BaseColor.png",
+      "sha256": "75225a4ccfd8cc358c871de7a7a3cab7118ef197419a88464e807b81716215c8",
+      "runtime_sha256": "f827198ec373c851dfcdd4a3c3de4a76f1368ff37f213116bf73275694346b96"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Props_ORM.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Props_ORM.png",
+      "sha256": "2d83d8df79aca2c8f630d389b43f09113afee98e746dfd42ddc3ce3302a136a2",
+      "runtime_sha256": "1c0ca0be96731ae1ac731b9dfadcd2455df8953a222d8c2f6e667ca00d71e908"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\Lantern_Wall.gltf",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\Lantern_Wall.gltf",
+      "sha256": "9e7623e1d3a16f9212ff7cb41c939746435187f0071bd94849ee7bc6a59785a2",
+      "runtime_sha256": "9e7623e1d3a16f9212ff7cb41c939746435187f0071bd94849ee7bc6a59785a2"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\Lantern_Wall.bin",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\Lantern_Wall.bin",
+      "sha256": "fe9f3816130587308b73bb8b4b28031b71fe9405a111f115463022709fa04b2e",
+      "runtime_sha256": "fe9f3816130587308b73bb8b4b28031b71fe9405a111f115463022709fa04b2e"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Metal_Normal.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Metal_Normal.png",
+      "sha256": "ab7315c864c9a9e6d716c940a599928506e1569d3b0c9085f8f1a64ec520d790",
+      "runtime_sha256": "028d8662825f7072e4d9b8f821a53483b2d9cb3353abe93f40f0a7b53b8a40fe"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Metal_BaseColor.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Metal_BaseColor.png",
+      "sha256": "50422bbda9661effc259caf8b386224cac4b5ca811d2c5b3b8b25ae8efc714db",
+      "runtime_sha256": "0b96070d0350cb0fc5d759fa292e5dedb68a0d4ce6c717d74c8e44f236edc8e4"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\Exports\\glTF\\T_Trim_Metal_ORM.png",
+      "output": "public\\assets\\pack0\\Exports\\glTF\\T_Trim_Metal_ORM.png",
+      "sha256": "7407bccfc39ca74ecd68a61217395959bf56ac2063e6c93b384b11f07f5687c5",
+      "runtime_sha256": "57c79199ca4edb73fc77bccc75fa1b1c84dfb12af37904b48fd5ea1b3649c966"
+    },
+    {
+      "source": "asset-packs\\Fantasy Props MegaKit[Standard]\\License_Standard.txt",
+      "output": "public\\assets\\pack0\\License_Standard.txt",
+      "sha256": "edad12240087a33e08fc031e4e66c2b2b4b2a6d4f086339bde04f741b385fbda",
+      "runtime_sha256": "edad12240087a33e08fc031e4e66c2b2b4b2a6d4f086339bde04f741b385fbda"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\Floor_WoodDark.gltf",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\Floor_WoodDark.gltf",
+      "sha256": "2ee57724a06289164fee75ad62eb770f7f8cc9cb1b51c041da477c086775cd8d",
+      "runtime_sha256": "2ee57724a06289164fee75ad62eb770f7f8cc9cb1b51c041da477c086775cd8d"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\Floor_WoodDark.bin",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\Floor_WoodDark.bin",
+      "sha256": "cb43341c0969b62d82c11e2759caec854ea97ecba3bcb505d3300d57ebba7b81",
+      "runtime_sha256": "cb43341c0969b62d82c11e2759caec854ea97ecba3bcb505d3300d57ebba7b81"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Normal.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Normal.png",
+      "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8",
+      "runtime_sha256": "d172cdcd9efce9866c733f93b30918408745ccb3086df50c4791acb3c878c909"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_BaseColor.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_BaseColor.png",
+      "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e",
+      "runtime_sha256": "206a1da8ba3339cd3b22df3b0b4f8347c302f0d7652b6c1cbb12e9bbbfb7b4fe"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Roughness.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Roughness.png",
+      "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3",
+      "runtime_sha256": "3462399807c040de9444df6b88910d9aedb0b8b62a6b04c87beb99ac0ca56f0b"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\Wall_Plaster_Straight.gltf",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\Wall_Plaster_Straight.gltf",
+      "sha256": "3bef920cbba4d124df4ca401439d893e0569f88f56049239e3480a04008fd0ac",
+      "runtime_sha256": "3bef920cbba4d124df4ca401439d893e0569f88f56049239e3480a04008fd0ac"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\Wall_Plaster_Straight.bin",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\Wall_Plaster_Straight.bin",
+      "sha256": "986bf171c62e9019eea9aab709d19d07a3bd5021ff76ab749f57563f364858f3",
+      "runtime_sha256": "986bf171c62e9019eea9aab709d19d07a3bd5021ff76ab749f57563f364858f3"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Normal.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Normal.png",
+      "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8",
+      "runtime_sha256": "d172cdcd9efce9866c733f93b30918408745ccb3086df50c4791acb3c878c909"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_BaseColor.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_BaseColor.png",
+      "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e",
+      "runtime_sha256": "206a1da8ba3339cd3b22df3b0b4f8347c302f0d7652b6c1cbb12e9bbbfb7b4fe"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Roughness.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Roughness.png",
+      "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3",
+      "runtime_sha256": "3462399807c040de9444df6b88910d9aedb0b8b62a6b04c87beb99ac0ca56f0b"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_Plaster_Normal.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_Plaster_Normal.png",
+      "sha256": "8b9617b561466cce00d5a0628eae7bef208dcf63445d72570e7f8e5057fed0d4",
+      "runtime_sha256": "004754336d13afecf3fbd6629a9e59add00d9ad59581f6ff218bd72a0428b245"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_Plaster_BaseColor.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_Plaster_BaseColor.png",
+      "sha256": "98547ca83888307e3ffa96384ce058b7622affe0a42add3b36d0b48618c5eda4",
+      "runtime_sha256": "e5a43c1c00c2f8f2acd5d23df6156be46924f1fc57ed5ab0848e988f1eb467fe"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_Plaster_ORM.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_Plaster_ORM.png",
+      "sha256": "7be9d64a6154ba12bb7086e1d6774a7d5bbbc95775efb614f6ff40a4787fe0c7",
+      "runtime_sha256": "6ab5b4df914ba07df7f8160e80acd877982dc7f5c373bdf5f1a1794d0afa7a63"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\Prop_Support.gltf",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\Prop_Support.gltf",
+      "sha256": "c7292aa4f0f73a3d83c2ea5d0f9f3c726e17b13156679c9dfa043646a9f08037",
+      "runtime_sha256": "c7292aa4f0f73a3d83c2ea5d0f9f3c726e17b13156679c9dfa043646a9f08037"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\Prop_Support.bin",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\Prop_Support.bin",
+      "sha256": "c0aa629b294c52071f66feb89e7bc771480391bfe012f33c60b5cb4aa9881897",
+      "runtime_sha256": "c0aa629b294c52071f66feb89e7bc771480391bfe012f33c60b5cb4aa9881897"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Normal.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Normal.png",
+      "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8",
+      "runtime_sha256": "d172cdcd9efce9866c733f93b30918408745ccb3086df50c4791acb3c878c909"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_BaseColor.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_BaseColor.png",
+      "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e",
+      "runtime_sha256": "206a1da8ba3339cd3b22df3b0b4f8347c302f0d7652b6c1cbb12e9bbbfb7b4fe"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Roughness.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Roughness.png",
+      "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3",
+      "runtime_sha256": "3462399807c040de9444df6b88910d9aedb0b8b62a6b04c87beb99ac0ca56f0b"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\Roof_RoundTiles_6x6.gltf",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\Roof_RoundTiles_6x6.gltf",
+      "sha256": "646a34dc9c8da1f2766b8c338b31e045b536a9c6efcebbd9ee44b84906cd18bb",
+      "runtime_sha256": "646a34dc9c8da1f2766b8c338b31e045b536a9c6efcebbd9ee44b84906cd18bb"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\Roof_RoundTiles_6x6.bin",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\Roof_RoundTiles_6x6.bin",
+      "sha256": "12296c0a8e161c76e910a2d8b39d2a31f5e27d106b3bb14e2c93b8322e000ff0",
+      "runtime_sha256": "12296c0a8e161c76e910a2d8b39d2a31f5e27d106b3bb14e2c93b8322e000ff0"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Normal.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Normal.png",
+      "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8",
+      "runtime_sha256": "d172cdcd9efce9866c733f93b30918408745ccb3086df50c4791acb3c878c909"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_BaseColor.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_BaseColor.png",
+      "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e",
+      "runtime_sha256": "206a1da8ba3339cd3b22df3b0b4f8347c302f0d7652b6c1cbb12e9bbbfb7b4fe"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Roughness.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Roughness.png",
+      "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3",
+      "runtime_sha256": "3462399807c040de9444df6b88910d9aedb0b8b62a6b04c87beb99ac0ca56f0b"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_RoundTiles_Normal.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_RoundTiles_Normal.png",
+      "sha256": "e8cf202fbc1ec36c3f5389a25ab9c99f015d49ae0ca963d0404614c3e1e8f687",
+      "runtime_sha256": "613cb8cfae44f2c0cfb862ae8f76c63490b495765c056a3f617542556d6f5d68"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_RoundTiles_BaseColor.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_RoundTiles_BaseColor.png",
+      "sha256": "acf388ebd1a97346e1e5b59091cfc609ed15b4f70b83a626089f12a82a2d9997",
+      "runtime_sha256": "73907337d07409eb8081c18550d5b4a77bdcd6098d94fbc6cee84d66123f34af"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_RoundTiles_Roughness.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_RoundTiles_Roughness.png",
+      "sha256": "02c5cdbb6768de6ac674a343265c020c5bd6ef70fd7ba555d9b9dc7445179366",
+      "runtime_sha256": "6c2bc79cbd8c52c590430d9dc5b59ca38aa1f7752bb55a820b55eab93b25f0e1"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\Prop_WoodenFence_Single.gltf",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\Prop_WoodenFence_Single.gltf",
+      "sha256": "c9f787c03c62dd94268da84bf3e4dacf554b2a5a9beee38314e37ff5d929c407",
+      "runtime_sha256": "c9f787c03c62dd94268da84bf3e4dacf554b2a5a9beee38314e37ff5d929c407"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\Prop_WoodenFence_Single.bin",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\Prop_WoodenFence_Single.bin",
+      "sha256": "aac37141af8f33e762b330486fd1cbd1c12a96b2978f491be4a58e24f1fe9ec1",
+      "runtime_sha256": "aac37141af8f33e762b330486fd1cbd1c12a96b2978f491be4a58e24f1fe9ec1"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Normal.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Normal.png",
+      "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8",
+      "runtime_sha256": "d172cdcd9efce9866c733f93b30918408745ccb3086df50c4791acb3c878c909"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_BaseColor.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_BaseColor.png",
+      "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e",
+      "runtime_sha256": "206a1da8ba3339cd3b22df3b0b4f8347c302f0d7652b6c1cbb12e9bbbfb7b4fe"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Roughness.png",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Roughness.png",
+      "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3",
+      "runtime_sha256": "3462399807c040de9444df6b88910d9aedb0b8b62a6b04c87beb99ac0ca56f0b"
+    },
+    {
+      "source": "asset-packs\\Medieval Village MegaKit[Standard]\\Medieval Village MegaKit[Standard]\\License_Standard.txt",
+      "output": "public\\assets\\pack1\\Medieval Village MegaKit[Standard]\\License_Standard.txt",
+      "sha256": "ec6fd5004514cb0515a7dc1065f474644d31698861597b32e1745945ffec71de",
+      "runtime_sha256": "ec6fd5004514cb0515a7dc1065f474644d31698861597b32e1745945ffec71de"
+    },
+    {
+      "source": "asset-packs\\Ultimate Stylized Nature - May 2022-20261021T131147Z-1-001\\Ultimate Stylized Nature - May 2022\\glTF\\BirchTree_1.gltf",
+      "output": "public\\assets\\pack2\\Ultimate Stylized Nature - May 2022\\glTF\\BirchTree_1.gltf",
+      "sha256": "8dbf9fd8b6402bfffdbe370a8c4337e8dae27fa3da5fbacbfd4fae6482ad50fa",
+      "runtime_sha256": "8dbf9fd8b6402bfffdbe370a8c4337e8dae27fa3da5fbacbfd4fae6482ad50fa"
+    },
+    {
+      "source": "asset-packs\\Ultimate Stylized Nature - May 2022-20261021T131147Z-1-001\\Ultimate Stylized Nature - May 2022\\glTF\\BirchTree_1.bin",
+      "output": "public\\assets\\pack2\\Ultimate Stylized Nature - May 2022\\glTF\\BirchTree_1.bin",
+      "sha256": "a1b14d1c82ebb8153991de4156b77ceaa1143d64469679147c0ee249c8b90b83",
+      "runtime_sha256": "a1b14d1c82ebb8153991de4156b77ceaa1143d64469679147c0ee249c8b90b83"
+    },
+    {
+      "source": "asset-packs\\Ultimate Stylized Nature - May 2022-20261021T131147Z-1-001\\Ultimate Stylized Nature - May 2022\\glTF\\BirchTree_Bark_Normal.png",
+      "output": "public\\assets\\pack2\\Ultimate Stylized Nature - May 2022\\glTF\\BirchTree_Bark_Normal.png",
+      "sha256": "e30ee9c7561742523340d5657056f8392bc0f944da5145f0af7690cd1d2e6a11",
+      "runtime_sha256": "97c5c7d56588c03af2e5e4e02b2202f589f87d7ce794fa232351a30398a1bbe8"
+    },
+    {
+      "source": "asset-packs\\Ultimate Stylized Nature - May 2022-20261021T131147Z-1-001\\Ultimate Stylized Nature - May 2022\\glTF\\BirchTree_Bark.jpg",
+      "output": "public\\assets\\pack2\\Ultimate Stylized Nature - May 2022\\glTF\\BirchTree_Bark.jpg",
+      "sha256": "f796f02e47bc5afddd17dc2385bbef53a352628ceb348deb1188ef04fe5deff9",
+      "runtime_sha256": "f796f02e47bc5afddd17dc2385bbef53a352628ceb348deb1188ef04fe5deff9"
+    },
+    {
+      "source": "asset-packs\\Ultimate Stylized Nature - May 2022-20261021T131147Z-1-001\\Ultimate Stylized Nature - May 2022\\glTF\\BirchTree_Leaves.png",
+      "output": "public\\assets\\pack2\\Ultimate Stylized Nature - May 2022\\glTF\\BirchTree_Leaves.png",
+      "sha256": "8b674a02017d987f8ec0448bd2a52ad788d1235f91b7f00499b4ca071f8e69fe",
+      "runtime_sha256": "6205234b89d99877e9c97308e2c4bd0d96d199a3c9cd23070bb368bcac9014a1"
+    },
+    {
+      "source": "asset-packs\\Ultimate Stylized Nature - May 2022-20261021T131147Z-1-001\\Ultimate Stylized Nature - May 2022\\glTF\\MapleTree_1.gltf",
+      "output": "public\\assets\\pack2\\Ultimate Stylized Nature - May 2022\\glTF\\MapleTree_1.gltf",
+      "sha256": "3a67c42011c57f21d73c599f7a3d5dd2f438602f8c5ee4d921514923acab1ca3",
+      "runtime_sha256": "3a67c42011c57f21d73c599f7a3d5dd2f438602f8c5ee4d921514923acab1ca3"
+    },
+    {
+      "source": "asset-packs\\Ultimate Stylized Nature - May 2022-20261021T131147Z-1-001\\Ultimate Stylized Nature - May 2022\\glTF\\MapleTree_1.bin",
+      "output": "public\\assets\\pack2\\Ultimate Stylized Nature - May 2022\\glTF\\MapleTree_1.bin",
+      "sha256": "03cfea606b55f8f38220f2922e28efb92d724abac801f76191ba062c398bf09c",
+      "runtime_sha256": "03cfea606b55f8f38220f2922e28efb92d724abac801f76191ba062c398bf09c"
+    },
+    {
+      "source": "asset-packs\\Ultimate Stylized Nature - May 2022-20261021T131147Z-1-001\\Ultimate Stylized Nature - May 2022\\glTF\\MapleTree_Bark_Normal.png",
+      "output": "public\\assets\\pack2\\Ultimate Stylized Nature - May 2022\\glTF\\MapleTree_Bark_Normal.png",
+      "sha256": "2e3d97d57838d6e8203f0fab2858bada8ad1e6d6f240c0e898f8e88c110f2f5d",
+      "runtime_sha256": "8c73c00c8eed1b20afcf7e37234e34b94b4ca044560acda75a6c2b40d5f6f0b8"
+    },
+    {
+      "source": "asset-packs\\Ultimate Stylized Nature - May 2022-20261021T131147Z-1-001\\Ultimate Stylized Nature - May 2022\\glTF\\MapleTree_Bark.jpg",
+      "output": "public\\assets\\pack2\\Ultimate Stylized Nature - May 2022\\glTF\\MapleTree_Bark.jpg",
+      "sha256": "be9d53e27f5af458a8122bfb6a88c93020fd5707f697d2288ea0af04b3019a97",
+      "runtime_sha256": "be9d53e27f5af458a8122bfb6a88c93020fd5707f697d2288ea0af04b3019a97"
+    },
+    {
+      "source": "asset-packs\\Ultimate Stylized Nature - May 2022-20261021T131147Z-1-001\\Ultimate Stylized Nature - May 2022\\glTF\\MapleTree_Leaves.png",
+      "output": "public\\assets\\pack2\\Ultimate Stylized Nature - May 2022\\glTF\\MapleTree_Leaves.png",
+      "sha256": "915f0836e9889e28032662c7aa0d0eb9601ba999eda042c9a4e38690786d6c7b",
+      "runtime_sha256": "7bd164fd38ec6fc0d3e82d21e17e6b00e707fedca1961e6de176768bd58aaafc"
+    },
+    {
+      "source": "asset-packs\\Ultimate Stylized Nature - May 2022-20261021T131147Z-1-001\\Ultimate Stylized Nature - May 2022\\glTF\\Bush_Small.gltf",
+      "output": "public\\assets\\pack2\\Ultimate Stylized Nature - May 2022\\glTF\\Bush_Small.gltf",
+      "sha256": "fd7e4efb44e897403235c11271a77732b0f552a46060eec0084d36b3c41749ea",
+      "runtime_sha256": "fd7e4efb44e897403235c11271a77732b0f552a46060eec0084d36b3c41749ea"
+    },
+    {
+      "source": "asset-packs\\Ultimate Stylized Nature - May 2022-20261021T131147Z-1-001\\Ultimate Stylized Nature - May 2022\\glTF\\Bush_Small.bin",
+      "output": "public\\assets\\pack2\\Ultimate Stylized Nature - May 2022\\glTF\\Bush_Small.bin",
+      "sha256": "56a41780a3da0e5dc9717182ac983294320bc4927a684efc0b79d967b8ab55ef",
+      "runtime_sha256": "56a41780a3da0e5dc9717182ac983294320bc4927a684efc0b79d967b8ab55ef"
+    },
+    {
+      "source": "asset-packs\\Ultimate Stylized Nature - May 2022-20261021T131147Z-1-001\\Ultimate Stylized Nature - May 2022\\glTF\\Bush_Leaves.png",
+      "output": "public\\assets\\pack2\\Ultimate Stylized Nature - May 2022\\glTF\\Bush_Leaves.png",
+      "sha256": "9f662296a285ca56b1ed56e952a198b93b466ae39ab7b6ee1c1ac1bd1c46242f",
+      "runtime_sha256": "908148b9452a2fad0f18c94d86f3537ffd7b97ccfe4c672c89313957e3388c1d"
+    },
+    {
+      "source": "asset-packs\\Ultimate Stylized Nature - May 2022-20261021T131147Z-1-001\\Ultimate Stylized Nature - May 2022\\glTF\\Grass_Small.gltf",
+      "output": "public\\assets\\pack2\\Ultimate Stylized Nature - May 2022\\glTF\\Grass_Small.gltf",
+      "sha256": "0a28c832a5447c443bf83eaa33ca7ee504315b30801abdb8588f16d98498b3ca",
+      "runtime_sha256": "0a28c832a5447c443bf83eaa33ca7ee504315b30801abdb8588f16d98498b3ca"
+    },
+    {
+      "source": "asset-packs\\Ultimate Stylized Nature - May 2022-20261021T131147Z-1-001\\Ultimate Stylized Nature - May 2022\\glTF\\Grass_Small.bin",
+      "output": "public\\assets\\pack2\\Ultimate Stylized Nature - May 2022\\glTF\\Grass_Small.bin",
+      "sha256": "b55b62b2913234c50bb506b1aaa7bee183c0d478c5da3631824413712282c7f8",
+      "runtime_sha256": "b55b62b2913234c50bb506b1aaa7bee183c0d478c5da3631824413712282c7f8"
+    },
+    {
+      "source": "asset-packs\\Ultimate Stylized Nature - May 2022-20261021T131147Z-1-001\\Ultimate Stylized Nature - May 2022\\glTF\\Grass.png",
+      "output": "public\\assets\\pack2\\Ultimate Stylized Nature - May 2022\\glTF\\Grass.png",
+      "sha256": "facde747020acfefdc84d176dd4037282895d200a66fc20b0d9baca470f310f1",
+      "runtime_sha256": "c221e535af6c11b33f97da1f9a2612b6a2b926cf86122d20212974665d0351e4"
+    },
+    {
+      "source": "asset-packs\\Ultimate Stylized Nature - May 2022-20261021T131147Z-1-001\\Ultimate Stylized Nature - May 2022\\License.txt",
+      "output": "public\\assets\\pack2\\Ultimate Stylized Nature - May 2022\\License.txt",
+      "sha256": "de990ef6fc68cffd7fd1ae342c4d0c823b541b8848d8f76bca5d3339f4de6f6e",
+      "runtime_sha256": "de990ef6fc68cffd7fd1ae342c4d0c823b541b8848d8f76bca5d3339f4de6f6e"
+    },
+    {
+      "source": "C:\\Users\\mouad\\.codex\\.chatgpt-projects\\g-p-6ac9559734f0819194d0ccccbd0747e4\\kaykit_traveler_v02\\Traveler_animated.glb",
+      "output": "public/assets/Traveler_animated.glb",
+      "sha256": "51fc1463fa3a78c679898969f5a2523c8e13f30fe573eaa3dd7e8ce1251bf842",
+      "runtime_sha256": "51fc1463fa3a78c679898969f5a2523c8e13f30fe573eaa3dd7e8ce1251bf842"
+    },
+    {
+      "source": "C:\\Users\\mouad\\.codex\\.chatgpt-projects\\g-p-6ac9559734f0819194d0ccccbd0747e4\\kaykit_traveler_v02\\LICENSE_KayKit.txt",
+      "output": "public/assets/LICENSE_KayKit.txt",
+      "sha256": "d4adc31660d1db22eb60eba648e01db41577548f6fa1a3576cb4a6283dae0a58",
+      "runtime_sha256": "d4adc31660d1db22eb60eba648e01db41577548f6fa1a3576cb4a6283dae0a58"
+    },
+    {
+      "source": "C:\\Users\\mouad\\.codex\\.chatgpt-projects\\g-p-6ac9559734f0819194d0ccccbd0747e4\\kaykit_traveler_v02\\source_receipt.json",
+      "output": "public/assets/source_receipt.json",
+      "sha256": "1017afaae1f1859482da0c7f8be1f59eed841289adba954de69ab94e7151ed02",
+      "runtime_sha256": "1017afaae1f1859482da0c7f8be1f59eed841289adba954de69ab94e7151ed02"
+    }
+  ],
+  "texture_processing": "Runtime PNGs limited to 1024px. Source textures unchanged."
+}

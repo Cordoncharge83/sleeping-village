@@ -1,0 +1,2450 @@
+{
+  "scope": "Local metadata inspection only. No canonical-package admission, import, GPU appearance, collision, or runtime validation has been performed.",
+  "packs": [
+    {
+      "pack": "Fantasy Props MegaKit[Standard]",
+      "files": 517,
+      "bytes": 162871281,
+      "formats": {
+        ".fbx": 94,
+        ".bin": 94,
+        ".gltf": 94,
+        ".png": 43,
+        ".mtl": 94,
+        ".obj": 94,
+        ".txt": 1,
+        ".jpg": 3
+      },
+      "licenses": [
+        {
+          "path": "License_Standard.txt",
+          "cc0_declared": true,
+          "sha256": "edad12240087a33e08fc031e4e66c2b2b4b2a6d4f086339bde04f741b385fbda"
+        }
+      ],
+      "gltf_models": [
+        {
+          "name": "Anvil",
+          "path": "Exports\\glTF\\Anvil.gltf",
+          "mesh_triangles": 750
+        },
+        {
+          "name": "Anvil_Log",
+          "path": "Exports\\glTF\\Anvil_Log.gltf",
+          "mesh_triangles": 3808
+        },
+        {
+          "name": "Axe_Bronze",
+          "path": "Exports\\glTF\\Axe_Bronze.gltf",
+          "mesh_triangles": 826
+        },
+        {
+          "name": "Bag",
+          "path": "Exports\\glTF\\Bag.gltf",
+          "mesh_triangles": 858
+        },
+        {
+          "name": "Banner_1",
+          "path": "Exports\\glTF\\Banner_1.gltf",
+          "mesh_triangles": 448
+        },
+        {
+          "name": "Banner_1_Cloth",
+          "path": "Exports\\glTF\\Banner_1_Cloth.gltf",
+          "mesh_triangles": 138
+        },
+        {
+          "name": "Banner_2",
+          "path": "Exports\\glTF\\Banner_2.gltf",
+          "mesh_triangles": 429
+        },
+        {
+          "name": "Banner_2_Cloth",
+          "path": "Exports\\glTF\\Banner_2_Cloth.gltf",
+          "mesh_triangles": 119
+        },
+        {
+          "name": "Barrel",
+          "path": "Exports\\glTF\\Barrel.gltf",
+          "mesh_triangles": 824
+        },
+        {
+          "name": "Barrel_Apples",
+          "path": "Exports\\glTF\\Barrel_Apples.gltf",
+          "mesh_triangles": 2480
+        },
+        {
+          "name": "Barrel_Holder",
+          "path": "Exports\\glTF\\Barrel_Holder.gltf",
+          "mesh_triangles": 2676
+        },
+        {
+          "name": "Bed_Twin1",
+          "path": "Exports\\glTF\\Bed_Twin1.gltf",
+          "mesh_triangles": 1600
+        },
+        {
+          "name": "Bed_Twin2",
+          "path": "Exports\\glTF\\Bed_Twin2.gltf",
+          "mesh_triangles": 1584
+        },
+        {
+          "name": "Bench",
+          "path": "Exports\\glTF\\Bench.gltf",
+          "mesh_triangles": 404
+        },
+        {
+          "name": "Book_5",
+          "path": "Exports\\glTF\\Book_5.gltf",
+          "mesh_triangles": 96
+        },
+        {
+          "name": "Book_7",
+          "path": "Exports\\glTF\\Book_7.gltf",
+          "mesh_triangles": 724
+        },
+        {
+          "name": "Book_Simplified_Single",
+          "path": "Exports\\glTF\\Book_Simplified_Single.gltf",
+          "mesh_triangles": 52
+        },
+        {
+          "name": "Book_Stack_1",
+          "path": "Exports\\glTF\\Book_Stack_1.gltf",
+          "mesh_triangles": 208
+        },
+        {
+          "name": "Book_Stack_2",
+          "path": "Exports\\glTF\\Book_Stack_2.gltf",
+          "mesh_triangles": 446
+        },
+        {
+          "name": "Bookcase_2",
+          "path": "Exports\\glTF\\Bookcase_2.gltf",
+          "mesh_triangles": 2148
+        },
+        {
+          "name": "BookGroup_Medium_1",
+          "path": "Exports\\glTF\\BookGroup_Medium_1.gltf",
+          "mesh_triangles": 416
+        },
+        {
+          "name": "BookGroup_Medium_2",
+          "path": "Exports\\glTF\\BookGroup_Medium_2.gltf",
+          "mesh_triangles": 468
+        },
+        {
+          "name": "BookGroup_Medium_3",
+          "path": "Exports\\glTF\\BookGroup_Medium_3.gltf",
+          "mesh_triangles": 468
+        },
+        {
+          "name": "BookGroup_Small_1",
+          "path": "Exports\\glTF\\BookGroup_Small_1.gltf",
+          "mesh_triangles": 104
+        },
+        {
+          "name": "BookGroup_Small_2",
+          "path": "Exports\\glTF\\BookGroup_Small_2.gltf",
+          "mesh_triangles": 104
+        },
+        {
+          "name": "BookGroup_Small_3",
+          "path": "Exports\\glTF\\BookGroup_Small_3.gltf",
+          "mesh_triangles": 130
+        },
+        {
+          "name": "BookStand",
+          "path": "Exports\\glTF\\BookStand.gltf",
+          "mesh_triangles": 1526
+        },
+        {
+          "name": "Bottle_1",
+          "path": "Exports\\glTF\\Bottle_1.gltf",
+          "mesh_triangles": 312
+        },
+        {
+          "name": "Bucket_Metal",
+          "path": "Exports\\glTF\\Bucket_Metal.gltf",
+          "mesh_triangles": 540
+        },
+        {
+          "name": "Bucket_Wooden_1",
+          "path": "Exports\\glTF\\Bucket_Wooden_1.gltf",
+          "mesh_triangles": 976
+        },
+        {
+          "name": "Cabinet",
+          "path": "Exports\\glTF\\Cabinet.gltf",
+          "mesh_triangles": 2388
+        },
+        {
+          "name": "Cage_Small",
+          "path": "Exports\\glTF\\Cage_Small.gltf",
+          "mesh_triangles": 4588
+        },
+        {
+          "name": "Candle_1",
+          "path": "Exports\\glTF\\Candle_1.gltf",
+          "mesh_triangles": 212
+        },
+        {
+          "name": "Candle_2",
+          "path": "Exports\\glTF\\Candle_2.gltf",
+          "mesh_triangles": 210
+        },
+        {
+          "name": "CandleStick",
+          "path": "Exports\\glTF\\CandleStick.gltf",
+          "mesh_triangles": 730
+        },
+        {
+          "name": "CandleStick_Stand",
+          "path": "Exports\\glTF\\CandleStick_Stand.gltf",
+          "mesh_triangles": 5738
+        },
+        {
+          "name": "CandleStick_Triple",
+          "path": "Exports\\glTF\\CandleStick_Triple.gltf",
+          "mesh_triangles": 2528
+        },
+        {
+          "name": "Carrot",
+          "path": "Exports\\glTF\\Carrot.gltf",
+          "mesh_triangles": 634
+        },
+        {
+          "name": "Cauldron",
+          "path": "Exports\\glTF\\Cauldron.gltf",
+          "mesh_triangles": 2020
+        },
+        {
+          "name": "Chain_Coil",
+          "path": "Exports\\glTF\\Chain_Coil.gltf",
+          "mesh_triangles": 3744
+        },
+        {
+          "name": "Chair_1",
+          "path": "Exports\\glTF\\Chair_1.gltf",
+          "mesh_triangles": 496
+        },
+        {
+          "name": "Chalice",
+          "path": "Exports\\glTF\\Chalice.gltf",
+          "mesh_triangles": 458
+        },
+        {
+          "name": "Chandelier",
+          "path": "Exports\\glTF\\Chandelier.gltf",
+          "mesh_triangles": 5680
+        },
+        {
+          "name": "Chest_Wood",
+          "path": "Exports\\glTF\\Chest_Wood.gltf",
+          "mesh_triangles": 2546
+        },
+        {
+          "name": "Coin",
+          "path": "Exports\\glTF\\Coin.gltf",
+          "mesh_triangles": 304
+        },
+        {
+          "name": "Coin_Pile",
+          "path": "Exports\\glTF\\Coin_Pile.gltf",
+          "mesh_triangles": 960
+        },
+        {
+          "name": "Coin_Pile_2",
+          "path": "Exports\\glTF\\Coin_Pile_2.gltf",
+          "mesh_triangles": 1062
+        },
+        {
+          "name": "Crate_Metal",
+          "path": "Exports\\glTF\\Crate_Metal.gltf",
+          "mesh_triangles": 2738
+        },
+        {
+          "name": "Crate_Wooden",
+          "path": "Exports\\glTF\\Crate_Wooden.gltf",
+          "mesh_triangles": 1576
+        },
+        {
+          "name": "Dummy",
+          "path": "Exports\\glTF\\Dummy.gltf",
+          "mesh_triangles": 2858
+        },
+        {
+          "name": "FarmCrate_Apple",
+          "path": "Exports\\glTF\\FarmCrate_Apple.gltf",
+          "mesh_triangles": 4028
+        },
+        {
+          "name": "FarmCrate_Carrot",
+          "path": "Exports\\glTF\\FarmCrate_Carrot.gltf",
+          "mesh_triangles": 5262
+        },
+        {
+          "name": "FarmCrate_Empty",
+          "path": "Exports\\glTF\\FarmCrate_Empty.gltf",
+          "mesh_triangles": 1928
+        },
+        {
+          "name": "Key_Gold",
+          "path": "Exports\\glTF\\Key_Gold.gltf",
+          "mesh_triangles": 1366
+        },
+        {
+          "name": "Key_Metal",
+          "path": "Exports\\glTF\\Key_Metal.gltf",
+          "mesh_triangles": 546
+        },
+        {
+          "name": "Lantern_Wall",
+          "path": "Exports\\glTF\\Lantern_Wall.gltf",
+          "mesh_triangles": 2822
+        },
+        {
+          "name": "Mug",
+          "path": "Exports\\glTF\\Mug.gltf",
+          "mesh_triangles": 268
+        },
+        {
+          "name": "Nightstand_Shelf",
+          "path": "Exports\\glTF\\Nightstand_Shelf.gltf",
+          "mesh_triangles": 262
+        },
+        {
+          "name": "Peg_Rack",
+          "path": "Exports\\glTF\\Peg_Rack.gltf",
+          "mesh_triangles": 712
+        },
+        {
+          "name": "Pickaxe_Bronze",
+          "path": "Exports\\glTF\\Pickaxe_Bronze.gltf",
+          "mesh_triangles": 776
+        },
+        {
+          "name": "Pot_1",
+          "path": "Exports\\glTF\\Pot_1.gltf",
+          "mesh_triangles": 1068
+        },
+        {
+          "name": "Pot_1_Lid",
+          "path": "Exports\\glTF\\Pot_1_Lid.gltf",
+          "mesh_triangles": 1292
+        },
+        {
+          "name": "Potion_1",
+          "path": "Exports\\glTF\\Potion_1.gltf",
+          "mesh_triangles": 440
+        },
+        {
+          "name": "Potion_2",
+          "path": "Exports\\glTF\\Potion_2.gltf",
+          "mesh_triangles": 472
+        },
+        {
+          "name": "Potion_4",
+          "path": "Exports\\glTF\\Potion_4.gltf",
+          "mesh_triangles": 536
+        },
+        {
+          "name": "Pouch_Large",
+          "path": "Exports\\glTF\\Pouch_Large.gltf",
+          "mesh_triangles": 730
+        },
+        {
+          "name": "Rope_1",
+          "path": "Exports\\glTF\\Rope_1.gltf",
+          "mesh_triangles": 1748
+        },
+        {
+          "name": "Rope_2",
+          "path": "Exports\\glTF\\Rope_2.gltf",
+          "mesh_triangles": 1460
+        },
+        {
+          "name": "Rope_3",
+          "path": "Exports\\glTF\\Rope_3.gltf",
+          "mesh_triangles": 1748
+        },
+        {
+          "name": "Scroll_1",
+          "path": "Exports\\glTF\\Scroll_1.gltf",
+          "mesh_triangles": 512
+        },
+        {
+          "name": "Scroll_2",
+          "path": "Exports\\glTF\\Scroll_2.gltf",
+          "mesh_triangles": 672
+        },
+        {
+          "name": "Shelf_Arch",
+          "path": "Exports\\glTF\\Shelf_Arch.gltf",
+          "mesh_triangles": 1286
+        },
+        {
+          "name": "Shelf_Simple",
+          "path": "Exports\\glTF\\Shelf_Simple.gltf",
+          "mesh_triangles": 480
+        },
+        {
+          "name": "Shelf_Small_Bottles",
+          "path": "Exports\\glTF\\Shelf_Small_Bottles.gltf",
+          "mesh_triangles": 5234
+        },
+        {
+          "name": "Shield_Wooden",
+          "path": "Exports\\glTF\\Shield_Wooden.gltf",
+          "mesh_triangles": 1404
+        },
+        {
+          "name": "SmallBottle",
+          "path": "Exports\\glTF\\SmallBottle.gltf",
+          "mesh_triangles": 130
+        },
+        {
+          "name": "SmallBottles_1",
+          "path": "Exports\\glTF\\SmallBottles_1.gltf",
+          "mesh_triangles": 486
+        },
+        {
+          "name": "Stall_Cart_Empty",
+          "path": "Exports\\glTF\\Stall_Cart_Empty.gltf",
+          "mesh_triangles": 3936
+        },
+        {
+          "name": "Stall_Empty",
+          "path": "Exports\\glTF\\Stall_Empty.gltf",
+          "mesh_triangles": 1496
+        },
+        {
+          "name": "Stool",
+          "path": "Exports\\glTF\\Stool.gltf",
+          "mesh_triangles": 152
+        },
+        {
+          "name": "Sword_Bronze",
+          "path": "Exports\\glTF\\Sword_Bronze.gltf",
+          "mesh_triangles": 1540
+        },
+        {
+          "name": "Table_Fork",
+          "path": "Exports\\glTF\\Table_Fork.gltf",
+          "mesh_triangles": 108
+        },
+        {
+          "name": "Table_Knife",
+          "path": "Exports\\glTF\\Table_Knife.gltf",
+          "mesh_triangles": 54
+        },
+        {
+          "name": "Table_Large",
+          "path": "Exports\\glTF\\Table_Large.gltf",
+          "mesh_triangles": 986
+        },
+        {
+          "name": "Table_Plate",
+          "path": "Exports\\glTF\\Table_Plate.gltf",
+          "mesh_triangles": 172
+        },
+        {
+          "name": "Table_Spoon",
+          "path": "Exports\\glTF\\Table_Spoon.gltf",
+          "mesh_triangles": 164
+        },
+        {
+          "name": "Torch_Metal",
+          "path": "Exports\\glTF\\Torch_Metal.gltf",
+          "mesh_triangles": 970
+        },
+        {
+          "name": "Vase_2",
+          "path": "Exports\\glTF\\Vase_2.gltf",
+          "mesh_triangles": 598
+        },
+        {
+          "name": "Vase_4",
+          "path": "Exports\\glTF\\Vase_4.gltf",
+          "mesh_triangles": 598
+        },
+        {
+          "name": "Vase_Rubble_Medium",
+          "path": "Exports\\glTF\\Vase_Rubble_Medium.gltf",
+          "mesh_triangles": 1113
+        },
+        {
+          "name": "WeaponStand",
+          "path": "Exports\\glTF\\WeaponStand.gltf",
+          "mesh_triangles": 2084
+        },
+        {
+          "name": "Whetstone",
+          "path": "Exports\\glTF\\Whetstone.gltf",
+          "mesh_triangles": 1100
+        },
+        {
+          "name": "Workbench",
+          "path": "Exports\\glTF\\Workbench.gltf",
+          "mesh_triangles": 1368
+        },
+        {
+          "name": "Workbench_Drawers",
+          "path": "Exports\\glTF\\Workbench_Drawers.gltf",
+          "mesh_triangles": 364
+        }
+      ],
+      "gltf_reference_issues": [],
+      "metadata_errors": [],
+      "names_without_gltf": [],
+      "png_textures": [
+        {
+          "path": "Exports\\glTF\\T_Page_Noise.png",
+          "width": 4096,
+          "height": 4096,
+          "bytes": 7486734
+        },
+        {
+          "path": "Exports\\glTF\\T_Trim_Cloth_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 1936754
+        },
+        {
+          "path": "Exports\\glTF\\T_Trim_Cloth_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3920858
+        },
+        {
+          "path": "Exports\\glTF\\T_Trim_Cloth_ORM.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 623426
+        },
+        {
+          "path": "Exports\\glTF\\T_Trim_Furniture_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 2232961
+        },
+        {
+          "path": "Exports\\glTF\\T_Trim_Furniture_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3485710
+        },
+        {
+          "path": "Exports\\glTF\\T_Trim_Furniture_ORM.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 2064585
+        },
+        {
+          "path": "Exports\\glTF\\T_Trim_Metal_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 1361221
+        },
+        {
+          "path": "Exports\\glTF\\T_Trim_Metal_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3625541
+        },
+        {
+          "path": "Exports\\glTF\\T_Trim_Metal_ORM.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 1871475
+        },
+        {
+          "path": "Exports\\glTF\\T_Trim_Props_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 2263132
+        },
+        {
+          "path": "Exports\\glTF\\T_Trim_Props_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 4441458
+        },
+        {
+          "path": "Exports\\glTF\\T_Trim_Props_ORM.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3017151
+        },
+        {
+          "path": "Exports\\OBJ\\T_Page_Noise.png",
+          "width": 4096,
+          "height": 4096,
+          "bytes": 7486734
+        },
+        {
+          "path": "Exports\\OBJ\\T_Trim_Cloth_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 1936754
+        },
+        {
+          "path": "Exports\\OBJ\\T_Trim_Cloth_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3920858
+        },
+        {
+          "path": "Exports\\OBJ\\T_Trim_Cloth_ORM.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 623426
+        },
+        {
+          "path": "Exports\\OBJ\\T_Trim_Furniture_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 2232961
+        },
+        {
+          "path": "Exports\\OBJ\\T_Trim_Furniture_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3485710
+        },
+        {
+          "path": "Exports\\OBJ\\T_Trim_Furniture_ORM.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 2064585
+        },
+        {
+          "path": "Exports\\OBJ\\T_Trim_Metal_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 1361221
+        },
+        {
+          "path": "Exports\\OBJ\\T_Trim_Metal_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3625541
+        },
+        {
+          "path": "Exports\\OBJ\\T_Trim_Metal_ORM.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 1871475
+        },
+        {
+          "path": "Exports\\OBJ\\T_Trim_Props_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 2263132
+        },
+        {
+          "path": "Exports\\OBJ\\T_Trim_Props_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 4441458
+        },
+        {
+          "path": "Exports\\OBJ\\T_Trim_Props_ORM.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3017151
+        },
+        {
+          "path": "Textures\\Normals-UnrealEngine\\T_Trim_Cloth_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3917916
+        },
+        {
+          "path": "Textures\\Normals-UnrealEngine\\T_Trim_Furniture_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3478660
+        },
+        {
+          "path": "Textures\\Normals-UnrealEngine\\T_Trim_Metal_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3622271
+        },
+        {
+          "path": "Textures\\Normals-UnrealEngine\\T_Trim_Props_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 4449962
+        },
+        {
+          "path": "Textures\\T_Page_Noise.png",
+          "width": 4096,
+          "height": 4096,
+          "bytes": 7486734
+        },
+        {
+          "path": "Textures\\T_Trim_Cloth_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 1936754
+        },
+        {
+          "path": "Textures\\T_Trim_Cloth_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3920858
+        },
+        {
+          "path": "Textures\\T_Trim_Cloth_ORM.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 623426
+        },
+        {
+          "path": "Textures\\T_Trim_Furniture_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 2232961
+        },
+        {
+          "path": "Textures\\T_Trim_Furniture_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3485710
+        },
+        {
+          "path": "Textures\\T_Trim_Furniture_ORM.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 2064585
+        },
+        {
+          "path": "Textures\\T_Trim_Metal_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 1361221
+        },
+        {
+          "path": "Textures\\T_Trim_Metal_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3625541
+        },
+        {
+          "path": "Textures\\T_Trim_Metal_ORM.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 1871475
+        },
+        {
+          "path": "Textures\\T_Trim_Props_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 2263132
+        },
+        {
+          "path": "Textures\\T_Trim_Props_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 4441458
+        },
+        {
+          "path": "Textures\\T_Trim_Props_ORM.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3017151
+        }
+      ]
+    },
+    {
+      "pack": "Medieval Village MegaKit[Standard]",
+      "files": 936,
+      "bytes": 174347235,
+      "formats": {
+        ".fbx": 176,
+        ".bin": 176,
+        ".gltf": 176,
+        ".png": 54,
+        ".txt": 1,
+        ".mtl": 176,
+        ".obj": 176,
+        ".jpg": 1
+      },
+      "licenses": [
+        {
+          "path": "Medieval Village MegaKit[Standard]\\License_Standard.txt",
+          "cc0_declared": true,
+          "sha256": "ec6fd5004514cb0515a7dc1065f474644d31698861597b32e1745945ffec71de"
+        }
+      ],
+      "gltf_models": [
+        {
+          "name": "Balcony_Cross_Corner",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Balcony_Cross_Corner.gltf",
+          "mesh_triangles": 264
+        },
+        {
+          "name": "Balcony_Cross_Straight",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Balcony_Cross_Straight.gltf",
+          "mesh_triangles": 132
+        },
+        {
+          "name": "Balcony_Simple_Corner",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Balcony_Simple_Corner.gltf",
+          "mesh_triangles": 2240
+        },
+        {
+          "name": "Balcony_Simple_Straight",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Balcony_Simple_Straight.gltf",
+          "mesh_triangles": 1120
+        },
+        {
+          "name": "Corner_Exterior_Brick",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Corner_Exterior_Brick.gltf",
+          "mesh_triangles": 3102
+        },
+        {
+          "name": "Corner_Exterior_TopDown",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Corner_Exterior_TopDown.gltf",
+          "mesh_triangles": 16
+        },
+        {
+          "name": "Corner_Exterior_TopOnly",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Corner_Exterior_TopOnly.gltf",
+          "mesh_triangles": 8
+        },
+        {
+          "name": "Corner_Exterior_Wood",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Corner_Exterior_Wood.gltf",
+          "mesh_triangles": 12
+        },
+        {
+          "name": "Corner_ExteriorWide_Brick",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Corner_ExteriorWide_Brick.gltf",
+          "mesh_triangles": 2882
+        },
+        {
+          "name": "Corner_ExteriorWide_Wood",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Corner_ExteriorWide_Wood.gltf",
+          "mesh_triangles": 36
+        },
+        {
+          "name": "Corner_Interior_Big",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Corner_Interior_Big.gltf",
+          "mesh_triangles": 24
+        },
+        {
+          "name": "Corner_Interior_Small",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Corner_Interior_Small.gltf",
+          "mesh_triangles": 12
+        },
+        {
+          "name": "Door_1_Flat",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Door_1_Flat.gltf",
+          "mesh_triangles": 314
+        },
+        {
+          "name": "Door_1_Round",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Door_1_Round.gltf",
+          "mesh_triangles": 470
+        },
+        {
+          "name": "Door_2_Flat",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Door_2_Flat.gltf",
+          "mesh_triangles": 6032
+        },
+        {
+          "name": "Door_2_Round",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Door_2_Round.gltf",
+          "mesh_triangles": 6188
+        },
+        {
+          "name": "Door_4_Flat",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Door_4_Flat.gltf",
+          "mesh_triangles": 1044
+        },
+        {
+          "name": "Door_4_Round",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Door_4_Round.gltf",
+          "mesh_triangles": 1228
+        },
+        {
+          "name": "Door_8_Flat",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Door_8_Flat.gltf",
+          "mesh_triangles": 986
+        },
+        {
+          "name": "Door_8_Round",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Door_8_Round.gltf",
+          "mesh_triangles": 1142
+        },
+        {
+          "name": "DoorFrame_Flat_Brick",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\DoorFrame_Flat_Brick.gltf",
+          "mesh_triangles": 1880
+        },
+        {
+          "name": "DoorFrame_Flat_WoodDark",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\DoorFrame_Flat_WoodDark.gltf",
+          "mesh_triangles": 56
+        },
+        {
+          "name": "DoorFrame_Round_Brick",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\DoorFrame_Round_Brick.gltf",
+          "mesh_triangles": 2046
+        },
+        {
+          "name": "DoorFrame_Round_WoodDark",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\DoorFrame_Round_WoodDark.gltf",
+          "mesh_triangles": 320
+        },
+        {
+          "name": "Floor_Brick",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Floor_Brick.gltf",
+          "mesh_triangles": 4
+        },
+        {
+          "name": "Floor_RedBrick",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Floor_RedBrick.gltf",
+          "mesh_triangles": 4
+        },
+        {
+          "name": "Floor_UnevenBrick",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Floor_UnevenBrick.gltf",
+          "mesh_triangles": 4
+        },
+        {
+          "name": "Floor_WoodDark",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Floor_WoodDark.gltf",
+          "mesh_triangles": 32
+        },
+        {
+          "name": "Floor_WoodDark_Half1",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Floor_WoodDark_Half1.gltf",
+          "mesh_triangles": 32
+        },
+        {
+          "name": "Floor_WoodDark_Half2",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Floor_WoodDark_Half2.gltf",
+          "mesh_triangles": 32
+        },
+        {
+          "name": "Floor_WoodDark_Half3",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Floor_WoodDark_Half3.gltf",
+          "mesh_triangles": 16
+        },
+        {
+          "name": "Floor_WoodDark_OverhangCorner",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Floor_WoodDark_OverhangCorner.gltf",
+          "mesh_triangles": 16
+        },
+        {
+          "name": "Floor_WoodDark_OverhangCorner2",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Floor_WoodDark_OverhangCorner2.gltf",
+          "mesh_triangles": 26
+        },
+        {
+          "name": "Floor_WoodLight",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Floor_WoodLight.gltf",
+          "mesh_triangles": 32
+        },
+        {
+          "name": "Floor_WoodLight_OverhangCorner",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Floor_WoodLight_OverhangCorner.gltf",
+          "mesh_triangles": 16
+        },
+        {
+          "name": "Floor_WoodLight_OverhangCorner2",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Floor_WoodLight_OverhangCorner2.gltf",
+          "mesh_triangles": 26
+        },
+        {
+          "name": "HoleCover_90Angle",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\HoleCover_90Angle.gltf",
+          "mesh_triangles": 20
+        },
+        {
+          "name": "HoleCover_90Half",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\HoleCover_90Half.gltf",
+          "mesh_triangles": 16
+        },
+        {
+          "name": "HoleCover_90Stairs",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\HoleCover_90Stairs.gltf",
+          "mesh_triangles": 18
+        },
+        {
+          "name": "HoleCover_Straight",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\HoleCover_Straight.gltf",
+          "mesh_triangles": 12
+        },
+        {
+          "name": "HoleCover_StraightHalf",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\HoleCover_StraightHalf.gltf",
+          "mesh_triangles": 10
+        },
+        {
+          "name": "Overhang_Plaster_Corner",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Overhang_Plaster_Corner.gltf",
+          "mesh_triangles": 440
+        },
+        {
+          "name": "Overhang_Plaster_Corner_Front",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Overhang_Plaster_Corner_Front.gltf",
+          "mesh_triangles": 142
+        },
+        {
+          "name": "Overhang_Plaster_Long",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Overhang_Plaster_Long.gltf",
+          "mesh_triangles": 204
+        },
+        {
+          "name": "Overhang_Plaster_Short",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Overhang_Plaster_Short.gltf",
+          "mesh_triangles": 222
+        },
+        {
+          "name": "Overhang_Roof_Plaster",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Overhang_Roof_Plaster.gltf",
+          "mesh_triangles": 38
+        },
+        {
+          "name": "Overhang_Roof_UnevenBricks",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Overhang_Roof_UnevenBricks.gltf",
+          "mesh_triangles": 38
+        },
+        {
+          "name": "Overhang_RoofIncline_Plaster",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Overhang_RoofIncline_Plaster.gltf",
+          "mesh_triangles": 36
+        },
+        {
+          "name": "Overhang_RoofIncline_UnevenBricks",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Overhang_RoofIncline_UnevenBricks.gltf",
+          "mesh_triangles": 36
+        },
+        {
+          "name": "Overhang_Side_Plaster_Long_L",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Overhang_Side_Plaster_Long_L.gltf",
+          "mesh_triangles": 314
+        },
+        {
+          "name": "Overhang_Side_Plaster_Long_R",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Overhang_Side_Plaster_Long_R.gltf",
+          "mesh_triangles": 314
+        },
+        {
+          "name": "Overhang_Side_Plaster_Short_L",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Overhang_Side_Plaster_Short_L.gltf",
+          "mesh_triangles": 302
+        },
+        {
+          "name": "Overhang_Side_Plaster_Short_R",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Overhang_Side_Plaster_Short_R.gltf",
+          "mesh_triangles": 302
+        },
+        {
+          "name": "Overhang_Side_UnevenBrick_Long_L",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Overhang_Side_UnevenBrick_Long_L.gltf",
+          "mesh_triangles": 292
+        },
+        {
+          "name": "Overhang_Side_UnevenBrick_Long_R",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Overhang_Side_UnevenBrick_Long_R.gltf",
+          "mesh_triangles": 292
+        },
+        {
+          "name": "Overhang_Side_UnevenBrick_Short_L",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Overhang_Side_UnevenBrick_Short_L.gltf",
+          "mesh_triangles": 294
+        },
+        {
+          "name": "Overhang_Side_UnevenBrick_Short_R",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Overhang_Side_UnevenBrick_Short_R.gltf",
+          "mesh_triangles": 294
+        },
+        {
+          "name": "Overhang_UnevenBrick_Corner",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Overhang_UnevenBrick_Corner.gltf",
+          "mesh_triangles": 420
+        },
+        {
+          "name": "Overhang_UnevenBrick_Corner_Front",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Overhang_UnevenBrick_Corner_Front.gltf",
+          "mesh_triangles": 60
+        },
+        {
+          "name": "Overhang_UnevenBrick_Long",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Overhang_UnevenBrick_Long.gltf",
+          "mesh_triangles": 196
+        },
+        {
+          "name": "Overhang_UnevenBrick_Short",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Overhang_UnevenBrick_Short.gltf",
+          "mesh_triangles": 214
+        },
+        {
+          "name": "Prop_Brick1",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_Brick1.gltf",
+          "mesh_triangles": 108
+        },
+        {
+          "name": "Prop_Brick2",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_Brick2.gltf",
+          "mesh_triangles": 94
+        },
+        {
+          "name": "Prop_Brick3",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_Brick3.gltf",
+          "mesh_triangles": 126
+        },
+        {
+          "name": "Prop_Brick4",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_Brick4.gltf",
+          "mesh_triangles": 126
+        },
+        {
+          "name": "Prop_Chimney",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_Chimney.gltf",
+          "mesh_triangles": 618
+        },
+        {
+          "name": "Prop_Chimney2",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_Chimney2.gltf",
+          "mesh_triangles": 130
+        },
+        {
+          "name": "Prop_Crate",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_Crate.gltf",
+          "mesh_triangles": 230
+        },
+        {
+          "name": "Prop_ExteriorBorder_Corner",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_ExteriorBorder_Corner.gltf",
+          "mesh_triangles": 18
+        },
+        {
+          "name": "Prop_ExteriorBorder_Straight1",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_ExteriorBorder_Straight1.gltf",
+          "mesh_triangles": 16
+        },
+        {
+          "name": "Prop_ExteriorBorder_Straight2",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_ExteriorBorder_Straight2.gltf",
+          "mesh_triangles": 16
+        },
+        {
+          "name": "Prop_MetalFence_Ornament",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_MetalFence_Ornament.gltf",
+          "mesh_triangles": 3988
+        },
+        {
+          "name": "Prop_MetalFence_Simple",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_MetalFence_Simple.gltf",
+          "mesh_triangles": 2744
+        },
+        {
+          "name": "Prop_Support",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_Support.gltf",
+          "mesh_triangles": 16
+        },
+        {
+          "name": "Prop_Vine1",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_Vine1.gltf",
+          "mesh_triangles": 82
+        },
+        {
+          "name": "Prop_Vine2",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_Vine2.gltf",
+          "mesh_triangles": 45
+        },
+        {
+          "name": "Prop_Vine4",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_Vine4.gltf",
+          "mesh_triangles": 31
+        },
+        {
+          "name": "Prop_Vine5",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_Vine5.gltf",
+          "mesh_triangles": 117
+        },
+        {
+          "name": "Prop_Vine6",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_Vine6.gltf",
+          "mesh_triangles": 114
+        },
+        {
+          "name": "Prop_Vine9",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_Vine9.gltf",
+          "mesh_triangles": 44
+        },
+        {
+          "name": "Prop_Wagon",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_Wagon.gltf",
+          "mesh_triangles": 1672
+        },
+        {
+          "name": "Prop_WoodenFence_Extension1",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_WoodenFence_Extension1.gltf",
+          "mesh_triangles": 32
+        },
+        {
+          "name": "Prop_WoodenFence_Extension2",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_WoodenFence_Extension2.gltf",
+          "mesh_triangles": 28
+        },
+        {
+          "name": "Prop_WoodenFence_Single",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Prop_WoodenFence_Single.gltf",
+          "mesh_triangles": 40
+        },
+        {
+          "name": "Roof_2x4_RoundTile",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_2x4_RoundTile.gltf",
+          "mesh_triangles": 1112
+        },
+        {
+          "name": "Roof_Dormer_RoundTile",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Dormer_RoundTile.gltf",
+          "mesh_triangles": 904
+        },
+        {
+          "name": "Roof_Front_Brick2",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Front_Brick2.gltf",
+          "mesh_triangles": 78
+        },
+        {
+          "name": "Roof_Front_Brick4",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Front_Brick4.gltf",
+          "mesh_triangles": 252
+        },
+        {
+          "name": "Roof_Front_Brick4_Half_L",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Front_Brick4_Half_L.gltf",
+          "mesh_triangles": 140
+        },
+        {
+          "name": "Roof_Front_Brick4_Half_R",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Front_Brick4_Half_R.gltf",
+          "mesh_triangles": 146
+        },
+        {
+          "name": "Roof_Front_Brick6",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Front_Brick6.gltf",
+          "mesh_triangles": 328
+        },
+        {
+          "name": "Roof_Front_Brick6_Half_L",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Front_Brick6_Half_L.gltf",
+          "mesh_triangles": 186
+        },
+        {
+          "name": "Roof_Front_Brick6_Half_R",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Front_Brick6_Half_R.gltf",
+          "mesh_triangles": 186
+        },
+        {
+          "name": "Roof_Front_Brick8",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Front_Brick8.gltf",
+          "mesh_triangles": 364
+        },
+        {
+          "name": "Roof_Front_Brick8_Half_L",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Front_Brick8_Half_L.gltf",
+          "mesh_triangles": 204
+        },
+        {
+          "name": "Roof_Front_Brick8_Half_R",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Front_Brick8_Half_R.gltf",
+          "mesh_triangles": 204
+        },
+        {
+          "name": "Roof_FrontSupports",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_FrontSupports.gltf",
+          "mesh_triangles": 60
+        },
+        {
+          "name": "Roof_Log",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Log.gltf",
+          "mesh_triangles": 164
+        },
+        {
+          "name": "Roof_Modular_RoundTiles",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Modular_RoundTiles.gltf",
+          "mesh_triangles": 136
+        },
+        {
+          "name": "Roof_RoundTile_2x1",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_RoundTile_2x1.gltf",
+          "mesh_triangles": 612
+        },
+        {
+          "name": "Roof_RoundTile_2x1_Long",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_RoundTile_2x1_Long.gltf",
+          "mesh_triangles": 628
+        },
+        {
+          "name": "Roof_RoundTiles_4x4",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_RoundTiles_4x4.gltf",
+          "mesh_triangles": 1996
+        },
+        {
+          "name": "Roof_RoundTiles_4x6",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_RoundTiles_4x6.gltf",
+          "mesh_triangles": 2520
+        },
+        {
+          "name": "Roof_RoundTiles_4x8",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_RoundTiles_4x8.gltf",
+          "mesh_triangles": 3116
+        },
+        {
+          "name": "Roof_RoundTiles_6x10",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_RoundTiles_6x10.gltf",
+          "mesh_triangles": 4300
+        },
+        {
+          "name": "Roof_RoundTiles_6x12",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_RoundTiles_6x12.gltf",
+          "mesh_triangles": 4752
+        },
+        {
+          "name": "Roof_RoundTiles_6x14",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_RoundTiles_6x14.gltf",
+          "mesh_triangles": 5372
+        },
+        {
+          "name": "Roof_RoundTiles_6x4",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_RoundTiles_6x4.gltf",
+          "mesh_triangles": 2192
+        },
+        {
+          "name": "Roof_RoundTiles_6x6",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_RoundTiles_6x6.gltf",
+          "mesh_triangles": 3244
+        },
+        {
+          "name": "Roof_RoundTiles_6x8",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_RoundTiles_6x8.gltf",
+          "mesh_triangles": 3796
+        },
+        {
+          "name": "Roof_RoundTiles_8x10",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_RoundTiles_8x10.gltf",
+          "mesh_triangles": 4480
+        },
+        {
+          "name": "Roof_RoundTiles_8x12",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_RoundTiles_8x12.gltf",
+          "mesh_triangles": 6356
+        },
+        {
+          "name": "Roof_RoundTiles_8x14",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_RoundTiles_8x14.gltf",
+          "mesh_triangles": 5484
+        },
+        {
+          "name": "Roof_RoundTiles_8x8",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_RoundTiles_8x8.gltf",
+          "mesh_triangles": 3888
+        },
+        {
+          "name": "Roof_Support2",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Support2.gltf",
+          "mesh_triangles": 84
+        },
+        {
+          "name": "Roof_Tower_RoundTiles",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Tower_RoundTiles.gltf",
+          "mesh_triangles": 4024
+        },
+        {
+          "name": "Roof_Wooden_2x1",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Wooden_2x1.gltf",
+          "mesh_triangles": 224
+        },
+        {
+          "name": "Roof_Wooden_2x1_Center",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Wooden_2x1_Center.gltf",
+          "mesh_triangles": 52
+        },
+        {
+          "name": "Roof_Wooden_2x1_Center_Mirror",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Wooden_2x1_Center_Mirror.gltf",
+          "mesh_triangles": 52
+        },
+        {
+          "name": "Roof_Wooden_2x1_Corner",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Wooden_2x1_Corner.gltf",
+          "mesh_triangles": 82
+        },
+        {
+          "name": "Roof_Wooden_2x1_L",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Wooden_2x1_L.gltf",
+          "mesh_triangles": 158
+        },
+        {
+          "name": "Roof_Wooden_2x1_Middle",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Wooden_2x1_Middle.gltf",
+          "mesh_triangles": 24
+        },
+        {
+          "name": "Roof_Wooden_2x1_R",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Roof_Wooden_2x1_R.gltf",
+          "mesh_triangles": 158
+        },
+        {
+          "name": "Stair_Interior_Rails",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Stair_Interior_Rails.gltf",
+          "mesh_triangles": 3144
+        },
+        {
+          "name": "Stair_Interior_Simple",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Stair_Interior_Simple.gltf",
+          "mesh_triangles": 208
+        },
+        {
+          "name": "Stair_Interior_Solid",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Stair_Interior_Solid.gltf",
+          "mesh_triangles": 306
+        },
+        {
+          "name": "Stair_Interior_SolidExtended",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Stair_Interior_SolidExtended.gltf",
+          "mesh_triangles": 376
+        },
+        {
+          "name": "Stairs_Exterior_NoFirstStep",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Stairs_Exterior_NoFirstStep.gltf",
+          "mesh_triangles": 52
+        },
+        {
+          "name": "Stairs_Exterior_Platform",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Stairs_Exterior_Platform.gltf",
+          "mesh_triangles": 32
+        },
+        {
+          "name": "Stairs_Exterior_Platform45",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Stairs_Exterior_Platform45.gltf",
+          "mesh_triangles": 55
+        },
+        {
+          "name": "Stairs_Exterior_Platform45Clean",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Stairs_Exterior_Platform45Clean.gltf",
+          "mesh_triangles": 45
+        },
+        {
+          "name": "Stairs_Exterior_PlatformU",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Stairs_Exterior_PlatformU.gltf",
+          "mesh_triangles": 68
+        },
+        {
+          "name": "Stairs_Exterior_SidePlatform",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Stairs_Exterior_SidePlatform.gltf",
+          "mesh_triangles": 30
+        },
+        {
+          "name": "Stairs_Exterior_Sides",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Stairs_Exterior_Sides.gltf",
+          "mesh_triangles": 16
+        },
+        {
+          "name": "Stairs_Exterior_Sides45",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Stairs_Exterior_Sides45.gltf",
+          "mesh_triangles": 28
+        },
+        {
+          "name": "Stairs_Exterior_SidesU",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Stairs_Exterior_SidesU.gltf",
+          "mesh_triangles": 56
+        },
+        {
+          "name": "Stairs_Exterior_SingleSide",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Stairs_Exterior_SingleSide.gltf",
+          "mesh_triangles": 12
+        },
+        {
+          "name": "Stairs_Exterior_SingleSideThick",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Stairs_Exterior_SingleSideThick.gltf",
+          "mesh_triangles": 12
+        },
+        {
+          "name": "Stairs_Exterior_Straight",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Stairs_Exterior_Straight.gltf",
+          "mesh_triangles": 62
+        },
+        {
+          "name": "Stairs_Exterior_Straight_Center",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Stairs_Exterior_Straight_Center.gltf",
+          "mesh_triangles": 50
+        },
+        {
+          "name": "Stairs_Exterior_Straight_L",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Stairs_Exterior_Straight_L.gltf",
+          "mesh_triangles": 56
+        },
+        {
+          "name": "Stairs_Exterior_Straight_R",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Stairs_Exterior_Straight_R.gltf",
+          "mesh_triangles": 56
+        },
+        {
+          "name": "Wall_Arch",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Wall_Arch.gltf",
+          "mesh_triangles": 196
+        },
+        {
+          "name": "Wall_BottomCover",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Wall_BottomCover.gltf",
+          "mesh_triangles": 36
+        },
+        {
+          "name": "Wall_Plaster_Door_Flat",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Wall_Plaster_Door_Flat.gltf",
+          "mesh_triangles": 92
+        },
+        {
+          "name": "Wall_Plaster_Door_Round",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Wall_Plaster_Door_Round.gltf",
+          "mesh_triangles": 137
+        },
+        {
+          "name": "Wall_Plaster_Door_RoundInset",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Wall_Plaster_Door_RoundInset.gltf",
+          "mesh_triangles": 180
+        },
+        {
+          "name": "Wall_Plaster_Straight",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Wall_Plaster_Straight.gltf",
+          "mesh_triangles": 86
+        },
+        {
+          "name": "Wall_Plaster_Straight_Base",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Wall_Plaster_Straight_Base.gltf",
+          "mesh_triangles": 64
+        },
+        {
+          "name": "Wall_Plaster_Straight_L",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Wall_Plaster_Straight_L.gltf",
+          "mesh_triangles": 72
+        },
+        {
+          "name": "Wall_Plaster_Straight_R",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Wall_Plaster_Straight_R.gltf",
+          "mesh_triangles": 72
+        },
+        {
+          "name": "Wall_Plaster_Window_Thin_Round",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Wall_Plaster_Window_Thin_Round.gltf",
+          "mesh_triangles": 166
+        },
+        {
+          "name": "Wall_Plaster_Window_Wide_Flat",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Wall_Plaster_Window_Wide_Flat.gltf",
+          "mesh_triangles": 96
+        },
+        {
+          "name": "Wall_Plaster_Window_Wide_Flat2",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Wall_Plaster_Window_Wide_Flat2.gltf",
+          "mesh_triangles": 122
+        },
+        {
+          "name": "Wall_Plaster_Window_Wide_Round",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Wall_Plaster_Window_Wide_Round.gltf",
+          "mesh_triangles": 124
+        },
+        {
+          "name": "Wall_Plaster_WoodGrid",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Wall_Plaster_WoodGrid.gltf",
+          "mesh_triangles": 248
+        },
+        {
+          "name": "Wall_UnevenBrick_Door_Flat",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Wall_UnevenBrick_Door_Flat.gltf",
+          "mesh_triangles": 74
+        },
+        {
+          "name": "Wall_UnevenBrick_Door_Round",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Wall_UnevenBrick_Door_Round.gltf",
+          "mesh_triangles": 136
+        },
+        {
+          "name": "Wall_UnevenBrick_Straight",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Wall_UnevenBrick_Straight.gltf",
+          "mesh_triangles": 56
+        },
+        {
+          "name": "Wall_UnevenBrick_Window_Thin_Round",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Wall_UnevenBrick_Window_Thin_Round.gltf",
+          "mesh_triangles": 158
+        },
+        {
+          "name": "Wall_UnevenBrick_Window_Wide_Flat",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Wall_UnevenBrick_Window_Wide_Flat.gltf",
+          "mesh_triangles": 88
+        },
+        {
+          "name": "Wall_UnevenBrick_Window_Wide_Round",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Wall_UnevenBrick_Window_Wide_Round.gltf",
+          "mesh_triangles": 116
+        },
+        {
+          "name": "Window_Roof_Thin",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Window_Roof_Thin.gltf",
+          "mesh_triangles": 46
+        },
+        {
+          "name": "Window_Roof_Wide",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Window_Roof_Wide.gltf",
+          "mesh_triangles": 66
+        },
+        {
+          "name": "Window_Thin_Flat1",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Window_Thin_Flat1.gltf",
+          "mesh_triangles": 112
+        },
+        {
+          "name": "Window_Thin_Round1",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Window_Thin_Round1.gltf",
+          "mesh_triangles": 418
+        },
+        {
+          "name": "Window_Wide_Flat1",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Window_Wide_Flat1.gltf",
+          "mesh_triangles": 160
+        },
+        {
+          "name": "Window_Wide_Round1",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\Window_Wide_Round1.gltf",
+          "mesh_triangles": 354
+        },
+        {
+          "name": "WindowShutters_Thin_Flat_Closed",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\WindowShutters_Thin_Flat_Closed.gltf",
+          "mesh_triangles": 96
+        },
+        {
+          "name": "WindowShutters_Thin_Flat_Open",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\WindowShutters_Thin_Flat_Open.gltf",
+          "mesh_triangles": 96
+        },
+        {
+          "name": "WindowShutters_Thin_Round_Closed",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\WindowShutters_Thin_Round_Closed.gltf",
+          "mesh_triangles": 112
+        },
+        {
+          "name": "WindowShutters_Thin_Round_Open",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\WindowShutters_Thin_Round_Open.gltf",
+          "mesh_triangles": 112
+        },
+        {
+          "name": "WindowShutters_Wide_Flat_Closed",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\WindowShutters_Wide_Flat_Closed.gltf",
+          "mesh_triangles": 120
+        },
+        {
+          "name": "WindowShutters_Wide_Flat_Open",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\WindowShutters_Wide_Flat_Open.gltf",
+          "mesh_triangles": 120
+        },
+        {
+          "name": "WindowShutters_Wide_Round_Closed",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\WindowShutters_Wide_Round_Closed.gltf",
+          "mesh_triangles": 136
+        },
+        {
+          "name": "WindowShutters_Wide_Round_Open",
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\WindowShutters_Wide_Round_Open.gltf",
+          "mesh_triangles": 136
+        }
+      ],
+      "gltf_reference_issues": [],
+      "metadata_errors": [],
+      "names_without_gltf": [],
+      "png_textures": [
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_Brick_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 2447169
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_Brick_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 4474267
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_Brick_Roughness.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 689204
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_MetalOrnaments_BaseColor.png",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 725116
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_MetalOrnaments_Roughness.png",
+          "width": 512,
+          "height": 512,
+          "bytes": 89547
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_Plaster_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3316410
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_Plaster_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 4607606
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_Plaster_ORM.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 2381579
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_RedBrick_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 2525865
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_RockTrim_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 1908835
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_RockTrim_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3925938
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_RockTrim_ORM.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 1625807
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_RoundTiles_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 4352034
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_RoundTiles_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3792369
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_RoundTiles_Roughness.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 1624660
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_UnevenBrick_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 2945342
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_UnevenBrick_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3866626
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_UnevenBrick_Roughness.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 1246162
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_VineLeaf_png.png",
+          "width": 512,
+          "height": 512,
+          "bytes": 162432
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 2082310
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3596501
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\glTF\\T_WoodTrim_Roughness.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 1697111
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\Normals Godot-Unity\\T_Brick_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 5199854
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\Normals Godot-Unity\\T_Plaster_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 4575580
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\Normals Godot-Unity\\T_RockTrim_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3921997
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\Normals Godot-Unity\\T_RoundTiles_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3256812
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\Normals Godot-Unity\\T_UnevenBrick_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3868581
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\Normals Godot-Unity\\T_WoodTrim_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3613847
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_BottomWear.png",
+          "width": 4096,
+          "height": 4096,
+          "bytes": 3463884
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_Brick_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 2447169
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_Brick_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 4474267
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_Brick_Roughness.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 350932
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_BrushedNoise.png",
+          "width": 4096,
+          "height": 4096,
+          "bytes": 13059210
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_Noise_Terrain.png",
+          "width": 512,
+          "height": 512,
+          "bytes": 213487
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_Plaster_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3316410
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_Plaster_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 4607606
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_Plaster_ORM.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 2381579
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_RedBrick_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 2525865
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_RockTrim_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 1908835
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_RockTrim_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3925938
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_RockTrim_ORM.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 1625807
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_RoundTiles_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 4352034
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_RoundTiles_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3792369
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_RoundTiles_Roughness.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 1445880
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_TopWear.png",
+          "width": 4096,
+          "height": 4096,
+          "bytes": 3934516
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_UnevenBrick_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 2945342
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_UnevenBrick_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3866626
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_UnevenBrick_Roughness.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 707775
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_VineLeaf.png",
+          "width": 512,
+          "height": 512,
+          "bytes": 162432
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_WindowGradient.png",
+          "width": 512,
+          "height": 512,
+          "bytes": 21462
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_WoodTrim_BaseColor.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 2082310
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_WoodTrim_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3596501
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_WoodTrim_ORM.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3030751
+        },
+        {
+          "path": "Medieval Village MegaKit[Standard]\\Textures\\T_WoodTrim_Roughness.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 911823
+        }
+      ]
+    },
+    {
+      "pack": "Ultimate Stylized Nature - May 2022-20261021T131147Z-1-001",
+      "files": 369,
+      "bytes": 471142112,
+      "formats": {
+        ".blend": 64,
+        ".fbx": 63,
+        ".bin": 36,
+        ".gltf": 36,
+        ".jpg": 7,
+        ".png": 36,
+        ".txt": 1,
+        ".mtl": 63,
+        ".obj": 63
+      },
+      "licenses": [
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\License.txt",
+          "cc0_declared": true,
+          "sha256": "de990ef6fc68cffd7fd1ae342c4d0c823b541b8848d8f76bca5d3339f4de6f6e"
+        }
+      ],
+      "gltf_models": [
+        {
+          "name": "BirchTree_1",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\BirchTree_1.gltf",
+          "mesh_triangles": 4596
+        },
+        {
+          "name": "BirchTree_2",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\BirchTree_2.gltf",
+          "mesh_triangles": 7660
+        },
+        {
+          "name": "BirchTree_3",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\BirchTree_3.gltf",
+          "mesh_triangles": 6818
+        },
+        {
+          "name": "BirchTree_4",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\BirchTree_4.gltf",
+          "mesh_triangles": 3562
+        },
+        {
+          "name": "BirchTree_5",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\BirchTree_5.gltf",
+          "mesh_triangles": 4520
+        },
+        {
+          "name": "Bush",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\Bush.gltf",
+          "mesh_triangles": 400
+        },
+        {
+          "name": "Bush_Flowers",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\Bush_Flowers.gltf",
+          "mesh_triangles": 478
+        },
+        {
+          "name": "Bush_Large",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\Bush_Large.gltf",
+          "mesh_triangles": 276
+        },
+        {
+          "name": "Bush_Large_Flowers",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\Bush_Large_Flowers.gltf",
+          "mesh_triangles": 402
+        },
+        {
+          "name": "Bush_Small",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\Bush_Small.gltf",
+          "mesh_triangles": 190
+        },
+        {
+          "name": "Bush_Small_Flowers",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\Bush_Small_Flowers.gltf",
+          "mesh_triangles": 274
+        },
+        {
+          "name": "DeadTree_1",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\DeadTree_1.gltf",
+          "mesh_triangles": 4792
+        },
+        {
+          "name": "DeadTree_10",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\DeadTree_10.gltf",
+          "mesh_triangles": 3208
+        },
+        {
+          "name": "DeadTree_2",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\DeadTree_2.gltf",
+          "mesh_triangles": 5344
+        },
+        {
+          "name": "DeadTree_3",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\DeadTree_3.gltf",
+          "mesh_triangles": 4928
+        },
+        {
+          "name": "DeadTree_4",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\DeadTree_4.gltf",
+          "mesh_triangles": 3528
+        },
+        {
+          "name": "DeadTree_5",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\DeadTree_5.gltf",
+          "mesh_triangles": 1360
+        },
+        {
+          "name": "DeadTree_6",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\DeadTree_6.gltf",
+          "mesh_triangles": 2984
+        },
+        {
+          "name": "DeadTree_7",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\DeadTree_7.gltf",
+          "mesh_triangles": 3504
+        },
+        {
+          "name": "DeadTree_8",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\DeadTree_8.gltf",
+          "mesh_triangles": 4944
+        },
+        {
+          "name": "DeadTree_9",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\DeadTree_9.gltf",
+          "mesh_triangles": 824
+        },
+        {
+          "name": "Flower_1",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\Flower_1.gltf",
+          "mesh_triangles": 162
+        },
+        {
+          "name": "Flower_1_Clump",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\Flower_1_Clump.gltf",
+          "mesh_triangles": 620
+        },
+        {
+          "name": "Flower_2",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\Flower_2.gltf",
+          "mesh_triangles": 34
+        },
+        {
+          "name": "Flower_2_Clump",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\Flower_2_Clump.gltf",
+          "mesh_triangles": 136
+        },
+        {
+          "name": "Flower_3_Clump",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\Flower_3_Clump.gltf",
+          "mesh_triangles": 136
+        },
+        {
+          "name": "Flower_4_Clump",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\Flower_4_Clump.gltf",
+          "mesh_triangles": 136
+        },
+        {
+          "name": "Flower_5_Clump",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\Flower_5_Clump.gltf",
+          "mesh_triangles": 136
+        },
+        {
+          "name": "Grass_Large",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\Grass_Large.gltf",
+          "mesh_triangles": 108
+        },
+        {
+          "name": "Grass_Large_Extruded",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\Grass_Large_Extruded.gltf",
+          "mesh_triangles": 516
+        },
+        {
+          "name": "Grass_Small",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\Grass_Small.gltf",
+          "mesh_triangles": 58
+        },
+        {
+          "name": "MapleTree_1",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\MapleTree_1.gltf",
+          "mesh_triangles": 3848
+        },
+        {
+          "name": "MapleTree_2",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\MapleTree_2.gltf",
+          "mesh_triangles": 4800
+        },
+        {
+          "name": "MapleTree_3",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\MapleTree_3.gltf",
+          "mesh_triangles": 6678
+        },
+        {
+          "name": "MapleTree_4",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\MapleTree_4.gltf",
+          "mesh_triangles": 1256
+        },
+        {
+          "name": "MapleTree_5",
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\MapleTree_5.gltf",
+          "mesh_triangles": 4504
+        }
+      ],
+      "gltf_reference_issues": [],
+      "metadata_errors": [],
+      "names_without_gltf": [
+        "AllModels",
+        "NormalTree_1",
+        "NormalTree_2",
+        "NormalTree_3",
+        "NormalTree_4",
+        "NormalTree_5",
+        "PalmTree_1",
+        "PalmTree_2",
+        "PalmTree_3",
+        "PalmTree_4",
+        "PalmTree_5",
+        "Petals_1",
+        "Petals_2",
+        "Petals_3",
+        "Petals_4",
+        "PineTree_1",
+        "PineTree_2",
+        "PineTree_3",
+        "PineTree_4",
+        "PineTree_5",
+        "Plant_1",
+        "Plant_2",
+        "Plant_Flowers",
+        "Rock_1",
+        "Rock_2",
+        "Rock_3",
+        "Rock_4",
+        "Rock_5"
+      ],
+      "png_textures": [
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\BirchTree_Bark_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 22721595
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\BirchTree_Leaves.png",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 77836
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\Bush_Leaves.png",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 74828
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\Flowers.png",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 318021
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\Grass.png",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 734927
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\Leaves_BW.png",
+          "width": 1000,
+          "height": 1000,
+          "bytes": 105528
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\MapleTree_Bark_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 22064128
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\MapleTree_Leaves.png",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 212333
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\MapleTree_Leaves_BW.png",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 138667
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\NormalTree_Bark_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 19087640
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\NormalTree_Leaves.png",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 74828
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\PalmTree_Leaves.png",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 279770
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\PalmTree_Trunk_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 8876810
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\PineTree_Bark_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 20937374
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\glTF\\PineTree_Leaves.png",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 491019
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\BirchTree_Bark.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 23133683
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\BirchTree_Bark_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 22721595
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\BirchTree_Leaves.png",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 77836
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\Bush_Leaves.png",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 74828
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\Flowers.png",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 318021
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\Grass.png",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 734927
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\Leaves_BW.png",
+          "width": 1000,
+          "height": 1000,
+          "bytes": 105528
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\MapleTree_Bark.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 22229469
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\MapleTree_Bark_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 22064128
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\MapleTree_Leaves.png",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 212333
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\MapleTree_Leaves_BW.png",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 138667
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\NormalTree_Bark.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 20875728
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\NormalTree_Bark_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 19087640
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\NormalTree_Leaves.png",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 74828
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\PalmTree_Leaves.png",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 279770
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\PalmTree_Trunk.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 21347386
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\PalmTree_Trunk_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 8876810
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\PineTree_Bark.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 15436565
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\PineTree_Bark_Normal.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 20937374
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\PineTree_Leaves.png",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 491019
+        },
+        {
+          "path": "Ultimate Stylized Nature - May 2022\\Textures\\Rocks.png",
+          "width": 2048,
+          "height": 2048,
+          "bytes": 3036940
+        }
+      ]
+    }
+  ]
+}

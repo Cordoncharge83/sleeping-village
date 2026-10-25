@@ -1,0 +1,13 @@
+# Normalize text in history; keep the Windows launcher native when checked out.
+* text=auto eol=lf
+*.bat text eol=crlf
+
+# Keep binary game assets and visual references unchanged.
+*.glb binary
+*.fbx binary
+*.blend binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.woff2 binary

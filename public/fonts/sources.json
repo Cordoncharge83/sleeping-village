@@ -1,0 +1,26 @@
+[
+  {
+    "sha256": "248300DF1647BEC49155A5CADA1D65F719AE633EF48564D1F19B135A8A5B7F5F",
+    "file": "im-fell-english-latin-400.woff2",
+    "source": "https://fonts.gstatic.com/s/imfellenglish/v14/Ktk1ALSLW8zDe0rthJysWrnLsAzHEKOY.woff2",
+    "bytes": 59880
+  },
+  {
+    "sha256": "7CBCF38A5EF682A8B9E2EF4A330B31A08B33BF1AE08E338267C0D1292479C68A",
+    "file": "alegreya-latin-400.woff2",
+    "source": "https://fonts.gstatic.com/s/alegreya/v41/4UacrEBBsBhlBjvfkQjt71kZfyBzPgNG9hU4-6qj.woff2",
+    "bytes": 22884
+  },
+  {
+    "sha256": "9BE8976A11463895BB4D590973A684C1C96616B7E40A03333151EFA8C7210241",
+    "file": "alegreya-latin-400-italic.woff2",
+    "source": "https://fonts.gstatic.com/s/alegreya/v41/4UaSrEBBsBhlBjvfkSLk3abBFkvpkARTPlbgv5qhmSU.woff2",
+    "bytes": 23156
+  },
+  {
+    "sha256": "B2A5A35A2563A2F9BF9FB91939FC6EA6C115E9811CDA5C4A37D02F623C7C4DBE",
+    "file": "alegreya-sans-latin-400.woff2",
+    "source": "https://fonts.gstatic.com/s/alegreyasans/v28/5aUz9_-1phKLFgshYDvh6Vwt7VptvQ.woff2",
+    "bytes": 23708
+  }
+]

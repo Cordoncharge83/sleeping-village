@@ -1,0 +1,23 @@
+node_modules/
+.cache/
+dist/
+*.tsbuildinfo
+
+# Original asset packs and the obsolete generated transfer archive.
+# Keep the selected, runnable assets under public/ in version control.
+/asset-packs/
+/Sleeping-Village-Cloud-Handoff.zip
+
+# Local secrets, temporary files, and machine-specific clutter.
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.log
+*.tmp
+*.temp
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+Desktop.ini
