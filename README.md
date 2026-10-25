@@ -1,59 +1,144 @@
-# The Sleeping Village — traveler’s journal prototype
+# The Sleeping Village
 
-A local desktop browser prototype with the approved traveler and a connected woodland village. The square joins a two-way loop between Story & Supper (Smosh), the trading post (Bargainy), the map lodge (Comp Atlas), and the tournament yard (DuelSync). The original workshop sits beside the entrance; an optional future clearing holds Manart and the unnamed penguin board game.
+**A desktop-first 3D portfolio by Mouadh Bondka, built as a small woodland village you can explore in your browser.**
 
-Explore the village to collect project and experience entries in a traveler’s journal. Smosh has the first complete showcase, including its story, engineering work, screenshot, and live archive link. The other five stops have short entries adapted from the portfolio content draft; additional media, CV, and contact links are still pending.
+Visitors guide a traveler through a village at sunset, discover projects and professional experience at its buildings, and collect their stories in a personal journal. The aim is to introduce Mouadh’s software engineering work through a coherent, playful experience, while giving recruiters and other visitors a direct way to browse every entry without playing.
 
-## Play locally
+**Current status:** a working local prototype. The village, movement, camera, journal, and shared game UI are implemented. Project presentations are still being developed, and this portfolio has not been published.
 
-Double-click **Start Village.bat**, keep its window open, and visit http://127.0.0.1:5173. If a preview is already running, just open the address. Close its terminal or press Ctrl+C to stop it.
+![The village at sunset](planning/village-sunset-overview.png)
 
-- WASD or arrow keys: walk; Shift: run. No jumping or climbing.
-- Mouse: look after entering; right-drag works if pointer capture is unavailable.
-- E near a destination: discover its journal entry, or read the square’s notice.
-- J: open your journal; J or Esc closes it. Arrow keys and page buttons turn entry pages. The Contents bookmark returns to the journal index.
-- M or Map: an overhead view of the village. M again returns to the traveler.
-- Esc: pause. The pause menu has the journal, map, settings, and return to entrance.
-- Browse all projects / All projects: every entry is available without walking. This does not mark entries as discovered.
+## The experience
 
-Discoveries are saved locally in this browser under `sleeping-village.journal.v1`. Refreshing preserves entries, but resets the traveler to the entrance. Different browsers or site addresses have separate saves; clearing site data clears discoveries. If saving is blocked, the journal still works for the current visit and displays a notice. No account or server storage is involved.
+The woodland entrance leads past a workshop to the village square. A connected loop links the main destinations, with an optional clearing for future projects.
 
-Current movement tuning: walk 2.9 m/s, run 5 m/s; both are twice the initial prototype speeds, with matching animation playback increases. Default mouse sensitivity is 0.7× the initial setting. All workshop wall panels have their timber-framed face pointing outward.
+| Village destination | What it presents | Current state |
+| --- | --- | --- |
+| Story & Supper tavern | Smosh Story Finder | Most developed showcase: furnished tavern, interactive ledger, project story, engineering notes, screenshot, and live archive link |
+| Woodland workshop | Professional experience | Journal pages about Sopra Steria and La Banque Postale |
+| Map lodge | Comp Atlas | Short entry; product remains private, with screenshots and a video showcase planned |
+| Trading post | Bargainy | Short project and engineering entry |
+| Tournament yard | DuelSync | Short desktop-project and engineering entry |
+| Future clearing | Manart and an unnamed penguin board game | Entries that clearly identify planned work and early concepts |
 
-Visual direction: late golden hour with a warm horizon, lower amber sunlight, cool fill in the shadows, deeper forest ground and foliage, and warm lantern light at the open buildings. The woodland foliage palette is applied to shared runtime material variants; original asset textures are preserved. `src/atmosphere.ts` holds the palette. No post-processing or additional shadow-casting lights are used for the evening pass.
+The square provides a notice explaining exploration and the journal. All entries can also be read through **Browse all projects**, without unlocking them through exploration.
 
-## Removable setup
+## What is built so far
 
-Uses the existing Node.js installation (v22.22.0 was already present). No global tools, PATH edits, backend, database, or cloud services were installed. Libraries live in `node_modules`, npm downloads/logs in `.cache`, and production output in `dist`.
+- An animated traveler with walking and sprinting, an over-the-shoulder camera, collision handling, and camera clearance around walls and furniture. Movement is grounded, with no jumping or climbing.
+- A connected village with open-front buildings, paths, foliage, signs, furnishings, and a sunset palette with deeper forest greens and warm lantern light.
+- A detailed Story & Supper tavern with a discoverable ledger, serving counter, shelves, reading and supper tables, benches, terrace seating, candles, and other props.
+- Six discoverable journal entries. New discoveries show a notice; revisiting an entry does not unlock it again. Unwritten entries show clues.
+- A journal with Contents as its single global bookmark. Each entry has its own page arrows, section label, and keyboard navigation.
+- Matching welcome, pause, settings, map, notice, interaction prompts, and HUD, using leather, parchment, and cloth-bookmark styling.
+- The **Worn Traveler’s Journal** font pairing: IM Fell English for titles, Alegreya for reading, and Alegreya Sans for controls. Font files are bundled with the game.
+- Mouse sensitivity and low-graphics settings, modal keyboard navigation, reduced-motion styling, and stacked journal pages for narrow windows.
+- Automated checks for physics, camera movement, and discovery persistence, plus recorded visual checks in `planning/`.
 
-To reclaim development space, stop the server and remove **only** `node_modules`, `.cache`, and `dist` in this folder. Keep `src`, `public`, configuration, and `package-lock.json` to restore with `npm ci`. Original asset packs and approved traveler source folders remain unchanged. Deleting this whole game folder also deletes its supplied asset packs; keep those if you need them elsewhere.
+### Saved discoveries
 
-## Development
+Discoveries are stored in the visitor’s browser under `sleeping-village.journal.v1`. They survive refreshing; the traveler’s position and settings currently do not. Different browsers and site addresses have separate saves. Clearing site data removes the discoveries.
 
-### Local version history
+If browser storage is unavailable, entries still work for the current visit and the journal explains that saving is unavailable. Direct browsing shows all entries without changing discovery progress. There is no account or cloud synchronization.
 
-This game folder is a local Git repository. Its first commit captures the current village and journal prototype; earlier iterations were not tracked by Git. Source code, configuration, planning notes, screenshots, fonts and licenses, and the selected playable assets under `public/` are included. Dependencies, caches, builds, original `asset-packs/`, and the obsolete transfer ZIP are ignored. Ignoring these files does not delete them.
+## Run locally
 
-No remote is configured and nothing has been pushed. Save future meaningful milestones with `git add -A` and `git commit -m "Describe the change"`; inspect them with `git log --oneline`. Uncommitted changes are visible with `git status` and `git diff`.
+The project uses Node.js and npm. The current development environment uses **Node.js 22.22.0**. Dependencies stay inside this folder; no global library or font installation is needed.
 
-`npm run dev` starts a loopback-only preview. `npm run build` type-checks and generates a static site in `dist`. `npm test` checks physics on a continuous trip through every stop, the sprint camera, and journal persistence including duplicate discoveries, corrupt records, and unavailable storage. `npm run preview` serves the built version.
+From this directory, install the locked dependencies if they are not already present, then start the preview:
 
-`src/village.ts` is the shared layout definition for buildings, paths, destination triggers, and collision geometry. `src/VillageScene.tsx` renders the environment from that layout. `src/Game.tsx` owns the traveler and camera; `src/App.tsx` owns the interface. New structures reuse the already imported assets, with simple local geometry for signs, fences, counters, and benches. No additional packages or asset downloads were required for the village expansion.
+```sh
+npm ci
+npm run dev
+```
 
-Runtime: React 19, React Three Fiber 9, Three.js, Rapier, TypeScript, Vite. Character physics uses a fixed 60 Hz timestep, with interpolated rendering shared by the traveler and camera. The camera follows player translation directly, smooths its orbit and return from obstacles, and retracts immediately only for actual obstructions. Static colliders approximate furniture; foliage is decorative. No FPS guarantee has been made for other hardware.
+Open **http://127.0.0.1:5173/** in a desktop browser. On Windows, once dependencies are present, you can also double-click **Start Village.bat**. Keep its terminal window open while playing; press **Ctrl+C** or close that window to stop the server.
 
-`scripts/prepare_assets.py` creates a selected runtime subset from the user-provided packs; it needs the pre-existing Python/Pillow environment. PNG runtime textures are capped at 1024px. `public/assets/receipt.json` records original and processed hashes. CC0 licenses are retained beside models. Quaternius supplies environment assets; KayKit supplies the source for the approved customized traveler. The separate game-dev CLI was unavailable, so this is a documented local import, not a claim of canonical game-dev admission.
+The preview listens on this computer’s loopback address. Port 5173 must be available. If PowerShell blocks npm’s script wrapper, use `npm.cmd` for the same commands.
 
-The older CLOUD_HANDOFF.md and ZIP describe an earlier transfer plan. Current development is local; nothing has been published.
+### Controls
 
-## Story & Supper
+| Input | Action |
+| --- | --- |
+| WASD or arrow keys | Walk |
+| Shift while moving | Run |
+| Mouse | Look around after entering the village |
+| Right mouse button + drag | Look around when pointer capture is unavailable |
+| E near a point of interest | Discover or revisit an entry; read the notice at the square |
+| J | Open or close the journal |
+| Left / right arrows while reading an entry | Turn its pages |
+| M | Toggle the overhead village map |
+| Esc | Pause during play; close the current journal or menu |
+| Browse all projects / All projects | Read every entry without exploring |
 
-The tavern contains an open story ledger, a serving counter, shelves, mugs, candles, reading and supper tables, a side bench, terrace seating, planters, and a red awning. Approach the ledger on the left and press E to add Smosh to your journal. The same entry is available through Browse all projects. Closing returns to the originating view; movement is suspended while reading. The entry includes a real screenshot, project responsibility and engineering context, and a live archive link. Its screenshot loads only when the entry is opened.
+The pause menu includes the journal, map, settings, return to the entrance, and main menu. Movement pauses while reading entries or menus.
 
-`src/Tavern.tsx` owns the furnishings and `src/SceneObjects.tsx` reusable scene objects. `tavernLayout` in `src/village.ts` defines furniture collisions. All furnishings use existing imported models or local geometry; no dependencies were added. See `planning/STORY_AND_SUPPER_CHECKS.md` for the original tavern validation and screenshot provenance.
+## Build and checks
 
-## Journal interface
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Run the local development preview |
+| `npm run build` | Check TypeScript and generate the static site in `dist/` |
+| `npm run preview` | Serve the generated build locally after building |
+| `npm test` | Run physics, camera, and journal persistence checks |
 
-`src/Journal.tsx` renders the book, `src/journal-data.ts` contains its entries, and `src/discoveries.ts` validates and saves discovery IDs. `src/Modal.tsx` provides a native dialog with focus containment and Escape handling. Pause, settings, the square notice, map, prompts, welcome menu, and HUD share the leather, parchment, and cloth-bookmark theme. The journal adapts to stacked pages in narrow windows, supports keyboard navigation and reduced motion, and keeps its close control visible while scrolling. No new dependency or external font request was added. See `planning/JOURNAL_CHECKS.md` for this prototype’s verification.
+The tests cover a continuous trip through every village stop, movement speed, entrances, rotated walls, furniture, bounds and reset; sprint camera behavior at multiple frame rates and uneven timings; and journal save/reload, duplicate discoveries, invalid records, and unavailable storage. Browser checks and screenshots are recorded in [planning/JOURNAL_CHECKS.md](planning/JOURNAL_CHECKS.md), [planning/STORY_AND_SUPPER_CHECKS.md](planning/STORY_AND_SUPPER_CHECKS.md), and the other planning notes.
 
-The selected **Worn traveler's journal** typography uses IM Fell English for titles, Alegreya for reading text, and Alegreya Sans for controls. Four compact web-font files live in `public/fonts` with their licenses and source hashes (about 127 KiB of fonts). They are served with the game, not installed on the computer. Reading and small-control sizes were adjusted for these fonts. The Contents bookmark remains the only journal-wide navigation control; entry pages use their own arrows and section label.
+## Technical approach
+
+The game is built directly for the browser with **React 19, TypeScript, Three.js, React Three Fiber 9, Rapier, and Vite**. It runs as a client-side application without a portfolio backend or database.
+
+Physics advances at a fixed 60 Hz timestep, with interpolated traveler and camera rendering. A shared layout definition drives buildings, destination triggers, and collision geometry. Static colliders approximate furnishings; foliage is decorative. Current movement tuning is 2.9 m/s walking, 5 m/s sprinting, and 0.7× default mouse sensitivity.
+
+The evening look uses scene lighting and shared foliage material variants. The font files are served locally and total about 127 KiB; their licenses and download hashes are retained.
+
+### Project structure
+
+| Path | Responsibility |
+| --- | --- |
+| `src/App.tsx` | Game modes, menus, interaction flow, and journal unlocks |
+| `src/Game.tsx` | Traveler, scene integration, and input |
+| `src/village.ts` | Shared world layout, destinations, and colliders |
+| `src/VillageScene.tsx`, `src/SceneObjects.tsx` | Environment rendering and reusable scene objects |
+| `src/Tavern.tsx` | Story & Supper furnishings |
+| `src/physics.ts`, `src/player-view.ts`, `src/tuning.ts` | Movement, physics, camera behavior, and tuning |
+| `src/Journal.tsx`, `src/Modal.tsx`, `src/style.css` | Journal presentation and shared game UI |
+| `src/journal-data.ts`, `src/discoveries.ts` | Entry content and browser persistence |
+| `src/atmosphere.ts`, `src/assets.json` | Visual palette and selected asset paths |
+| `public/` | Assets, screenshots, fonts, and licenses served with the game |
+| `scripts/` | Automated checks and asset preparation tools |
+| `planning/` | Content drafts, asset records, design notes, and visual evidence |
+
+## Assets and credits
+
+The selected environment assets come from Quaternius’s **Medieval Village MegaKit**, **Ultimate Stylized Nature**, and **Fantasy Props MegaKit**, using the supplied free assets. The customized traveler is based on KayKit assets. Relevant license files are retained under `public/assets/`.
+
+The ready-to-run asset subset is committed under `public/assets/`; a normal checkout does not need the complete source packs. To add or rebuild the selected subset, restore the original packs under the ignored `asset-packs/` directory and use the asset preparation tools. That optional preparation workflow uses Python and Pillow; neither is required to run the already prepared game. Receipts under `public/assets/` record source and processed hashes.
+
+The locally bundled fonts and their SIL Open Font License files are in [public/fonts/](public/fonts/). Smosh Story Finder is an independent fan-made project; Smosh branding and content belong to their respective owners.
+
+## What is still planned
+
+- Expand the other project presentations and professional-experience material beyond their current short journal entries.
+- Add Comp Atlas screenshots and a video walkthrough while keeping the application private.
+- Add more project media and verify any additional public links.
+- Finish CV and contact actions so visitors can follow up easily.
+- Give the remaining buildings their own more complete displays and interactions.
+- Continue usability, accessibility, browser, and performance testing before publishing.
+
+Manart and the penguin board game remain future-project entries, with their actual development stages stated clearly. The portfolio itself is still a prototype, with desktop mouse-and-keyboard play as its primary experience.
+
+## Local files and version history
+
+Git tracks source, configuration, the lockfile, planning notes and screenshots, and the assets, fonts, and licenses needed to run the game. `.gitignore` excludes dependencies, caches, build/test output, original asset packs, local environment files and credentials, personal editor settings, temporary files, and obsolete cloud-transfer materials. Ignored files remain on disk. Keep `package-lock.json` and the files in `public/` tracked so a checkout stays reproducible.
+
+The first checkpoint, `6de0b7e`, captures the village and journal prototype as it existed when Git was introduced. Earlier iterations were not individually tracked. Development checkpoints are saved locally; no remote is configured and nothing has been pushed.
+
+Use `git status` and `git diff` to review pending changes, and `git log --oneline` to see checkpoints. To record a reviewed milestone:
+
+```sh
+git add -A
+git commit -m "Describe the change"
+```
+
+To reclaim development space, stop the server and remove only `node_modules/`, `.cache/`, and `dist/` from this game folder. Keep the source, configuration, lockfile, and runtime assets; `npm ci` restores dependencies when needed. Original asset packs are separate local source material and are not recoverable from this Git repository.

@@ -1,21 +1,62 @@
+# Dependencies and package-manager caches.
 node_modules/
 .cache/
-dist/
+.npm/
+.pnpm-store/
+
+# Generated builds, tooling caches, and test reports.
+/dist/
+/build/
+/coverage/
+/.nyc_output/
+/playwright-report/
+/test-results/
+.vite/
+.vite-temp/
+.eslintcache
+.stylelintcache
 *.tsbuildinfo
 
-# Original asset packs and the obsolete generated transfer archive.
-# Keep the selected, runnable assets under public/ in version control.
+# Original asset packs stay local. The selected assets needed to run the game
+# are committed under public/assets/, together with their licenses and receipts.
 /asset-packs/
-/Sleeping-Village-Cloud-Handoff.zip
 
-# Local secrets, temporary files, and machine-specific clutter.
+# Old cloud-transfer files and generated archives; keep their local copies.
+/CLOUD_HANDOFF.md
+/TRANSFER_MANIFEST.json
+/*.zip
+/*.7z
+/*.rar
+
+# Local environment values and credentials; keep shareable example files.
 .env
 .env.*
 !.env.example
 !.env.*.example
+*.pem
+*.key
+*.pfx
+*.p12
+
+# Personal editor settings and workspaces.
+.vscode/
+.idea/
+.vs/
+.history/
+*.code-workspace
+*.suo
+*.user
+
+# Logs, temporary files, Python caches, and operating-system clutter.
 *.log
 *.tmp
 *.temp
+*.pid
+*.pid.lock
+*.stackdump
+*.swp
+*.swo
+*~
 __pycache__/
 *.py[cod]
 .DS_Store
