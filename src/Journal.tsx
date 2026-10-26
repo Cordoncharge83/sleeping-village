@@ -1,5 +1,5 @@
 import {useEffect,useRef,useState,type KeyboardEvent} from 'react';
-import {entries,entryIds,type EntryId} from './journal-data';
+import {entries,entryIds,mainEntryIds,discoveryCount,hasAllDiscoveries,type EntryId} from './journal-data';
 import {Modal,BookIcon} from './Modal';
 type Props={discovered:EntryId[];initialEntry:EntryId|null;revealAll:boolean;onClose:()=>void;storageAvailable:boolean;newEntry:string|null};
 export default function Journal({discovered,initialEntry,revealAll,onClose,storageAvailable,newEntry}:Props){
@@ -10,7 +10,7 @@ export default function Journal({discovered,initialEntry,revealAll,onClose,stora
   if(previousSelection.current!==selected||(selected&&(focused===document.body||(focused instanceof HTMLButtonElement&&focused.disabled))))readingPage.current?.focus({preventScroll:true});
   previousSelection.current=selected;
  },[selected,page]);
- const unlocked=(id:EntryId)=>revealAll||discovered.includes(id);
+ const unlocked=(id:EntryId)=>revealAll||discovered.includes(id)||(id==='future'&&hasAllDiscoveries(discovered));
  const entry=selected&&unlocked(selected)?entries[selected]:null;
  const current=entry?.pages[page]??null;
  function choose(id:EntryId|null){setSelected(id);setPage(0);}
@@ -32,7 +32,8 @@ export default function Journal({discovered,initialEntry,revealAll,onClose,stora
      </>:<>
       <div className="journal-crest"><BookIcon/><span>Mouadh Bondka</span><small>Software engineer & maker</small></div>
       <p>{revealAll?'A collection of my projects, professional experience, and ideas for what comes next. Every entry is open here.':'Every place has a story. Inspect the objects you find along the path to add their stories to these pages.'}</p>
-      <div className="journal-stamp">{revealAll?'All entries open':`${discovered.length} / ${entryIds.length} places discovered`}</div>
+      <div className="journal-stamp">{revealAll?'All entries open':`${discoveryCount(discovered)} / ${mainEntryIds.length} village stories discovered`}</div>
+      {!revealAll&&<p className="page-note">{hasAllDiscoveries(discovered)?'The northern garden gate is open. A bonus chapter awaits.':'Six village stories open the northern garden gate.'}</p>}
       <p className="page-note">{revealAll?'Browse freely. Your exploration journal stays separate.':storageAvailable?'Your discoveries are saved in this browser.':'Your browser cannot save discoveries right now. They will remain available during this visit.'}</p>
      </>}
      <span className="page-number">{entry?'I':'For the road ahead'}</span>
@@ -41,7 +42,7 @@ export default function Journal({discovered,initialEntry,revealAll,onClose,stora
      {!entry?<>
       <div className="page-topline">{revealAll?'Choose an entry':'Places & their stories'}</div><h2>Contents</h2>
       <ol className="journal-index">{entryIds.map((id,i)=><li key={id}>
-       {unlocked(id)?<button onClick={()=>choose(id)}><span className="index-number">{String(i+1).padStart(2,'0')}</span><span><strong>{entries[id].title}</strong><small>{entries[id].place}</small></span><span aria-hidden="true">›</span></button>:<div className="locked-entry"><span className="index-number">?</span><span><strong>Unwritten entry</strong><small>{entries[id].clue}</small></span></div>}
+       {unlocked(id)?<button onClick={()=>choose(id)}><span className="index-number">{id==='future'?'✦':String(i+1).padStart(2,'0')}</span><span><strong>{entries[id].title}</strong><small>{id==='future'?'Bonus chapter · ':''}{entries[id].place}</small></span><span aria-hidden="true">›</span></button>:<div className="locked-entry"><span className="index-number">{id==='future'?'✦':'?'}</span><span><strong>{id==='future'?'Beyond the garden gate':'Unwritten entry'}</strong><small>{entries[id].clue}</small></span></div>}
       </li>)}</ol><p className="page-note">{revealAll?'Smosh includes the first complete showcase. More images and project details will follow.':'Walk up to a point of interest and press E. Open this journal again with J.'}</p>
      </>:<>
       <div className="page-topline">{entry.title}</div><div key={`${selected}-${page}`} className="page-copy"><h2>{current!.heading}</h2>

@@ -1,9 +1,10 @@
 import RAPIER from '@dimforge/rapier3d-compat';
-import {solids,SPAWN} from './village.ts';
+import {solids,SPAWN,gateSolid} from './village.ts';
 let ready:Promise<void>|undefined;
 export async function createSimulation() {
  await (ready??=RAPIER.init());
  const world=new RAPIER.World({x:0,y:-9.81,z:0});
+ const gate=world.createCollider(RAPIER.ColliderDesc.cuboid(...gateSolid.s.map(n=>n/2) as [number,number,number]).setTranslation(...gateSolid.p));
  for(const b of solids) {
   const angle=b.rotation??0;
   world.createCollider(RAPIER.ColliderDesc.cuboid(b.s[0]/2,b.s[1]/2,b.s[2]/2).setTranslation(...b.p).setRotation({x:0,y:Math.sin(angle/2),z:0,w:Math.cos(angle/2)}));
@@ -17,6 +18,7 @@ export async function createSimulation() {
  world.step();
  let verticalVelocity=0;
  return {world,body,collider,controller,
+  setGateOpen(open:boolean){if(gate.isEnabled()===open)gate.setEnabled(!open);},
   step(dx:number,dz:number) {
    verticalVelocity=controller.computedGrounded()?-.4:Math.max(-15,verticalVelocity-9.81/60);
    controller.computeColliderMovement(collider,{x:dx,y:verticalVelocity/60,z:dz});

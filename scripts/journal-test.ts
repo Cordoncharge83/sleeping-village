@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {decodeDiscoveries,discover,loadDiscoveries,saveDiscoveries,DISCOVERY_KEY} from '../src/discoveries.ts';
+import {mainEntryIds,discoveryCount,hasAllDiscoveries} from '../src/journal-data.ts';
 const records=new Map<string,string>();
 const storage={getItem:(key:string)=>records.get(key)??null,setItem:(key:string,value:string)=>{records.set(key,value);}};
 assert.deepEqual(loadDiscoveries(storage),[]);
@@ -24,3 +25,17 @@ assert.deepEqual(loadDiscoveries(blocked),[]);
 assert.equal(saveDiscoveries(blocked,second.entries),false);
 assert.deepEqual(discover(second.entries,'future').entries,['smosh','workshop','future']);
 console.log('Journal checks passed: fresh state, save/reload, duplicate discovery, multiple entries, corrupt/unsupported records, invalid IDs, denied storage, session fallback.');
+
+// Old discoveries survive the new layout; the old bonus entry never substitutes for education.
+const legacy=decodeDiscoveries(JSON.stringify({version:1,entries:['smosh','atlas','duel','bargainy','workshop','future']}));
+assert.equal(discoveryCount(legacy),5);
+assert.equal(hasAllDiscoveries(legacy),false);
+assert.equal(hasAllDiscoveries([...legacy,'education']),true);
+assert.equal(hasAllDiscoveries([...mainEntryIds]),true);
+assert.equal(discoveryCount([...mainEntryIds,'future']),6);
+assert.equal(hasAllDiscoveries(['smosh','smosh','future']),false);
+for(const missing of mainEntryIds)assert.equal(hasAllDiscoveries(mainEntryIds.filter(id=>id!==missing)),false,`Missing ${missing} keeps the gate locked`);
+assert.equal(saveDiscoveries(storage,[...mainEntryIds]),true);
+assert.equal(hasAllDiscoveries(loadDiscoveries(storage)),true,'Gate reopens from saved discoveries');
+assert.equal(hasAllDiscoveries(first.entries),false,'Direct journal browsing must not mutate discovery records');
+console.log('Gate progression passed: all six required, bonus excluded, old saves preserved, reload restored.');

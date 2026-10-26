@@ -1,8 +1,8 @@
 // One shared layout drives the visible village, collision geometry, and route checks.
 export type Vec2 = [number, number];
 export type Vec3 = [number, number, number];
-export type PlaceId = 'workshop' | 'smosh' | 'bargainy' | 'atlas' | 'duel' | 'future' | 'square';
-export type Building = {id: Exclude<PlaceId, 'future' | 'square'>; at: Vec2; rotation: number; title: string; subtitle: string};
+export type PlaceId = 'workshop' | 'smosh' | 'bargainy' | 'atlas' | 'duel' | 'education' | 'future' | 'square' | 'welcome' | 'gate';
+export type Building = {id: Exclude<PlaceId, 'future' | 'square' | 'welcome' | 'gate'>; at: Vec2; rotation: number; title: string; subtitle: string};
 export type Solid = {p: Vec3; s: Vec3; rotation?: number};
 export const tavernLayout:Record<string,Solid>={
  counter:{p:[0,.65,-2.12],s:[4.7,1.05,.85]},
@@ -15,14 +15,30 @@ export const tavernLayout:Record<string,Solid>={
  planterLeft:{p:[-2.55,.24,3.5],s:[.7,.48,.65]},
  planterRight:{p:[2.55,.24,3.5],s:[.7,.48,.65]},
 };
-export const SPAWN: Vec3 = [0, .74, 27];
-export const BOUNDS = {left:-28, right:28, back:-37, front:33};
+export const SPAWN: Vec3 = [4, .74, 28];
+export const BOUNDS = {left:-29, right:41, back:-35, front:34};
+export const GATE_Z=-17;
+export const gateSolid:Solid={p:[0,1.35,GATE_Z],s:[4.8,2.7,.32]};
+export const landmark:Vec2=[0,-1];
 export const buildings: Building[] = [
- {id:'workshop', at:[-11,14], rotation:Math.PI/2, title:'THE WORKSHOP', subtitle:'Experience'},
- {id:'smosh', at:[-13,1], rotation:Math.PI/2, title:'STORY & SUPPER', subtitle:'Smosh Story Finder'},
- {id:'bargainy', at:[13,1], rotation:-Math.PI/2, title:'THE TRADING POST', subtitle:'Bargainy'},
- {id:'atlas', at:[-11,-14], rotation:Math.PI/2, title:'THE MAP LODGE', subtitle:'Comp Atlas'},
- {id:'duel', at:[11,-14], rotation:-Math.PI/2, title:'THE TOURNAMENT YARD', subtitle:'DuelSync'},
+ {id:'workshop', at:[-13,12], rotation:Math.PI/2, title:'THE WORKSHOP', subtitle:'Experience'},
+ {id:'smosh', at:[13,18], rotation:Math.PI, title:'STORY & SUPPER', subtitle:'Smosh Story Finder'},
+ {id:'bargainy', at:[27,7.5], rotation:0, title:'THE TRADING POST', subtitle:'Bargainy'},
+ {id:'atlas', at:[18,-9], rotation:0, title:'THE MAP LODGE', subtitle:'Comp Atlas'},
+ {id:'duel', at:[33,-1], rotation:-Math.PI/2, title:'THE TOURNAMENT YARD', subtitle:'DuelSync'},
+ {id:'education', at:[-20,0], rotation:Math.PI/2, title:'THE SCHOOLHOUSE', subtitle:'Education & skills'},
+];
+export type Cottage={at:Vec2;rotation:number;width:number;depth:number;color:string};
+// Closed homes give the streets edges without adding more destinations to inspect.
+export const cottages:Cottage[]=[
+ {at:[-7,20],rotation:-.2,width:5,depth:4.5,color:'#aa9576'},
+ {at:[13,25],rotation:Math.PI,width:5.2,depth:5,color:'#a89170'},
+ {at:[-22,13],rotation:.2,width:4.8,depth:5,color:'#988976'},
+ {at:[-10,-7],rotation:.12,width:5,depth:4.5,color:'#b09e7c'},
+ {at:[7,-11.5],rotation:0,width:4.6,depth:4.4,color:'#a39277'},
+ {at:[12,0],rotation:Math.PI,width:5,depth:5,color:'#b29a79'},
+ {at:[23,2.5],rotation:Math.PI,width:4.5,depth:4,color:'#9b8e78'},
+ {at:[34,17],rotation:-Math.PI/2,width:5,depth:4.6,color:'#aa967d'},
 ];
 export function localPoint(building: Building, x:number, z:number): Vec2 {
  const c=Math.cos(building.rotation),s=Math.sin(building.rotation);
@@ -33,17 +49,16 @@ export function localSolid(building:Building, p:Vec3, s:Vec3):Solid {
  return {p:[x,p[1],z],s,rotation:building.rotation};
 }
 export const paths: {points:Vec2[]; width:number; closed?:boolean}[] = [
- {points:[[0,29],[-.5,23],[-1,17],[0,10],[0,5]],width:3.5},
- {points:[[0,10],[-6,8],[-7,1],[-6,-14],[0,-20],[6,-14],[7,1],[6,8]],width:3.6,closed:true},
- {points:[[-7,1],[0,1],[7,1]],width:3.4},
- {points:[[-6,-14],[-3,-8],[-2,0]],width:3.2},
- {points:[[6,-14],[3,-8],[2,0]],width:3.2},
- {points:[[0,-20],[0,-24],[0,-28]],width:3.2},
- {points:[[-1,16],[-4,14],[-8,14]],width:3},
- {points:[[-7,1],[-10,1]],width:3},
- {points:[[7,1],[10,1]],width:3},
- {points:[[-6,-14],[-8,-14]],width:3},
- {points:[[6,-14],[8,-14]],width:3},
+ {points:[[4,31],[4,22],[1,17],[-1,11],[0,4]],width:3.8},
+ {points:[[0,4],[4,2],[4,-4],[0,-6],[-4,-4],[-4,2]],width:3.6,closed:true},
+ {points:[[-3,4],[-6,8],[-9,12]],width:3.4},
+ {points:[[-4,0],[-10,1],[-16,0]],width:3.5},
+ {points:[[4,4],[8,7],[13,10],[22,13],[28,13]],width:4.2},
+ {points:[[13,10],[13,15]],width:3.2},
+ {points:[[27,13],[27,10]],width:3.2},
+ {points:[[4,-4],[10,-6],[18,-5],[27,-2],[29,0]],width:4},
+ {points:[[18,-5],[18,-6]],width:3.2},
+ {points:[[0,-6],[1,-10],[0,-15],[0,-22],[0,-27]],width:3.6},
 ];
 export const places: Record<PlaceId, {title:string; name:string; at:Vec2; hint:string; description:string; status:string}> = {
  workshop:{title:'The woodland workshop',name:'Professional experience',at:localPoint(buildings[0],0,1),hint:'Step inside the open workshop.',description:'This workshop will introduce my work at Sopra Steria and La Banque Postale. For this layout test, try the entrance and walk around the workbench.',status:'Experience stop · layout preview'},
@@ -51,12 +66,16 @@ export const places: Record<PlaceId, {title:string; name:string; at:Vec2; hint:s
  bargainy:{title:'The trading post',name:'Bargainy',at:localPoint(buildings[2],0,1.2),hint:'Look inside the merchant’s shop.',description:'The merchant’s shop will introduce Bargainy, an AI negotiation coach. The counter sits at the back so the entrance and camera have room.',status:'Project stop · display to come'},
  atlas:{title:'The map lodge',name:'Comp Atlas',at:localPoint(buildings[3],0,1.2),hint:'A quiet place to plan the next match.',description:'This lodge will showcase the VALORANT research and scouting tools in Comp Atlas through screenshots and a planned video walkthrough. The product is not yet open to public visitors.',status:'In active development · showcase to come'},
  duel:{title:'The tournament yard',name:'DuelSync',at:localPoint(buildings[4],0,1.2),hint:'Walk into the covered courtyard.',description:'This open courtyard will introduce DuelSync, a desktop companion for tournament organizers. A bracket board and game tables will tell its story.',status:'Project stop · display to come'},
- future:{title:'The future clearing',name:'Ideas taking shape',at:[0,-27],hint:'Two projects on the horizon.',description:'Manart is the codename for the house-building game, with further development planned. The unnamed penguin board game is an early idea with a few initial rules. Their signs mark this optional clearing.',status:'Manart · planned / Penguin game · early concept'},
- square:{title:'The village square',name:'Welcome to the village',at:[0,2],hint:'Choose a path. Every project connects back here.',description:'A small woodland village built around making, trading, playing, and telling stories. Explore the loop in either direction, or cross the square to another destination. This first village build is for testing the layout; the full portfolio displays come next.',status:'Village layout · first walk-through'},
+ education:{title:'The schoolhouse',name:'Education & skills',at:localPoint(buildings[5],0,1.2),hint:'A book on the desk holds the foundations.',description:'Education, selected skills, and lessons from organizing events.',status:'Education & skills'},
+ future:{title:'The future clearing',name:'Ideas taking shape',at:[0,-26],hint:'Two projects on the horizon.',description:'Manart and an unnamed penguin board game: a place for ideas still taking shape.',status:'Bonus journal entry'},
+ square:{title:'The old-tree square',name:'Welcome to the village',at:[0,4],hint:'Projects to the east. Experience and learning to the west.',description:'The old tree is the heart of the village. Two project streets branch east, while the workshop and schoolhouse lie west. Six discoveries open the northern garden gate.',status:'The heart of the village'},
+ welcome:{title:'The woodland entrance',name:'Welcome, traveler',at:[4,20],hint:'Read the welcome sign, then follow the bend to the old tree.',description:'Walk with WASD, run with Shift, and look around with the mouse. Press E near an open building’s display to add its story to your journal. Press J to read, M for the map, or Escape to pause. Closed cottages are village homes.',status:'Your journey begins'},
+ gate:{title:'The garden gate',name:'Beyond the village',at:[0,-14.7],hint:'Six stories open the way to what comes next.',description:'Find the four projects, the workshop, and the schoolhouse. Their six journal entries open this gate to the future clearing.',status:'A reward for exploring'},
 };
-export function nearbyPlace(x:number,z:number):PlaceId|null {
+export function nearbyPlace(x:number,z:number,gateOpen=false):PlaceId|null {
  let best:PlaceId|null=null,distance=2.15;
  for(const [id,p] of Object.entries(places)) {
+  if(id==='future'&&!gateOpen||id==='gate'&&gateOpen)continue;
   const d=Math.hypot(x-p.at[0],z-p.at[1]);
   // The ledger is an indoor interaction; don't offer it from outside the side wall.
   if(id==='smosh'){
@@ -69,29 +88,41 @@ export function nearbyPlace(x:number,z:number):PlaceId|null {
  return best;
 }
 export function currentArea(x:number,z:number):PlaceId|'arrival' {
- if(z>19)return 'arrival';
- if(z<-23&&Math.abs(x)<9)return 'future';
+ if(z>18&&x<9)return 'arrival';
+ if(z<GATE_Z&&Math.abs(x)<9)return 'future';
+ if(z<-11&&Math.abs(x)<4)return 'gate';
  let best:PlaceId='square',distance=8;
  for(const b of buildings){const d=Math.hypot(x-b.at[0],z-b.at[1]);if(d<distance){best=b.id;distance=d;}}
- return best==='square'&&z>8?'arrival':best;
+ return best==='square'&&z>9?'arrival':best;
 }
 export const trees: [number,number,number,number][] = [
- [0,-2.5,1.65,1], [-5,22,1.15,0],[6,24,1.3,1],[-7,28,1.4,1],[8,30,1.3,0],
- [-19,15,1.45,1],[-20,7,1.2,0],[-21,-3,1.4,1],[-19,-12,1.1,0],[-17,-22,1.35,1],
- [19,14,1.4,0],[21,6,1.2,1],[21,-4,1.3,0],[19,-13,1.4,1],[16,-23,1.3,0],
- [-10,-29,1.4,0],[10,-30,1.3,1],[-7,-34,1.4,1],[5,-35,1.3,0],
- [-18,26,1.4,0],[18,27,1.3,1],[-19,-31,1.4,1],[19,-32,1.5,0],
+ [0,-1,1.8,1],[-.5,27,1.25,1],[8.5,28,1.2,0],[-.5,22,1.25,0],[8.5,22,1.3,1],
+ [-5,14,1.15,1],[5,13,1.1,0],[-15,5.5,1.2,0],[-22,-7,1.25,1],[-17,-11,1.2,1],
+ [-7,-13,1.3,1],[4,-14.5,1.1,0],[-4,-14.5,1.2,1],[12,-12,1.25,1],
+ [18,20,1.3,0],[23,20,1.2,1],[29,21,1.2,0],[35,6,1.25,1],[37,-8,1.2,1],
+ [-7,-22,1.3,0],[7,-23,1.4,1],[-8,-30,1.4,1],[8,-31,1.3,0],
 ];
-for(let i=0;i<24;i++){
- const a=i*Math.PI*2/24;
- trees.push([Math.cos(a)*(31+(i%3)*2),Math.sin(a)*(38+(i%4)),1.25+(i%4)*.15,i%2]);
+// Staggered woodland fringe masks the world boundary; no new model downloads.
+for(let i=0;i<42;i++){
+ const a=i*Math.PI*2/42;
+ trees.push([6+Math.cos(a)*(39+(i%3)*2),Math.sin(a)*(40+(i%4)),1.35+(i%4)*.12,i%2]);
 }
 export const fenceLines: {a:Vec2;b:Vec2}[] = [
- {a:[-27,32],b:[-3,32]}, {a:[3,32],b:[27,32]},
- {a:[-27,32],b:[-27,-36]}, {a:[27,32],b:[27,-36]},
- {a:[-27,-36],b:[27,-36]},
- {a:[-6,-25],b:[-2.5,-25]}, {a:[2.5,-25],b:[6,-25]},
- {a:[-6,-25],b:[-6,-32]}, {a:[6,-25],b:[6,-32]}, {a:[-6,-32],b:[6,-32]},
+ {a:[-29,33],b:[1.3,33]},{a:[6.7,33],b:[41,33]},
+ {a:[-28,33],b:[-28,-34]},{a:[40,33],b:[40,-34]},
+ {a:[-28,-34],b:[40,-34]},
+ // The northern fence joins the perimeter so the locked garden cannot be bypassed.
+ {a:[-29,GATE_Z],b:[-2.4,GATE_Z]},{a:[2.4,GATE_Z],b:[41,GATE_Z]},
+ {a:[-10,17],b:[-3.5,17]},{a:[10,22],b:[16,22]},
+ {a:[-24,8.5],b:[-19,8.5]},{a:[30,20.5],b:[37,20.5]},
+];
+// Hedge banks give the gate fence and outer boundary a visible, continuous edge.
+export const hedges:Solid[]=[
+ {p:[-15.7,1.1,GATE_Z-.6],s:[26.6,2.2,1.5]},
+ {p:[21.7,1.1,GATE_Z-.6],s:[38.6,2.2,1.5]},
+ {p:[-28.4,.95,0],s:[1.2,1.9,67]}, {p:[40.4,.95,0],s:[1.2,1.9,67]},
+ {p:[6,.95,-34],s:[68,1.9,1.4]},
+ {p:[-13.7,.9,33],s:[30,1.8,1.2]}, {p:[23.7,.9,33],s:[34,1.8,1.2]},
 ];
 const buildingSolids:Solid[]=[];
 for(const b of buildings){
@@ -108,18 +139,21 @@ for(const b of buildings){
   add([2.25,.53,-1.9],[.75,.9,.75]);add([2.2,.35,-.6],[.65,.6,.7]);add([.75,.34,-.4],[.46,.58,.46]);
  }else if(b.id==='bargainy')add([0,.6,-1.7],[3.6,1.05,.9]);
  else if(b.id==='atlas')add([-1.6,.6,-.9],[1.4,1.05,2.1]);
+ else if(b.id==='education')add([0,.6,-1.7],[2.2,1.05,1.2]);
  else if(b.id==='smosh'){
   for(const item of Object.values(tavernLayout))add(item.p,item.s);
  }else if(b.id==='duel')for(const x of [-1.9,1.9])add([x,.55,-.5],[1.1,1,1.5]);
 }
 export const solids:Solid[]=[
- {p:[0,-.15,0],s:[100,.3,110]},...buildingSolids,
+ {p:[0,-.15,0],s:[140,.3,130]},...buildingSolids,...hedges,
+ ...cottages.map(c=>({p:[c.at[0],2,c.at[1]] as Vec3,s:[c.width,4,c.depth] as Vec3,rotation:c.rotation})),
  ...trees.map(([x,z,s])=>({p:[x,1.7,z] as Vec3,s:[.65*s,3.4,.65*s] as Vec3})),
  // Low bench silhouettes around the landmark; the front crossing stays open.
- {p:[-2.5,.4,-2.5],s:[.65,.8,2.5]}, {p:[2.5,.4,-2.5],s:[.65,.8,2.5]},
+ {p:[-1.8,.3,-1],s:[.5,.6,2.2]}, {p:[1.8,.3,-1],s:[.5,.6,2.2]},
  ...fenceLines.map(({a,b})=>({p:[(a[0]+b[0])/2,.65,(a[1]+b[1])/2] as Vec3,s:[Math.hypot(b[0]-a[0],b[1]-a[1]),1.3,.14] as Vec3,rotation:-Math.atan2(b[1]-a[1],b[0]-a[0])})),
  {p:[-3,.25,-29],s:[3,.5,3]}, {p:[3.5,.55,-29],s:[2,1.1,2]},
- {p:[2.3,.9,20],s:[.15,1.8,.15]}, {p:[2.3,.9,-21.5],s:[.15,1.8,.15]},
- {p:[BOUNDS.left,3,-2],s:[.5,6,74]}, {p:[BOUNDS.right,3,-2],s:[.5,6,74]},
- {p:[0,3,BOUNDS.back],s:[57,6,.5]}, {p:[0,3,BOUNDS.front],s:[57,6,.5]},
+ {p:[6,.9,19],s:[.15,1.8,.15]},
+ {p:[-2.6,1.6,GATE_Z],s:[.4,3.2,.4]}, {p:[2.6,1.6,GATE_Z],s:[.4,3.2,.4]},
+ {p:[BOUNDS.left,3,0],s:[.5,6,70]}, {p:[BOUNDS.right,3,0],s:[.5,6,70]},
+ {p:[6,3,BOUNDS.back],s:[71,6,.5]}, {p:[6,3,BOUNDS.front],s:[71,6,.5]},
 ];

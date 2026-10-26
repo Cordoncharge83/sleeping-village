@@ -11,7 +11,7 @@ import {WALK_SPEED,RUN_SPEED} from './tuning';
 import {FollowCamera,InterpolatedPosition,PHYSICS_STEP} from './player-view';
 import {atmosphere} from './atmosphere';
 
-type Props={active:boolean;overview:boolean;sensitivity:number;low:boolean;reset:number;onNear:(near:PlaceId|null)=>void;onArea:(area:PlaceId|'arrival')=>void;onReady:()=>void;onError:(message:string)=>void};
+type Props={active:boolean;overview:boolean;sensitivity:number;low:boolean;reset:number;gateOpen:boolean;discoveryCount:number;onNear:(near:PlaceId|null)=>void;onArea:(area:PlaceId|'arrival')=>void;onReady:()=>void;onError:(message:string)=>void};
 function World(props:Props){
  const gltf=useLoader(GLTFLoader,assets.Traveler);
  const traveler=useMemo(()=>{const o=clone(gltf.scene);o.traverse(n=>{if(n instanceof THREE.Mesh){n.castShadow=true;n.receiveShadow=true;}});return o;},[gltf]);
@@ -33,6 +33,7 @@ function World(props:Props){
  useEffect(()=>{const s=sim.current;if(s){s.reset();view.motion.reset(s.body.translation());}look.current.yaw=0;look.current.pitch=.23;view.camera.reset();},[props.reset]);
  useFrame((_,rawDelta)=>{
   const s=sim.current;if(!s||!actor.current)return;const dt=Math.min(rawDelta,.06),keys=input.current;
+  s.setGateOpen(props.gateOpen);
   let x=Number(keys.has('KeyD')||keys.has('ArrowRight'))-Number(keys.has('KeyA')||keys.has('ArrowLeft'));
   let z=Number(keys.has('KeyS')||keys.has('ArrowDown'))-Number(keys.has('KeyW')||keys.has('ArrowUp'));
   if(!props.active){x=0;z=0;}const running=keys.has('ShiftLeft')||keys.has('ShiftRight');const moving=x!==0||z!==0;
@@ -43,15 +44,15 @@ function World(props:Props){
   if(moving){const target=Math.atan2(dx,dz),a=actor.current.rotation.y;actor.current.rotation.y=a+Math.atan2(Math.sin(target-a),Math.cos(target-a))*(1-Math.exp(-12*dt));}
   const clip=moving?(running?'Run':'Walk'):'Idle';if(current.current!==clip){actions[current.current]?.fadeOut(.2);actions[clip].reset().fadeIn(.2).play();current.current=clip;}
   actions.Walk.timeScale=3.2;actions.Run.timeScale=3.4;if(props.active)mixer.update(dt);else mixer.update(dt*.3);
-  const isNear=nearbyPlace(p.x,p.z);if(isNear!==near.current){near.current=isNear;props.onNear(isNear);}
+  const isNear=nearbyPlace(p.x,p.z,props.gateOpen);if(isNear!==near.current){near.current=isNear;props.onNear(isNear);}
   const location=currentArea(p.x,p.z);if(location!==area.current){area.current=location;props.onArea(location);}
   view.pivot.set(p.x,p.y+.55,p.z);
   view.camera.update(view.pivot,yaw,look.current.pitch,dt,s.cameraDistance);
-  if(props.overview){camera.position.set(24,56,40);camera.lookAt(0,0,-4);}else{camera.position.copy(view.camera.position);camera.lookAt(view.camera.target);}
+  if(props.overview){camera.position.set(6,76,43);camera.lookAt(6,0,-1);}else{camera.position.copy(view.camera.position);camera.lookAt(view.camera.target);}
   gl.domElement.dataset.area=location;
   gl.domElement.dataset.position=`${p.x.toFixed(2)},${(p.y-.71).toFixed(2)},${p.z.toFixed(2)}`;
  });
- return <><VillageScene/><group ref={actor} position={[SPAWN[0],.02,SPAWN[2]]} rotation={[0,Math.PI,0]}><primitive object={traveler} scale={1.6}/></group></>;
+ return <><VillageScene gateOpen={props.gateOpen} discoveryCount={props.discoveryCount}/><group ref={actor} position={[SPAWN[0],.02,SPAWN[2]]} rotation={[0,Math.PI,0]}><primitive object={traveler} scale={1.6}/></group></>;
 }
 function SunsetSky(){
  const dome=useRef<THREE.Mesh>(null);

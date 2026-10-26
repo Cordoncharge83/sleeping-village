@@ -6,11 +6,11 @@ Visitors guide a traveler through a village at sunset, discover projects and pro
 
 **Current status:** a working local prototype. The village, movement, camera, journal, and shared game UI are implemented. Project presentations are still being developed, and this portfolio has not been published.
 
-![The village at sunset](planning/village-sunset-overview.png)
+![The village layout based on the hand-drawn map](planning/village-sketch-layout.png)
 
 ## The experience
 
-The woodland entrance leads past a workshop to the village square. A connected loop links the main destinations, with an optional clearing for future projects.
+The woodland entrance bends toward a compact square around an old tree. Two project streets branch east; the workshop and schoolhouse sit along western lanes. Closed cottages, gardens, hedges, and woodland frame the streets. This walkable layout follows the owner's hand-drawn map and is ready for another spatial review before detailed furnishing.
 
 | Village destination | What it presents | Current state |
 | --- | --- | --- |
@@ -19,16 +19,17 @@ The woodland entrance leads past a workshop to the village square. A connected l
 | Map lodge | Comp Atlas | Short entry; product remains private, with screenshots and a video showcase planned |
 | Trading post | Bargainy | Short project and engineering entry |
 | Tournament yard | DuelSync | Short desktop-project and engineering entry |
-| Future clearing | Manart and an unnamed penguin board game | Entries that clearly identify planned work and early concepts |
+| Schoolhouse | Education and selected skills | Two short pages based on the existing CV-derived content draft |
+| Future clearing | Manart and an unnamed penguin board game | Bonus chapter beyond the northern gate; opens after discovering all six main entries |
 
-The square provides a notice explaining exploration and the journal. All entries can also be read through **Browse all projects**, without unlocking them through exploration.
+The entrance has a welcome/tutorial sign, and the square provides directions. Six symbols on the garden gate show progress. All entries, including future projects, can also be read through **Browse all projects**, without changing exploration progress.
 
 ## What is built so far
 
 - An animated traveler with walking and sprinting, an over-the-shoulder camera, collision handling, and camera clearance around walls and furniture. Movement is grounded, with no jumping or climbing.
-- A connected village with open-front buildings, paths, foliage, signs, furnishings, and a sunset palette with deeper forest greens and warm lantern light.
+- A village with six open-front destinations, eight closed background cottages, branching paths, a central tree and benches, woodland borders, and a sunset palette with deeper forest greens and warm lantern light.
 - A detailed Story & Supper tavern with a discoverable ledger, serving counter, shelves, reading and supper tables, benches, terrace seating, candles, and other props.
-- Six discoverable journal entries. New discoveries show a notice; revisiting an entry does not unlock it again. Unwritten entries show clues.
+- Six main journal discoveries plus a bonus future-project chapter. The northern garden gate physically blocks passage until all six main entries are discovered, then opens automatically. New discoveries show a notice; revisiting an entry does not unlock it again. Unwritten entries show clues.
 - A journal with Contents as its single global bookmark. Each entry has its own page arrows, section label, and keyboard navigation.
 - Matching welcome, pause, settings, map, notice, interaction prompts, and HUD, using leather, parchment, and cloth-bookmark styling.
 - The **Worn Traveler’s Journal** font pairing: IM Fell English for titles, Alegreya for reading, and Alegreya Sans for controls. Font files are bundled with the game.
@@ -37,7 +38,7 @@ The square provides a notice explaining exploration and the journal. All entries
 
 ### Saved discoveries
 
-Discoveries are stored in the visitor’s browser under `sleeping-village.journal.v1`. They survive refreshing; the traveler’s position and settings currently do not. Different browsers and site addresses have separate saves. Clearing site data removes the discoveries.
+Discoveries are stored in the visitor’s browser under `sleeping-village.journal.v1`. They survive refreshing, and the gate reopens from the saved six discoveries; the traveler’s position and settings currently do not. Different browsers and site addresses have separate saves. Clearing site data removes the discoveries. Older saves retain their entries: a previously found future chapter remains readable but does not replace education in the six-entry gate requirement.
 
 If browser storage is unavailable, entries still work for the current visit and the journal explains that saving is unavailable. Direct browsing shows all entries without changing discovery progress. There is no account or cloud synchronization.
 
@@ -82,7 +83,7 @@ The pause menu includes the journal, map, settings, return to the entrance, and 
 | `npm run preview` | Serve the generated build locally after building |
 | `npm test` | Run physics, camera, and journal persistence checks |
 
-The tests cover a continuous trip through every village stop, movement speed, entrances, rotated walls, furniture, bounds and reset; sprint camera behavior at multiple frame rates and uneven timings; and journal save/reload, duplicate discoveries, invalid records, and unavailable storage. Browser checks and screenshots are recorded in [planning/JOURNAL_CHECKS.md](planning/JOURNAL_CHECKS.md), [planning/STORY_AND_SUPPER_CHECKS.md](planning/STORY_AND_SUPPER_CHECKS.md), and the other planning notes.
+The tests cover a continuous trip through every village stop, movement speed, entrances, rotated walls, furniture, closed cottages, locked/open gate collision, fence bypass prevention, bounds and reset; sprint camera behavior at multiple frame rates and uneven timings; and journal save/reload, gate progression, old saves, duplicate discoveries, invalid records, and unavailable storage. Browser checks and screenshots are recorded in [planning/SKETCH_LAYOUT_CHECKS.md](planning/SKETCH_LAYOUT_CHECKS.md), [planning/JOURNAL_CHECKS.md](planning/JOURNAL_CHECKS.md), and the other planning notes.
 
 ## Technical approach
 

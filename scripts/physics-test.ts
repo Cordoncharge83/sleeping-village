@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {createSimulation} from '../src/physics.ts';
-import {SPAWN,BOUNDS,buildings,localPoint,places,nearbyPlace,type Vec2} from '../src/village.ts';
+import {SPAWN,BOUNDS,buildings,localPoint,places,nearbyPlace,GATE_Z,type Vec2} from '../src/village.ts';
 import {WALK_SPEED,RUN_SPEED} from '../src/tuning.ts';
 const s=await createSimulation();
 function settle(){for(let i=0;i<30;i++)s.step(0,0);}
@@ -19,22 +19,26 @@ try {
  s.reset();for(let i=0;i<60;i++)s.step(0,-RUN_SPEED/60);
  assert.ok(Math.abs(s.body.translation().z-(SPAWN[2]-5))<.05,'Running covers five metres in one second');
  // A single continuous trip from spawn visits every interaction through its actual entrance.
- s.reset();walkTo([-1,16]);walkTo([-4,14]);
- const workshop=buildings[0];walkTo(localPoint(workshop,0,4));walkTo(places.workshop.at);
- assert.equal(nearbyPlace(s.body.translation().x,s.body.translation().z),'workshop');
- assert.ok(s.body.translation().y>.76,'Player steps onto the workshop floor');
- for(let i=0;i<120;i++)s.step(-WALK_SPEED/60,0);
- assert.ok(s.body.translation().x>-12.1,'Workbench blocks forward movement');
- walkTo(places.workshop.at);walkTo(localPoint(workshop,0,4));walkTo([-4,14]);walkTo([0,10]);walkTo([0,3]);
+ s.reset();walkTo([4,22]);walkTo([1,17]);walkTo([-1,11]);walkTo([0,4]);
  assert.equal(nearbyPlace(s.body.translation().x,s.body.translation().z),'square');
  const tour:[number,Vec2[]][]=[
-  [1,[[-6,8],[-7,1]]], [3,[[-7,1],[-6,-14]]], [4,[[0,-20],[6,-14]]], [2,[[6,-14],[7,1]]],
+  [0,[[0,6],[-6,8],[-9,12]]],
+  [5,[[-4,3],[-6,1],[-12,1],[-16,0]]],
+  [1,[[4,4],[8,7],[13,10]]],
+  [2,[[4,4],[8,7],[13,10],[22,13],[27,13]]],
+  [3,[[4,2],[4,-4],[10,-6],[18,-5]]],
+  [4,[[4,2],[4,-4],[10,-6],[18,-5],[27,-2],[29,-1]]],
  ];
  for(const [index,route] of tour){
   for(const p of route)walkTo(p,RUN_SPEED);
   const b=buildings[index];walkTo(localPoint(b,0,4));walkTo(places[b.id].at);
   assert.equal(nearbyPlace(s.body.translation().x,s.body.translation().z),b.id,`${b.id} is reachable`);
   assert.ok(s.body.translation().y>.76,`${b.id} floor is reachable without jumping`);
+  if(b.id==='workshop'){
+   for(let i=0;i<120;i++)s.step(-WALK_SPEED/60,0);
+   assert.ok(s.body.translation().x>b.at[0]-1.1,'Workbench blocks forward movement');
+   walkTo(places.workshop.at);
+  }
   if(b.id==='smosh'){
    assert.notEqual(nearbyPlace(...localPoint(b,-3.4,.4)),'smosh','Ledger cannot be opened through the outer wall');
    assert.notEqual(nearbyPlace(...localPoint(b,0,3)),'smosh','Ledger requires approaching the table');
@@ -57,14 +61,31 @@ try {
    assert.ok(localX<2.7,`${b.id} rotated side wall blocks player`);
    walkTo(places[b.id].at);
   }
-  walkTo(localPoint(b,0,4));walkTo(route[route.length-1]);
+  walkTo(localPoint(b,0,4));for(const p of [...route].reverse())walkTo(p,RUN_SPEED);walkTo([0,4]);
  }
- walkTo([6,-14]);walkTo([0,-20]);walkTo([0,-24]);walkTo(places.future.at);
- assert.equal(nearbyPlace(s.body.translation().x,s.body.translation().z),'future');
- // Return through the opposite branch to ensure the loop doesn't require a reset.
- walkTo([0,-20]);walkTo([-6,-14]);walkTo([-7,1]);walkTo([-6,8]);walkTo([0,10]);walkTo([0,27]);
+ // Closed homes stop both the player and the camera.
+ walkTo([4,2]);walkTo([4,-4]);walkTo([10,-6]);walkTo([12,-4]);
+ for(let i=0;i<120;i++)s.step(0,WALK_SPEED/60);
+ assert.ok(s.body.translation().z<-2.5,'Closed cottage cannot be entered');
+ assert.ok(s.cameraDistance({x:12,y:1.4,z:-4},{x:0,y:0,z:1},4)<1.5,'Cottage blocks the camera');
+ walkTo([12,-4]);walkTo([10,-6]);walkTo([4,-4]);walkTo([0,-6]);walkTo([1,-10]);walkTo([0,-14]);
+ assert.equal(nearbyPlace(0,-14),'gate');
+ for(let i=0;i<120;i++)s.step(0,-RUN_SPEED/60);
+ assert.ok(s.body.translation().z>GATE_Z+.3,'Locked gate blocks the traveler');
+ assert.equal(nearbyPlace(...places.future.at),null,'Future cannot be inspected while locked');
+ // Try both sides: the hedge/fence joins the world edge, with no path around the gate.
+ for(const x of [-3.5,3.5]){
+  walkTo([0,-14]);walkTo([x,-15.5]);
+  for(let i=0;i<90;i++)s.step(0,-RUN_SPEED/60);
+  assert.ok(s.body.translation().z>GATE_Z,'Cannot bypass the locked gate through its fence');
+  walkTo([x,-15.5]);walkTo([0,-14]);
+ }
+ s.setGateOpen(true);walkTo([0,-20]);walkTo(places.future.at);
+ assert.equal(nearbyPlace(s.body.translation().x,s.body.translation().z,true),'future');
+ walkTo([0,-20]);walkTo([0,-14]);walkTo([1,-10]);walkTo([0,-6]);walkTo([4,-4]);walkTo([4,2]);walkTo([0,4]);
+ walkTo([-1,11]);walkTo([1,17]);walkTo([4,22]);walkTo([4,28]);
  for(let i=0;i<200;i++)s.step(0,RUN_SPEED/60);
  assert.ok(s.body.translation().z<BOUNDS.front-.4,'Boundary prevents leaving the village');
  s.reset();settle();assert.ok(Math.hypot(s.body.translation().x-SPAWN[0],s.body.translation().z-SPAWN[2])<.01,'Reset returns to entrance');
- console.log('PASS: walking and sprint speeds; continuous tour of all seven stops; raised entrances; workshop furniture; rotated walls; camera clearance; loop return; scene boundary; reset.');
+ console.log('PASS: walking and sprint speeds; continuous tour of six main entries; closed cottages; locked gate and fence bypass prevention; open gate and bonus clearing; raised entrances; furniture; rotated walls; camera clearance; return; scene boundary; reset.');
 }finally{s.dispose();}
