@@ -10,12 +10,12 @@ Visitors guide a traveler through a village at sunset, discover projects and pro
 
 ## The experience
 
-The woodland entrance bends toward a compact square around an old tree. Two project streets branch east; the workshop and schoolhouse sit along western lanes. Closed cottages, gardens, hedges, and woodland frame the streets. This walkable layout follows the owner's hand-drawn map and is ready for another spatial review before detailed furnishing.
+The woodland entrance bends toward a compact square around an old tree. Two project streets branch east; the workshop and schoolhouse sit along western lanes. Closed cottages, gardens, hedges, and woodland frame the streets. This walkable layout follows the owner's hand-drawn map. Story & Supper and the workshop have detailed furnishings; the remaining destinations are being developed.
 
 | Village destination | What it presents | Current state |
 | --- | --- | --- |
 | Story & Supper tavern | Smosh Story Finder | Most developed showcase: furnished tavern, interactive ledger, project story, engineering notes, screenshot, and live archive link |
-| Woodland workshop | Professional experience | Journal pages about Sopra Steria and La Banque Postale |
+| Woodland workshop | Experience & leadership | Furnished maintenance workbench, document-research desk, and WAKE planning corner; each display opens its own page |
 | Map lodge | Comp Atlas | Short entry; product remains private, with screenshots and a video showcase planned |
 | Trading post | Bargainy | Short project and engineering entry |
 | Tournament yard | DuelSync | Short desktop-project and engineering entry |
@@ -120,7 +120,7 @@ The locally bundled fonts and their SIL Open Font License files are in [public/f
 
 ## What is still planned
 
-- Expand the other project presentations and professional-experience material beyond their current short journal entries.
+- Expand the remaining project presentations beyond their current short journal entries.
 - Add Comp Atlas screenshots and a video walkthrough while keeping the application private.
 - Add more project media and verify any additional public links.
 - Finish CV and contact actions so visitors can follow up easily.

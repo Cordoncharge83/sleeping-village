@@ -1,9 +1,9 @@
 import {useEffect,useRef,useState,type KeyboardEvent} from 'react';
 import {entries,entryIds,mainEntryIds,discoveryCount,hasAllDiscoveries,type EntryId} from './journal-data';
 import {Modal,BookIcon} from './Modal';
-type Props={discovered:EntryId[];initialEntry:EntryId|null;revealAll:boolean;onClose:()=>void;storageAvailable:boolean;newEntry:string|null};
-export default function Journal({discovered,initialEntry,revealAll,onClose,storageAvailable,newEntry}:Props){
- const [selected,setSelected]=useState<EntryId|null>(initialEntry),[page,setPage]=useState(0);
+type Props={discovered:EntryId[];initialEntry:EntryId|null;initialPage:number;revealAll:boolean;onClose:()=>void;storageAvailable:boolean;newEntry:string|null};
+export default function Journal({discovered,initialEntry,initialPage,revealAll,onClose,storageAvailable,newEntry}:Props){
+ const [selected,setSelected]=useState<EntryId|null>(initialEntry),[page,setPage]=useState(initialEntry?Math.max(0,Math.min(initialPage,entries[initialEntry].pages.length-1)):0);
  const readingPage=useRef<HTMLElement>(null),previousSelection=useRef(selected);
  useEffect(()=>{
   const focused=document.activeElement;

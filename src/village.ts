@@ -15,13 +15,34 @@ export const tavernLayout:Record<string,Solid>={
  planterLeft:{p:[-2.55,.24,3.5],s:[.7,.48,.65]},
  planterRight:{p:[2.55,.24,3.5],s:[.7,.48,.65]},
 };
+export const workshopLayout:Record<string,Solid>={
+ bench:{p:[0,.53,-1.8],s:[2.1,.9,1.05]},
+ research:{p:[-2,.6,.45],s:[1.25,1.02,1.75]},
+ planning:{p:[2,.6,1.35],s:[1.25,1.02,1.2]},
+ anvil:{p:[-2.2,.58,-1.85],s:[.8,1,.8]},
+ barrel:{p:[2.25,.53,-1.9],s:[.75,.9,.75]},
+};
+export const workshopStations=[
+ {at:[0,-.6] as Vec2,prompt:'Read the maintenance notebook'},
+ {at:[-1,.45] as Vec2,prompt:'Explore the research notes'},
+ {at:[1,1.35] as Vec2,prompt:'Read the WAKE planner'},
+];
+// Positions describe the accessible side of each display, not the furniture centre.
+export function workshopStationAt(x:number,z:number):number|null {
+ const b=buildings[0],c=Math.cos(b.rotation),s=Math.sin(b.rotation);
+ const localX=(x-b.at[0])*c-(z-b.at[1])*s,localZ=(x-b.at[0])*s+(z-b.at[1])*c;
+ if(Math.abs(localX)>2.65||localZ< -2.7||localZ>2.5)return null;
+ let page:number|null=null,distance=1.05;
+ workshopStations.forEach((station,index)=>{const d=Math.hypot(localX-station.at[0],localZ-station.at[1]);if(d<distance){page=index;distance=d;}});
+ return page;
+}
 export const SPAWN: Vec3 = [4, .74, 28];
 export const BOUNDS = {left:-29, right:41, back:-35, front:34};
 export const GATE_Z=-17;
 export const gateSolid:Solid={p:[0,1.35,GATE_Z],s:[4.8,2.7,.32]};
 export const landmark:Vec2=[0,-1];
 export const buildings: Building[] = [
- {id:'workshop', at:[-13,12], rotation:Math.PI/2, title:'THE WORKSHOP', subtitle:'Experience'},
+ {id:'workshop', at:[-13,12], rotation:Math.PI/2, title:'THE WORKSHOP', subtitle:'Experience & leadership'},
  {id:'smosh', at:[13,18], rotation:Math.PI, title:'STORY & SUPPER', subtitle:'Smosh Story Finder'},
  {id:'bargainy', at:[27,7.5], rotation:0, title:'THE TRADING POST', subtitle:'Bargainy'},
  {id:'atlas', at:[18,-10.25], rotation:0, title:'THE MAP LODGE', subtitle:'Comp Atlas'},
@@ -61,20 +82,22 @@ export const paths: {points:Vec2[]; width:number; closed?:boolean}[] = [
  {points:[[0,-6],[1,-10],[0,-15],[0,-22],[0,-27]],width:3.6},
 ];
 export const places: Record<PlaceId, {title:string; name:string; at:Vec2; hint:string; description:string; status:string}> = {
- workshop:{title:'The woodland workshop',name:'Professional experience',at:localPoint(buildings[0],0,1),hint:'Step inside the open workshop.',description:'This workshop will introduce my work at Sopra Steria and La Banque Postale. For this layout test, try the entrance and walk around the workbench.',status:'Experience stop · layout preview'},
+ workshop:{title:'The woodland workshop',name:'Experience & leadership',at:localPoint(buildings[0],0,-.6),hint:'A maintenance notebook, research notes, and an event planner.',description:'Three displays tell the stories of my work at Sopra Steria and La Banque Postale, and leading the WAKE student committee.',status:'Engineering & teamwork'},
  smosh:{title:'Story & Supper',name:'Smosh Story Finder',at:localPoint(buildings[1],-.25,1.2),hint:'The open ledger on the left holds a familiar story.',description:'Find that Smosh Reddit story you remember. Open the tavern’s story ledger to explore the live archive, the work behind it, and screenshots of the product.',status:'Live · Archive expanding'},
  bargainy:{title:'The trading post',name:'Bargainy',at:localPoint(buildings[2],0,1.2),hint:'Look inside the merchant’s shop.',description:'The merchant’s shop will introduce Bargainy, an AI negotiation coach. The counter sits at the back so the entrance and camera have room.',status:'Project stop · display to come'},
  atlas:{title:'The map lodge',name:'Comp Atlas',at:localPoint(buildings[3],0,1.2),hint:'A quiet place to plan the next match.',description:'This lodge will showcase the VALORANT research and scouting tools in Comp Atlas through screenshots and a planned video walkthrough. The product is not yet open to public visitors.',status:'In active development · showcase to come'},
  duel:{title:'The tournament yard',name:'DuelSync',at:localPoint(buildings[4],0,1.2),hint:'Walk into the covered courtyard.',description:'This open courtyard will introduce DuelSync, a desktop companion for tournament organizers. A bracket board and game tables will tell its story.',status:'Project stop · display to come'},
- education:{title:'The schoolhouse',name:'Education & skills',at:localPoint(buildings[5],0,1.2),hint:'A book on the desk holds the foundations.',description:'Education, selected skills, and lessons from organizing events.',status:'Education & skills'},
+ education:{title:'The schoolhouse',name:'Education & skills',at:localPoint(buildings[5],0,1.2),hint:'A book on the desk holds the foundations.',description:'Education and selected skills behind the projects.',status:'Education & skills'},
  future:{title:'The future clearing',name:'Ideas taking shape',at:[0,-26],hint:'Two projects on the horizon.',description:'Manart and an unnamed penguin board game: a place for ideas still taking shape.',status:'Bonus journal entry'},
  square:{title:'The old-tree square',name:'Welcome to the village',at:[0,4],hint:'Projects to the east. Experience and learning to the west.',description:'The old tree is the heart of the village. Two project streets branch east, while the workshop and schoolhouse lie west. Six discoveries open the northern garden gate.',status:'The heart of the village'},
  welcome:{title:'The woodland entrance',name:'Welcome, traveler',at:[4,20],hint:'Read the welcome sign, then follow the bend to the old tree.',description:'Walk with WASD, run with Shift, and look around with the mouse. Press E near an open building’s display to add its story to your journal. Press J to read, M for the map, or Escape to pause. Closed cottages are village homes.',status:'Your journey begins'},
  gate:{title:'The garden gate',name:'Beyond the village',at:[0,-14.7],hint:'Six stories open the way to what comes next.',description:'Find the four projects, the workshop, and the schoolhouse. Their six journal entries open this gate to the future clearing.',status:'A reward for exploring'},
 };
 export function nearbyPlace(x:number,z:number,gateOpen=false):PlaceId|null {
+ if(workshopStationAt(x,z)!==null)return 'workshop';
  let best:PlaceId|null=null,distance=2.15;
  for(const [id,p] of Object.entries(places)) {
+  if(id==='workshop')continue;
   if(id==='future'&&!gateOpen||id==='gate'&&gateOpen)continue;
   const d=Math.hypot(x-p.at[0],z-p.at[1]);
   // The ledger is an indoor interaction; don't offer it from outside the side wall.
@@ -135,8 +158,7 @@ for(const b of buildings){
  add([0,3.32,0],[7,.3,6.8]);
  for(const x of [-2.85,2.85])for(const z of [-3,3])add([x,1.5,z],[.24,3,.24]);
  if(b.id==='workshop'){
-  add([0,.53,-1.8],[2.1,.9,1.05]);add([-1.95,.58,.9],[.8,1,.8]);
-  add([2.25,.53,-1.9],[.75,.9,.75]);add([2.2,.35,-.6],[.65,.6,.7]);add([.75,.34,-.4],[.46,.58,.46]);
+  for(const item of Object.values(workshopLayout))add(item.p,item.s);
  }else if(b.id==='bargainy')add([0,.6,-1.7],[3.6,1.05,.9]);
  else if(b.id==='atlas')add([-1.6,.6,-.9],[1.4,1.05,2.1]);
  else if(b.id==='education')add([0,.6,-1.7],[2.2,1.05,1.2]);

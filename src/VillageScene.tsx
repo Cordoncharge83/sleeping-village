@@ -4,6 +4,7 @@ import {buildings,cottages,hedges,fenceLines,paths,trees,GATE_Z,type Cottage,typ
 import {atmosphere} from './atmosphere';
 import {Model,Box,Sign,Bench,Table} from './SceneObjects';
 import {Tavern} from './Tavern';
+import {Workshop} from './Workshop';
 
 function Shell({building}:{building:Building}){
  const yard=building.id==='duel';
@@ -23,25 +24,12 @@ function Shell({building}:{building:Building}){
   {[-2.85,2.85].flatMap(x=>[-3,3].map(z=><Box key={x+':'+z} p={[x,1.55,z]} s={[.24,3.1,.24]}/>))}
   {!yard&&[-3,3].map(x=><Box key={'corner'+x} p={[x,1.64,-3.01]} s={[.24,3.16,.24]}/>)}
   <Box p={[0,3.05,3]} s={[6.1,.23,.23]}/>
-  <Sign title={building.title} subtitle={building.subtitle} position={building.id==='smosh'?[0,3.65,4.65]:[0,2.64,3.16]} width={building.id==='smosh'?2.6:3.7}/>
+  <Sign title={building.title} subtitle={building.subtitle} position={building.id==='smosh'?[0,3.65,4.65]:building.id==='workshop'?[0,3.65,3.16]:[0,2.64,3.16]} width={building.id==='smosh'?2.6:building.id==='workshop'?3.1:3.7}/>
   <Model name="Lantern_Wall" position={[2.65,1.4,2.85]} scale={.45} rotation={Math.PI}/>
   <mesh position={[2.65,1.94,2.88]}><sphereGeometry args={[.055,8,6]}/><meshStandardMaterial color="#ffd69b" emissive="#ffad56" emissiveIntensity={2}/></mesh>
   <pointLight position={[1.8,2.05,1.4]} color="#ffc184" intensity={9} distance={6} decay={2}/>
  </>;
 }
-function Workshop(){return <>
- <Model name="Workbench" position={[0,.09,-1.8]}/>
- <Model name="Book_Stack_1" position={[.55,.99,-1.8]} rotation={.2}/>
- <Model name="Shelf_Simple" position={[-.6,1.9,-2.85]}/>
- <Model name="Book_Stack_1" position={[-.7,2.01,-2.65]} rotation={-.3}/>
- <Model name="Anvil_Log" position={[-1.95,.09,.9]} scale={.9} rotation={.35}/>
- <Model name="Stool" position={[.75,.09,-.4]} rotation={.2}/>
- <Model name="Barrel" position={[2.25,.09,-1.9]}/>
- <Model name="Crate_Wooden" position={[2.2,.12,-.6]} scale={.7} rotation={-.1}/>
- <Model name="Lantern_Wall" position={[-2.68,1.1,.2]} scale={.6} rotation={Math.PI/2}/>
- <pointLight position={[-2.2,1.9,.2]} color="#ffbd6e" intensity={8} distance={6} decay={2}/>
- <Sign title="BUILT WITH CARE" subtitle="Sopra Steria · La Banque Postale" position={[0,1.9,-2.76]} width={2.7}/>
- </>;}
 function Furnishings({id}:{id:Building['id']}){
  if(id==='workshop')return <Workshop/>;
  if(id==='smosh')return <Tavern/>;

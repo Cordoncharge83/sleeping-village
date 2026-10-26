@@ -6,19 +6,19 @@ import {clone} from 'three/addons/utils/SkeletonUtils.js';
 import assets from './assets.json';
 import {createSimulation,type Simulation} from './physics';
 import {VillageScene} from './VillageScene';
-import {SPAWN,nearbyPlace,currentArea,type PlaceId} from './village';
+import {SPAWN,nearbyPlace,workshopStationAt,currentArea,type PlaceId} from './village';
 import {WALK_SPEED,RUN_SPEED} from './tuning';
 import {FollowCamera,InterpolatedPosition,PHYSICS_STEP} from './player-view';
 import {atmosphere} from './atmosphere';
 
-type Props={active:boolean;overview:boolean;sensitivity:number;low:boolean;reset:number;gateOpen:boolean;discoveryCount:number;onNear:(near:PlaceId|null)=>void;onArea:(area:PlaceId|'arrival')=>void;onReady:()=>void;onError:(message:string)=>void};
+type Props={active:boolean;overview:boolean;sensitivity:number;low:boolean;reset:number;gateOpen:boolean;discoveryCount:number;onNear:(near:PlaceId|null,page:number)=>void;onArea:(area:PlaceId|'arrival')=>void;onReady:()=>void;onError:(message:string)=>void};
 function World(props:Props){
  const gltf=useLoader(GLTFLoader,assets.Traveler);
  const traveler=useMemo(()=>{const o=clone(gltf.scene);o.traverse(n=>{if(n instanceof THREE.Mesh){n.castShadow=true;n.receiveShadow=true;}});return o;},[gltf]);
  const actor=useRef<THREE.Group>(null);const sim=useRef<Simulation|null>(null);
  const mixer=useMemo(()=>new THREE.AnimationMixer(traveler),[traveler]);
  const actions=useMemo(()=>Object.fromEntries(gltf.animations.map(clip=>[clip.name,mixer.clipAction(clip)])),[gltf,mixer]);
- const current=useRef('Idle');const input=useRef(new Set<string>());const look=useRef({yaw:0,pitch:.23,drag:false});const near=useRef<PlaceId|null>(null);const area=useRef<PlaceId|'arrival'>('arrival');
+ const current=useRef('Idle');const input=useRef(new Set<string>());const look=useRef({yaw:0,pitch:.23,drag:false});const near=useRef<PlaceId|null>(null);const nearPage=useRef(0);const area=useRef<PlaceId|'arrival'>('arrival');
  const {camera,gl}=useThree();
  const view=useMemo(()=>({pivot:new THREE.Vector3(),motion:new InterpolatedPosition(),camera:new FollowCamera()}),[]);
  useEffect(()=>{let alive=true;createSimulation().then(s=>{if(!alive){s.dispose();return;}sim.current=s;view.motion.reset(s.body.translation());view.camera.reset();props.onReady();}).catch(e=>props.onError(String(e)));return()=>{alive=false;sim.current?.dispose();sim.current=null;};},[]);
@@ -44,7 +44,7 @@ function World(props:Props){
   if(moving){const target=Math.atan2(dx,dz),a=actor.current.rotation.y;actor.current.rotation.y=a+Math.atan2(Math.sin(target-a),Math.cos(target-a))*(1-Math.exp(-12*dt));}
   const clip=moving?(running?'Run':'Walk'):'Idle';if(current.current!==clip){actions[current.current]?.fadeOut(.2);actions[clip].reset().fadeIn(.2).play();current.current=clip;}
   actions.Walk.timeScale=3.2;actions.Run.timeScale=3.4;if(props.active)mixer.update(dt);else mixer.update(dt*.3);
-  const isNear=nearbyPlace(p.x,p.z,props.gateOpen);if(isNear!==near.current){near.current=isNear;props.onNear(isNear);}
+  const isNear=nearbyPlace(p.x,p.z,props.gateOpen),page=isNear==='workshop'?(workshopStationAt(p.x,p.z)??0):0;if(isNear!==near.current||page!==nearPage.current){near.current=isNear;nearPage.current=page;props.onNear(isNear,page);}
   const location=currentArea(p.x,p.z);if(location!==area.current){area.current=location;props.onArea(location);}
   view.pivot.set(p.x,p.y+.55,p.z);
   view.camera.update(view.pivot,yaw,look.current.pitch,dt,s.cameraDistance);

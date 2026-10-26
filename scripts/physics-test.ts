@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {createSimulation} from '../src/physics.ts';
-import {SPAWN,BOUNDS,buildings,localPoint,places,nearbyPlace,GATE_Z,type Vec2} from '../src/village.ts';
+import {SPAWN,BOUNDS,buildings,localPoint,places,nearbyPlace,workshopStations,workshopStationAt,GATE_Z,type Vec2} from '../src/village.ts';
 import {WALK_SPEED,RUN_SPEED} from '../src/tuning.ts';
 const s=await createSimulation();
 function settle(){for(let i=0;i<30;i++)s.step(0,0);}
@@ -37,6 +37,22 @@ try {
   if(b.id==='workshop'){
    for(let i=0;i<120;i++)s.step(-WALK_SPEED/60,0);
    assert.ok(s.body.translation().x>b.at[0]-1.1,'Workbench blocks forward movement');
+   walkTo(places.workshop.at);
+   for(const [page,station] of workshopStations.entries()){
+    walkTo(localPoint(b,0,.6));walkTo(localPoint(b,...station.at));
+    const p=s.body.translation();
+    assert.equal(workshopStationAt(p.x,p.z),page,'Each display opens its own workshop page');
+    assert.equal(nearbyPlace(p.x,p.z),'workshop','Displays share one discovery');
+    if(page>0){
+     const side=page===1?-1:1;
+     for(let i=0;i<90;i++)s.step(side*Math.cos(b.rotation)*WALK_SPEED/60,-side*Math.sin(b.rotation)*WALK_SPEED/60);
+     const q=s.body.translation(),localX=(q.x-b.at[0])*Math.cos(b.rotation)-(q.z-b.at[1])*Math.sin(b.rotation);
+     assert.ok(Math.abs(localX)<1.15,'Display desks block walking through them');
+     walkTo(localPoint(b,...station.at));
+    }
+    walkTo(localPoint(b,0,.6));
+   }
+   for(const point of [[-3.4,.45],[3.4,1.35],[0,3.2]] as Vec2[])assert.equal(workshopStationAt(...localPoint(b,...point)),null,'No reading through walls or outside entrance');
    walkTo(places.workshop.at);
   }
   if(b.id==='smosh'){
