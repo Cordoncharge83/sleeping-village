@@ -17,6 +17,12 @@
 @media(min-width:701px) and (max-height:760px){.pinned-photo img{height:130px}.journal-controls{padding-top:16px}}
 
 /* Worn traveler's journal: expressive titles, book text, and clear controls. */
+/* Photographs get a full spread so wide screenshots remain readable. */
+.gallery-spread>.left-page{display:none}
+.gallery-spread>.right-page{grid-column:1/-1;background:radial-gradient(ellipse at 50% 35%,#f4e7c7,#e6d1a5)}
+.gallery-spread .gallery-image img{display:block;height:auto;max-height:none;padding:6px}
+.gallery-spread .gallery-image a{display:block;cursor:zoom-in}
+.gallery-spread .page-copy>p{max-width:70ch}
 button,input,.journal-shortcut>span,.menu-choices button,.ink-button,.wax-button,.bookmarks button,.interact,.game-footer button,.settings label,.page-turner span{font-family:var(--font-ui)}
 .journal-index strong{font-family:var(--font-title)}
 .locked-entry strong{font-family:var(--font-reading)}

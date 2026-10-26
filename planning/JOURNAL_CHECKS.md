@@ -31,3 +31,12 @@
 - Browser test profile now has Smosh and professional experience discovered. Other browsers have independent saves.
 - Saves cover discoveries only, not position or settings. Clearing browser/site data removes discoveries. No cloud account or synchronization.
 - This is an interface prototype. Comp Atlas media/video, additional project galleries, CV/contact actions, sound effects, and elaborate page-turn animation are not included. Existing approved camera, movement, village layout, and sunset palette were preserved.
+
+## Smosh copy and gallery refresh · 26 October 2026
+
+- Replaced the three Smosh pages with the owner-supplied copy, including 170+ episodes and 1,000+ stories. These are owner-provided figures, not live counters.
+- Added the supplied 1736 × 832 screenshot unchanged at `public/images/smosh/story-grid.png`, used for the pinned photograph and gallery.
+- Gallery photographs occupy the full journal spread; selecting the screenshot opens the original in a new tab. Story and My work retain the two-page layout. Contents remains the only global bookmark.
+- Checked all three pages, arrow-key navigation in both directions, disabled final Next button, Contents return, and the full-resolution image link in the in-app browser. Checked the desktop 1280 × 900 layout and normal narrow window; reset the temporary viewport afterward.
+- Production build and existing movement, camera, and journal tests passed. Existing Rapier initialization deprecation warnings remain.
+- Visual evidence: `smosh-journal-gallery.png`.

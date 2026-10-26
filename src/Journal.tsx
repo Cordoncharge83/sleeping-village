@@ -20,12 +20,12 @@ export default function Journal({discovered,initialEntry,revealAll,onClose,stora
   <div className="journal-shell" onKeyDown={keys}>
    <div className="journal-heading"><span>{revealAll?'THE COMPLETE COLLECTION':'THE TRAVELER’S JOURNAL'}</span><button className="close-book" autoFocus onClick={onClose} aria-label="Close journal">×</button></div>
    <nav className="bookmarks" aria-label="Journal navigation"><button onClick={()=>choose(null)} aria-pressed={!selected} className={!selected?'active':''}>Contents</button></nav>
-   <div className="open-book">
+   <div className={`open-book${current?.image?' gallery-spread':''}`}>
     <section className="book-page left-page">
      <div className="page-topline">{entry?revealAll?'A page from the village':'A place discovered':'Notes from the village'}</div>
      <h1>{entry?entry.place:'The traveler’s journal'}</h1>
      {entry?<>
-      {selected==='smosh'?<figure className="pinned-photo"><img src="/images/smosh/episode.png" alt="Smosh Story Finder episode card with a timestamped video link"/><figcaption>A story, found again.</figcaption></figure>:<div className="entry-emblem"><BookIcon/><span>{entry.summary}</span></div>}
+      {selected==='smosh'?<figure className="pinned-photo"><img src="/images/smosh/story-grid.png" alt="Smosh Story Finder story cards with a revealed episode and timestamp"/><figcaption>A story, found again.</figcaption></figure>:<div className="entry-emblem"><BookIcon/><span>{entry.summary}</span></div>}
       <div className="journal-stamp">{entry.status}</div><p className="entry-title">{entry.title}</p>
       {entry.link&&<a className="wax-button" href={entry.link} target="_blank" rel="noopener noreferrer">Visit the live archive <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a>}
       {selected==='smosh'&&<small className="page-note">Independent fan-made project. Smosh and its branding belong to their respective owners.</small>}
