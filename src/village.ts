@@ -24,7 +24,7 @@ export const buildings: Building[] = [
  {id:'workshop', at:[-13,12], rotation:Math.PI/2, title:'THE WORKSHOP', subtitle:'Experience'},
  {id:'smosh', at:[13,18], rotation:Math.PI, title:'STORY & SUPPER', subtitle:'Smosh Story Finder'},
  {id:'bargainy', at:[27,7.5], rotation:0, title:'THE TRADING POST', subtitle:'Bargainy'},
- {id:'atlas', at:[18,-9], rotation:0, title:'THE MAP LODGE', subtitle:'Comp Atlas'},
+ {id:'atlas', at:[18,-10.25], rotation:0, title:'THE MAP LODGE', subtitle:'Comp Atlas'},
  {id:'duel', at:[33,-1], rotation:-Math.PI/2, title:'THE TOURNAMENT YARD', subtitle:'DuelSync'},
  {id:'education', at:[-20,0], rotation:Math.PI/2, title:'THE SCHOOLHOUSE', subtitle:'Education & skills'},
 ];
@@ -32,12 +32,12 @@ export type Cottage={at:Vec2;rotation:number;width:number;depth:number;color:str
 // Closed homes give the streets edges without adding more destinations to inspect.
 export const cottages:Cottage[]=[
  {at:[-7,20],rotation:-.2,width:5,depth:4.5,color:'#aa9576'},
- {at:[13,25],rotation:Math.PI,width:5.2,depth:5,color:'#a89170'},
+ {at:[13,27.5],rotation:Math.PI,width:5.2,depth:5,color:'#a89170'},
  {at:[-22,13],rotation:.2,width:4.8,depth:5,color:'#988976'},
  {at:[-10,-7],rotation:.12,width:5,depth:4.5,color:'#b09e7c'},
  {at:[7,-11.5],rotation:0,width:4.6,depth:4.4,color:'#a39277'},
  {at:[12,0],rotation:Math.PI,width:5,depth:5,color:'#b29a79'},
- {at:[23,2.5],rotation:Math.PI,width:4.5,depth:4,color:'#9b8e78'},
+ {at:[21.5,1],rotation:Math.PI,width:4.5,depth:4,color:'#9b8e78'},
  {at:[34,17],rotation:-Math.PI/2,width:5,depth:4.6,color:'#aa967d'},
 ];
 export function localPoint(building: Building, x:number, z:number): Vec2 {
@@ -51,7 +51,7 @@ export function localSolid(building:Building, p:Vec3, s:Vec3):Solid {
 export const paths: {points:Vec2[]; width:number; closed?:boolean}[] = [
  {points:[[4,31],[4,22],[1,17],[-1,11],[0,4]],width:3.8},
  {points:[[0,4],[4,2],[4,-4],[0,-6],[-4,-4],[-4,2]],width:3.6,closed:true},
- {points:[[-3,4],[-6,8],[-9,12]],width:3.4},
+ {points:[[-3,4],[-6,8],[-7.5,11],[-9.9,12]],width:3.4},
  {points:[[-4,0],[-10,1],[-16,0]],width:3.5},
  {points:[[4,4],[8,7],[13,10],[22,13],[28,13]],width:4.2},
  {points:[[13,10],[13,15]],width:3.2},

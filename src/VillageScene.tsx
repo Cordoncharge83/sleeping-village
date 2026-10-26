@@ -86,8 +86,14 @@ function Path({points,width,closed=false}:{points:Vec2[];width:number;closed?:bo
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));g.setIndex(indices);g.computeVertexNormals();return g;
  },[points,width,closed]);
  useEffect(()=>()=>geometry.dispose(),[geometry]);
- return <mesh geometry={geometry} receiveShadow><meshStandardMaterial color={atmosphere.path} roughness={1} polygonOffset polygonOffsetFactor={-1}/></mesh>;
+ return <>
+  <mesh geometry={geometry} receiveShadow><meshStandardMaterial color={atmosphere.path} roughness={1} polygonOffset polygonOffsetFactor={-1}/></mesh>
+  {!closed&&[points[0],points[points.length-1]].map((at,i)=><Clearing key={i} at={at} radius={width/2}/>)}
+ </>;
 }
+function EntranceApron(){return <mesh position={[0,.028,4]} rotation={[-Math.PI/2,0,0]} receiveShadow>
+ <planeGeometry args={[5.4,2.3]}/><meshStandardMaterial color={atmosphere.path} roughness={1}/>
+ </mesh>;}
 function Clearing({at,radius,scale=[1,1,1]}:{at:Vec2;radius:number;scale?:Vec3}){
  return <mesh position={[at[0],.024,at[1]]} rotation={[-Math.PI/2,0,0]} scale={scale} receiveShadow><circleGeometry args={[radius,40]}/><meshStandardMaterial color={atmosphere.path} roughness={1}/></mesh>;
 }
@@ -167,7 +173,7 @@ export function VillageScene({gateOpen,discoveryCount}:{gateOpen:boolean;discove
   {Array.from({length:count},(_,j)=><mesh key={j} position={[h.p[0]+(alongX?-length/2+(j+.5)*length/count:0),h.p[1]-.15,h.p[2]+(alongX?0:-length/2+(j+.5)*length/count)]} scale={alongX?[1.9,h.s[1]*.6,1.2]:[1.2,h.s[1]*.6,1.9]} castShadow receiveShadow><icosahedronGeometry args={[1,1]}/><meshStandardMaterial color={j%3===0?'#304b32':'#35543a'} roughness={1}/></mesh>)}
  </group>;})}
  {cottages.map((c,i)=><ClosedCottage key={'home'+i} cottage={c}/>)}
- {buildings.map(b=><group key={b.id} position={[b.at[0],0,b.at[1]]} rotation={[0,b.rotation,0]}><Shell building={b}/><Furnishings id={b.id}/></group>)}
+ {buildings.map(b=><group key={b.id} position={[b.at[0],0,b.at[1]]} rotation={[0,b.rotation,0]}><EntranceApron/><Shell building={b}/><Furnishings id={b.id}/></group>)}
  <Bench position={[-1.8,0,-1]} rotation={Math.PI/2} length={2.2}/><Bench position={[1.8,0,-1]} rotation={Math.PI/2} length={2.2}/>
  <FutureClearing/>
  <GardenGate open={gateOpen} count={discoveryCount}/>

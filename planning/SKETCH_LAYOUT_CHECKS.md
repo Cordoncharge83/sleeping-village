@@ -36,3 +36,10 @@ Direct browsing exposes all seven entries without changing discoveries or openin
 - `village-garden-gate-open.png`: open gate after six discoveries.
 - Browser test profile has all six main discoveries and the bonus chapter. Ordinary visitors' progress depends on their own browser storage.
 - Next user review: street spacing, walking distances, enclosure, and the feel of approaching each destination. The cottages and hedge banks are simple layout geometry; remaining interiors and richer environmental details are not finished.
+
+## Entrance and roof clearance follow-up
+
+- Connected every open-front building to its approach with a shallow ground apron, and curved the workshop lane into its doorway. Rounded exposed path ends remove abrupt cutoffs.
+- Moved the map lodge back 1.25 metres from the upper street, the cottage behind the tavern back 2.5 metres, and the cottage beside the trading post away from its overlapping roof corner.
+- Checked conservative roof footprints using the actual roof asset bounds and each building's rotation/scale: no building-to-building roof overlaps remain.
+- Full movement, camera, discovery, and gate regression checks and the production build pass. Walked the workshop approach in the browser; visual evidence is `workshop-path-connected.png`.
