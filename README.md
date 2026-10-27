@@ -19,7 +19,7 @@ The woodland entrance bends toward a compact square around an old tree. Two proj
 | Map lodge | Comp Atlas | Short entry; product remains private, with screenshots and a video showcase planned |
 | Trading post | Bargainy | Short project and engineering entry |
 | Tournament yard | DuelSync | Short desktop-project and engineering entry |
-| Schoolhouse | Education and selected skills | Two short pages based on the existing CV-derived content draft |
+| Schoolhouse | Education and selected skills | Approved journal pages about studying at IMT Atlantique and the technologies used across projects |
 | Future clearing | Manart and an unnamed penguin board game | Bonus chapter beyond the northern gate; opens after discovering all six main entries |
 
 The entrance has a welcome/tutorial sign, and the square provides directions. Six symbols on the garden gate show progress. All entries, including future projects, can also be read through **Browse all projects**, without changing exploration progress.
