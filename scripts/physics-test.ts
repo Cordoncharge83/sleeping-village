@@ -55,6 +55,18 @@ try {
    for(const point of [[-3.4,.45],[3.4,1.35],[0,3.2]] as Vec2[])assert.equal(workshopStationAt(...localPoint(b,...point)),null,'No reading through walls or outside entrance');
    walkTo(places.workshop.at);
   }
+  if(b.id==='bargainy'){
+   for(const point of [[-3.4,0],[3.4,0],[0,3.2]] as Vec2[])assert.notEqual(nearbyPlace(...localPoint(b,...point)),'bargainy','Negotiation notebook cannot be read through walls or from the street');
+   const obstacles:[Vec2,Vec2,number][]=[[[0,-.35],[0,-1],1.15],[[-1.3,.05],[-1,0],2.1],[[1.2,.15],[1,0],1.8]];
+   for(const [approach,direction,limit] of obstacles){
+    walkTo(localPoint(b,0,.6));walkTo(localPoint(b,...approach));
+    for(let i=0;i<90;i++)s.step(direction[0]*WALK_SPEED/60,direction[1]*WALK_SPEED/60);
+    const p=s.body.translation();
+    assert.ok((p.x-b.at[0])*direction[0]+(p.z-b.at[1])*direction[1]<limit,'Merchant counter and goods block walking through them');
+    walkTo(localPoint(b,...approach));
+   }
+   walkTo(localPoint(b,0,.6));walkTo(places.bargainy.at);
+  }
   if(b.id==='education'){
    for(const [page,station] of schoolhouseStations.entries()){
     walkTo(localPoint(b,0,.55));walkTo(localPoint(b,...station.at));

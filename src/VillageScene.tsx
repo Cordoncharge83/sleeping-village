@@ -6,6 +6,7 @@ import {Model,Box,Sign,Bench,Table} from './SceneObjects';
 import {Tavern} from './Tavern';
 import {Workshop} from './Workshop';
 import {Schoolhouse} from './Schoolhouse';
+import {TradingPost} from './TradingPost';
 
 function Shell({building}:{building:Building}){
  const yard=building.id==='duel';
@@ -25,7 +26,7 @@ function Shell({building}:{building:Building}){
   {[-2.85,2.85].flatMap(x=>[-3,3].map(z=><Box key={x+':'+z} p={[x,1.55,z]} s={[.24,3.1,.24]}/>))}
   {!yard&&[-3,3].map(x=><Box key={'corner'+x} p={[x,1.64,-3.01]} s={[.24,3.16,.24]}/>)}
   <Box p={[0,3.05,3]} s={[6.1,.23,.23]}/>
-  <Sign title={building.title} subtitle={building.subtitle} position={building.id==='smosh'?[0,3.65,4.65]:(building.id==='workshop'||building.id==='education')?[0,3.65,3.16]:[0,2.64,3.16]} width={building.id==='smosh'?2.6:(building.id==='workshop'||building.id==='education')?3.1:3.7}/>
+  <Sign title={building.title} subtitle={building.subtitle} position={building.id==='smosh'?[0,3.65,4.65]:(building.id==='workshop'||building.id==='education'||building.id==='bargainy')?[0,3.65,3.16]:[0,2.64,3.16]} width={building.id==='smosh'?2.6:(building.id==='workshop'||building.id==='education'||building.id==='bargainy')?3.1:3.7}/>
   <Model name="Lantern_Wall" position={[2.65,1.4,2.85]} scale={.45} rotation={Math.PI}/>
   <mesh position={[2.65,1.94,2.88]}><sphereGeometry args={[.055,8,6]}/><meshStandardMaterial color="#ffd69b" emissive="#ffad56" emissiveIntensity={2}/></mesh>
   <pointLight position={[1.8,2.05,1.4]} color="#ffc184" intensity={9} distance={6} decay={2}/>
@@ -35,12 +36,7 @@ function Furnishings({id}:{id:Building['id']}){
  if(id==='workshop')return <Workshop/>;
  if(id==='smosh')return <Tavern/>;
  if(id==='education')return <Schoolhouse/>;
- if(id==='bargainy')return <>
-  <Box p={[0,.59,-1.7]} s={[3.6,1.05,.9]} color="#805b3d"/>
-  <Box p={[0,1.15,-1.7]} s={[3.8,.13,1]} color="#b08b5e"/>
-  <Model name="Book_Stack_1" position={[.9,1.23,-1.7]}/>
-  <Sign title="LET’S MAKE A DEAL" subtitle="A place to practice negotiation" position={[0,2,-2.77]} width={2.8}/>
- </>;
+ if(id==='bargainy')return <TradingPost/>;
  if(id==='atlas')return <>
   <Table position={[-1.6,.09,-.9]} scale={[1.4,1,2.1]}/>
   <Box p={[-1.6,1.12,-.9]} s={[1.1,.025,1.65]} color="#ded0a8"/>

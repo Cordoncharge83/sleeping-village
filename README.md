@@ -10,14 +10,14 @@ Visitors guide a traveler through a village at sunset, discover projects and pro
 
 ## The experience
 
-The woodland entrance bends toward a compact square around an old tree. Two project streets branch east; the workshop and schoolhouse sit along western lanes. Closed cottages, gardens, hedges, and woodland frame the streets. This walkable layout follows the owner's hand-drawn map. Story & Supper, the workshop, and the schoolhouse have detailed furnishings; the remaining destinations are being developed.
+The woodland entrance bends toward a compact square around an old tree. Two project streets branch east; the workshop and schoolhouse sit along western lanes. Closed cottages, gardens, hedges, and woodland frame the streets. This walkable layout follows the owner's hand-drawn map. Story & Supper, the Trading Post, the workshop, and the schoolhouse have detailed furnishings; the remaining destinations are being developed.
 
 | Village destination | What it presents | Current state |
 | --- | --- | --- |
 | Story & Supper tavern | Smosh Story Finder | Most developed showcase: furnished tavern, interactive ledger, project story, engineering notes, screenshot, and live archive link |
 | Woodland workshop | Experience & leadership | Furnished maintenance workbench, document-research desk, and WAKE planning corner; each display opens its own page |
 | Map lodge | Comp Atlas | Short entry; product remains private, with screenshots and a video showcase planned |
-| Trading post | Bargainy | Short project and engineering entry |
+| Trading post | Bargainy | Furnished merchant’s counter, negotiation notebook, stocked shelves and balance scale; three journal pages with the supplied coaching-report screenshot |
 | Tournament yard | DuelSync | Short desktop-project and engineering entry |
 | Schoolhouse | Education and selected skills | Furnished study desk and ledger, chalkboards, bookcase, reading bench, and skills table; each display opens its matching journal page |
 | Future clearing | Manart and an unnamed penguin board game | Bonus chapter beyond the northern gate; opens after discovering all six main entries |

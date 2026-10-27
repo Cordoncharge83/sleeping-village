@@ -43,7 +43,7 @@ export default function Journal({discovered,initialEntry,initialPage,revealAll,o
       <div className="page-topline">{revealAll?'Choose an entry':'Places & their stories'}</div><h2>Contents</h2>
       <ol className="journal-index">{entryIds.map((id,i)=><li key={id}>
        {unlocked(id)?<button onClick={()=>choose(id)}><span className="index-number">{id==='future'?'✦':String(i+1).padStart(2,'0')}</span><span><strong>{entries[id].title}</strong><small>{id==='future'?'Bonus chapter · ':''}{entries[id].place}</small></span><span aria-hidden="true">›</span></button>:<div className="locked-entry"><span className="index-number">{id==='future'?'✦':'?'}</span><span><strong>{id==='future'?'Beyond the garden gate':'Unwritten entry'}</strong><small>{entries[id].clue}</small></span></div>}
-      </li>)}</ol><p className="page-note">{revealAll?'Smosh includes the first complete showcase. More images and project details will follow.':'Walk up to a point of interest and press E. Open this journal again with J.'}</p>
+      </li>)}</ol><p className="page-note">{revealAll?'Smosh and Bargainy include product screenshots. More project details will follow.':'Walk up to a point of interest and press E. Open this journal again with J.'}</p>
      </>:<>
       <div className="page-topline">{entry.title}</div><div key={`${selected}-${page}`} className="page-copy"><h2>{current!.heading}</h2>
        {current!.image&&<figure className="gallery-image"><a href={current!.image} target="_blank" rel="noopener noreferrer" aria-label="Enlarge screenshot in a new tab"><img src={current!.image} alt={current!.alt}/></a><figcaption>{current!.caption} · Select to enlarge</figcaption></figure>}
