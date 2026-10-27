@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {createSimulation} from '../src/physics.ts';
-import {SPAWN,BOUNDS,buildings,localPoint,places,nearbyPlace,workshopStations,workshopStationAt,GATE_Z,type Vec2} from '../src/village.ts';
+import {SPAWN,BOUNDS,buildings,localPoint,places,nearbyPlace,workshopStations,workshopStationAt,schoolhouseStations,schoolhouseStationAt,GATE_Z,type Vec2} from '../src/village.ts';
 import {WALK_SPEED,RUN_SPEED} from '../src/tuning.ts';
 const s=await createSimulation();
 function settle(){for(let i=0;i<30;i++)s.step(0,0);}
@@ -54,6 +54,25 @@ try {
    }
    for(const point of [[-3.4,.45],[3.4,1.35],[0,3.2]] as Vec2[])assert.equal(workshopStationAt(...localPoint(b,...point)),null,'No reading through walls or outside entrance');
    walkTo(places.workshop.at);
+  }
+  if(b.id==='education'){
+   for(const [page,station] of schoolhouseStations.entries()){
+    walkTo(localPoint(b,0,.55));walkTo(localPoint(b,...station.at));
+    const p=s.body.translation();
+    assert.equal(schoolhouseStationAt(p.x,p.z),page,'Schoolhouse displays target education and skills separately');
+    assert.equal(nearbyPlace(p.x,p.z),'education','Both displays share the schoolhouse discovery');
+   }
+   // The skills table, study desk, bookcase, and reading bench all have solid footprints.
+   const obstacles:[Vec2,Vec2,number][]=[[[1,.45],[1,0],1.2],[[0,-.4],[0,-1],1.15],[[-1.4,-.7],[-1,0],2.2],[[-1.4,1.35],[-1,0],2]];
+   for(const [approach,direction,limit] of obstacles){
+    walkTo(localPoint(b,0,.55));walkTo(localPoint(b,...approach));
+    for(let i=0;i<90;i++)s.step((direction[0]*Math.cos(b.rotation)+direction[1]*Math.sin(b.rotation))*WALK_SPEED/60,(-direction[0]*Math.sin(b.rotation)+direction[1]*Math.cos(b.rotation))*WALK_SPEED/60);
+    const p=s.body.translation(),lx=(p.x-b.at[0])*Math.cos(b.rotation)-(p.z-b.at[1])*Math.sin(b.rotation),lz=(p.x-b.at[0])*Math.sin(b.rotation)+(p.z-b.at[1])*Math.cos(b.rotation);
+    assert.ok(lx*direction[0]+lz*direction[1]<limit,'Schoolhouse furniture blocks the traveler');
+    walkTo(localPoint(b,...approach));
+   }
+   for(const point of [[-3.4,0],[3.4,.45],[0,3.2]] as Vec2[])assert.equal(schoolhouseStationAt(...localPoint(b,...point)),null,'No schoolhouse interaction through walls or outside entrance');
+   walkTo(localPoint(b,0,.55));walkTo(places.education.at);
   }
   if(b.id==='smosh'){
    assert.notEqual(nearbyPlace(...localPoint(b,-3.4,.4)),'smosh','Ledger cannot be opened through the outer wall');

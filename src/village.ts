@@ -22,6 +22,19 @@ export const workshopLayout:Record<string,Solid>={
  anvil:{p:[-2.2,.58,-1.85],s:[.8,1,.8]},
  barrel:{p:[2.25,.53,-1.9],s:[.75,.9,.75]},
 };
+export const schoolhouseLayout:Record<string,Solid>={
+ desk:{p:[0,.6,-1.7],s:[2.2,1.02,1.2]},
+ skills:{p:[2,.6,.45],s:[1.2,1.02,1.8]},
+ bookcase:{p:[-2.5,1.25,-1.25],s:[.65,2.32,2.1]},
+ bench:{p:[-2.25,.4,1.35],s:[.5,.65,1.75]},
+};
+export const schoolhouseStations=[
+ {at:[0,-.4] as Vec2,prompt:'Read the study ledger'},
+ {at:[1,.45] as Vec2,prompt:'Explore the skills display'},
+];
+export function schoolhouseStationAt(x:number,z:number):number|null {
+ return stationAt(buildings[5],schoolhouseStations,x,z);
+}
 export const workshopStations=[
  {at:[0,-.6] as Vec2,prompt:'Read the maintenance notebook'},
  {at:[-1,.45] as Vec2,prompt:'Explore the research notes'},
@@ -29,11 +42,14 @@ export const workshopStations=[
 ];
 // Positions describe the accessible side of each display, not the furniture centre.
 export function workshopStationAt(x:number,z:number):number|null {
- const b=buildings[0],c=Math.cos(b.rotation),s=Math.sin(b.rotation);
+ return stationAt(buildings[0],workshopStations,x,z);
+}
+function stationAt(b:Building,stations:{at:Vec2}[],x:number,z:number):number|null {
+ const c=Math.cos(b.rotation),s=Math.sin(b.rotation);
  const localX=(x-b.at[0])*c-(z-b.at[1])*s,localZ=(x-b.at[0])*s+(z-b.at[1])*c;
  if(Math.abs(localX)>2.65||localZ< -2.7||localZ>2.5)return null;
  let page:number|null=null,distance=1.05;
- workshopStations.forEach((station,index)=>{const d=Math.hypot(localX-station.at[0],localZ-station.at[1]);if(d<distance){page=index;distance=d;}});
+ stations.forEach((station,index)=>{const d=Math.hypot(localX-station.at[0],localZ-station.at[1]);if(d<distance){page=index;distance=d;}});
  return page;
 }
 export const SPAWN: Vec3 = [4, .74, 28];
@@ -87,7 +103,7 @@ export const places: Record<PlaceId, {title:string; name:string; at:Vec2; hint:s
  bargainy:{title:'The trading post',name:'Bargainy',at:localPoint(buildings[2],0,1.2),hint:'Look inside the merchant’s shop.',description:'The merchant’s shop will introduce Bargainy, an AI negotiation coach. The counter sits at the back so the entrance and camera have room.',status:'Project stop · display to come'},
  atlas:{title:'The map lodge',name:'Comp Atlas',at:localPoint(buildings[3],0,1.2),hint:'A quiet place to plan the next match.',description:'This lodge will showcase the VALORANT research and scouting tools in Comp Atlas through screenshots and a planned video walkthrough. The product is not yet open to public visitors.',status:'In active development · showcase to come'},
  duel:{title:'The tournament yard',name:'DuelSync',at:localPoint(buildings[4],0,1.2),hint:'Walk into the covered courtyard.',description:'This open courtyard will introduce DuelSync, a desktop companion for tournament organizers. A bracket board and game tables will tell its story.',status:'Project stop · display to come'},
- education:{title:'The schoolhouse',name:'Education & skills',at:localPoint(buildings[5],0,1.2),hint:'A book on the desk holds the foundations.',description:'Education and selected skills behind the projects.',status:'Education & skills'},
+ education:{title:'The schoolhouse',name:'Education & skills',at:localPoint(buildings[5],0,-.4),hint:'Read the study ledger, then explore the skills table.',description:'Education and selected skills behind the projects.',status:'Education & skills'},
  future:{title:'The future clearing',name:'Ideas taking shape',at:[0,-26],hint:'Two projects on the horizon.',description:'Manart and an unnamed penguin board game: a place for ideas still taking shape.',status:'Bonus journal entry'},
  square:{title:'The old-tree square',name:'Welcome to the village',at:[0,4],hint:'Projects to the east. Experience and learning to the west.',description:'The old tree is the heart of the village. Two project streets branch east, while the workshop and schoolhouse lie west. Six discoveries open the northern garden gate.',status:'The heart of the village'},
  welcome:{title:'The woodland entrance',name:'Welcome, traveler',at:[4,20],hint:'Read the welcome sign, then follow the bend to the old tree.',description:'Walk with WASD, run with Shift, and look around with the mouse. Press E near an open building’s display to add its story to your journal. Press J to read, M for the map, or Escape to pause. Closed cottages are village homes.',status:'Your journey begins'},
@@ -95,9 +111,10 @@ export const places: Record<PlaceId, {title:string; name:string; at:Vec2; hint:s
 };
 export function nearbyPlace(x:number,z:number,gateOpen=false):PlaceId|null {
  if(workshopStationAt(x,z)!==null)return 'workshop';
+ if(schoolhouseStationAt(x,z)!==null)return 'education';
  let best:PlaceId|null=null,distance=2.15;
  for(const [id,p] of Object.entries(places)) {
-  if(id==='workshop')continue;
+  if(id==='workshop'||id==='education')continue;
   if(id==='future'&&!gateOpen||id==='gate'&&gateOpen)continue;
   const d=Math.hypot(x-p.at[0],z-p.at[1]);
   // The ledger is an indoor interaction; don't offer it from outside the side wall.
@@ -161,7 +178,7 @@ for(const b of buildings){
   for(const item of Object.values(workshopLayout))add(item.p,item.s);
  }else if(b.id==='bargainy')add([0,.6,-1.7],[3.6,1.05,.9]);
  else if(b.id==='atlas')add([-1.6,.6,-.9],[1.4,1.05,2.1]);
- else if(b.id==='education')add([0,.6,-1.7],[2.2,1.05,1.2]);
+ else if(b.id==='education'){for(const item of Object.values(schoolhouseLayout))add(item.p,item.s);}
  else if(b.id==='smosh'){
   for(const item of Object.values(tavernLayout))add(item.p,item.s);
  }else if(b.id==='duel')for(const x of [-1.9,1.9])add([x,.55,-.5],[1.1,1,1.5]);

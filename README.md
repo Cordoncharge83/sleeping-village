@@ -10,7 +10,7 @@ Visitors guide a traveler through a village at sunset, discover projects and pro
 
 ## The experience
 
-The woodland entrance bends toward a compact square around an old tree. Two project streets branch east; the workshop and schoolhouse sit along western lanes. Closed cottages, gardens, hedges, and woodland frame the streets. This walkable layout follows the owner's hand-drawn map. Story & Supper and the workshop have detailed furnishings; the remaining destinations are being developed.
+The woodland entrance bends toward a compact square around an old tree. Two project streets branch east; the workshop and schoolhouse sit along western lanes. Closed cottages, gardens, hedges, and woodland frame the streets. This walkable layout follows the owner's hand-drawn map. Story & Supper, the workshop, and the schoolhouse have detailed furnishings; the remaining destinations are being developed.
 
 | Village destination | What it presents | Current state |
 | --- | --- | --- |
@@ -19,7 +19,7 @@ The woodland entrance bends toward a compact square around an old tree. Two proj
 | Map lodge | Comp Atlas | Short entry; product remains private, with screenshots and a video showcase planned |
 | Trading post | Bargainy | Short project and engineering entry |
 | Tournament yard | DuelSync | Short desktop-project and engineering entry |
-| Schoolhouse | Education and selected skills | Approved journal pages about studying at IMT Atlantique and the technologies used across projects |
+| Schoolhouse | Education and selected skills | Furnished study desk and ledger, chalkboards, bookcase, reading bench, and skills table; each display opens its matching journal page |
 | Future clearing | Manart and an unnamed penguin board game | Bonus chapter beyond the northern gate; opens after discovering all six main entries |
 
 The entrance has a welcome/tutorial sign, and the square provides directions. Six symbols on the garden gate show progress. All entries, including future projects, can also be read through **Browse all projects**, without changing exploration progress.
