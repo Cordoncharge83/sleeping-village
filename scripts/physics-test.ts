@@ -55,6 +55,20 @@ try {
    for(const point of [[-3.4,.45],[3.4,1.35],[0,3.2]] as Vec2[])assert.equal(workshopStationAt(...localPoint(b,...point)),null,'No reading through walls or outside entrance');
    walkTo(places.workshop.at);
   }
+  if(b.id==='atlas'){
+   for(const point of [[-3.4,0],[3.4,0],[0,3.2],[0,-3.3]] as Vec2[])assert.notEqual(nearbyPlace(...localPoint(b,...point)),'atlas','Scouting ledger requires entering the lodge');
+   const obstacles:[Vec2,Vec2,number][]=[[[0,-.45],[0,-1],1.2],[[0,.4],[-1,0],1.4],[[0,-.7],[1,0],2.2],[[0,1.55],[1,0],2.1]];
+   for(const [approach,direction,limit] of obstacles){
+    walkTo(localPoint(b,0,.6));walkTo(localPoint(b,...approach));
+    for(let i=0;i<90;i++)s.step((direction[0]*Math.cos(b.rotation)+direction[1]*Math.sin(b.rotation))*WALK_SPEED/60,(-direction[0]*Math.sin(b.rotation)+direction[1]*Math.cos(b.rotation))*WALK_SPEED/60);
+    const p=s.body.translation(),lx=(p.x-b.at[0])*Math.cos(b.rotation)-(p.z-b.at[1])*Math.sin(b.rotation),lz=(p.x-b.at[0])*Math.sin(b.rotation)+(p.z-b.at[1])*Math.cos(b.rotation);
+    assert.ok(lx*direction[0]+lz*direction[1]<limit,'Map lodge furniture stops the player');
+    walkTo(localPoint(b,...approach));
+   }
+   const origin=localPoint(b,0,-2.2);
+   assert.ok(s.cameraDistance({x:origin[0],y:1.5,z:origin[1]},{x:-Math.sin(b.rotation),y:0,z:-Math.cos(b.rotation)},4)<1,'Lodge rear wall stops the camera');
+   walkTo(localPoint(b,0,.6));walkTo(places.atlas.at);
+  }
   if(b.id==='duel'){
    for(const point of [[-3.4,0],[3.4,0],[0,3.2],[0,-3.3]] as Vec2[])assert.notEqual(nearbyPlace(...localPoint(b,...point)),'duel','Organiser ledger requires entering the yard');
    const obstacles:[Vec2,Vec2,number][]=[[[0,-.35],[0,-1],1.15],[[0,.65],[-1,0],1.2],[[0,.65],[1,0],1.2]];

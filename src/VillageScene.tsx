@@ -2,11 +2,12 @@ import {useEffect,useMemo} from 'react';
 import * as THREE from 'three';
 import {buildings,cottages,hedges,fenceLines,paths,trees,GATE_Z,type Cottage,type Building,type Vec2,type Vec3} from './village';
 import {atmosphere} from './atmosphere';
-import {Model,Box,Sign,Bench,Table} from './SceneObjects';
+import {Model,Box,Sign,Bench} from './SceneObjects';
 import {Tavern} from './Tavern';
 import {Workshop} from './Workshop';
 import {Schoolhouse} from './Schoolhouse';
 import {TradingPost} from './TradingPost';
+import {MapLodge} from './MapLodge';
 import {TournamentYard} from './TournamentYard';
 
 function Shell({building}:{building:Building}){
@@ -27,7 +28,7 @@ function Shell({building}:{building:Building}){
   {[-2.85,2.85].flatMap(x=>[-3,3].map(z=><Box key={x+':'+z} p={[x,1.55,z]} s={[.24,3.1,.24]}/>))}
   {!yard&&[-3,3].map(x=><Box key={'corner'+x} p={[x,1.64,-3.01]} s={[.24,3.16,.24]}/>)}
   <Box p={[0,3.05,3]} s={[6.1,.23,.23]}/>
-  <Sign title={building.title} subtitle={building.subtitle} position={building.id==='smosh'?[0,3.65,4.65]:(building.id==='workshop'||building.id==='education'||building.id==='bargainy'||building.id==='duel')?[0,3.65,3.16]:[0,2.64,3.16]} width={building.id==='smosh'?2.6:(building.id==='workshop'||building.id==='education'||building.id==='bargainy'||building.id==='duel')?3.1:3.7}/>
+  <Sign title={building.title} subtitle={building.subtitle} position={building.id==='smosh'?[0,3.65,4.65]:(building.id==='workshop'||building.id==='education'||building.id==='bargainy'||building.id==='duel'||building.id==='atlas')?[0,3.65,3.16]:[0,2.64,3.16]} width={building.id==='smosh'?2.6:(building.id==='workshop'||building.id==='education'||building.id==='bargainy'||building.id==='duel'||building.id==='atlas')?3.1:3.7}/>
   <Model name="Lantern_Wall" position={[2.65,1.4,2.85]} scale={.45} rotation={Math.PI}/>
   <mesh position={[2.65,1.94,2.88]}><sphereGeometry args={[.055,8,6]}/><meshStandardMaterial color="#ffd69b" emissive="#ffad56" emissiveIntensity={2}/></mesh>
   <pointLight position={[1.8,2.05,1.4]} color="#ffc184" intensity={9} distance={6} decay={2}/>
@@ -38,12 +39,7 @@ function Furnishings({id}:{id:Building['id']}){
  if(id==='smosh')return <Tavern/>;
  if(id==='education')return <Schoolhouse/>;
  if(id==='bargainy')return <TradingPost/>;
- if(id==='atlas')return <>
-  <Table position={[-1.6,.09,-.9]} scale={[1.4,1,2.1]}/>
-  <Box p={[-1.6,1.12,-.9]} s={[1.1,.025,1.65]} color="#ded0a8"/>
-  <Model name="Book_Stack_1" position={[-1.6,1.14,-1.45]}/>
-  <Sign title="SCOUT. STUDY. PLAN." subtitle="Comp Atlas · showcase to come" position={[0,1.8,-2.77]} width={3.4}/>
- </>;
+ if(id==='atlas')return <MapLodge/>;
  return <TournamentYard/>;
 }
 

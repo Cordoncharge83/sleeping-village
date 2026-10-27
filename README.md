@@ -10,13 +10,13 @@ Visitors guide a traveler through a village at sunset, discover projects and pro
 
 ## The experience
 
-The woodland entrance bends toward a compact square around an old tree. Two project streets branch east; the workshop and schoolhouse sit along western lanes. Closed cottages, gardens, hedges, and woodland frame the streets. This walkable layout follows the owner's hand-drawn map. Story & Supper, the Trading Post, the tournament yard, the workshop, and the schoolhouse have detailed furnishings; the map lodge is still being developed.
+The woodland entrance bends toward a compact square around an old tree. Two project streets branch east; the workshop and schoolhouse sit along western lanes. Closed cottages, gardens, hedges, and woodland frame the streets. This walkable layout follows the owner's hand-drawn map. All six main buildings now have detailed furnishings and interactive journal displays.
 
 | Village destination | What it presents | Current state |
 | --- | --- | --- |
 | Story & Supper tavern | Smosh Story Finder | Most developed showcase: furnished tavern, interactive ledger, project story, engineering notes, screenshot, and live archive link |
 | Woodland workshop | Experience & leadership | Furnished maintenance workbench, document-research desk, and WAKE planning corner; each display opens its own page |
-| Map lodge | Comp Atlas | Short entry; product remains private, with screenshots and a video showcase planned |
+| Map lodge | Comp Atlas | Furnished scouting desk, composition table, wall map, archive and reading bench; three journal pages and supplied Team Prep screenshot; application remains private |
 | Trading post | Bargainy | Furnished merchant’s counter, negotiation notebook, stocked shelves and balance scale; three journal pages with the supplied coaching-report screenshot |
 | Tournament yard | DuelSync | Organiser’s ledger and desk, Top Cut board, trophy, card tables and benches; three approved journal pages with the supplied desktop and mobile tournament screenshot |
 | Schoolhouse | Education and selected skills | Furnished study desk and ledger, chalkboards, bookcase, reading bench, and skills table; each display opens its matching journal page |
@@ -121,7 +121,7 @@ The locally bundled fonts and their SIL Open Font License files are in [public/f
 ## What is still planned
 
 - Expand the remaining project presentations beyond their current short journal entries.
-- Add Comp Atlas screenshots and a video walkthrough while keeping the application private.
+- Add a Comp Atlas video walkthrough when available while keeping the application private.
 - Add more project media and verify any additional public links.
 - Finish CV and contact actions so visitors can follow up easily.
 - Give the remaining buildings their own more complete displays and interactions.
