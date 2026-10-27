@@ -22,6 +22,16 @@ export const workshopLayout:Record<string,Solid>={
  anvil:{p:[-2.2,.58,-1.85],s:[.8,1,.8]},
  barrel:{p:[2.25,.53,-1.9],s:[.75,.9,.75]},
 };
+export const tournamentLayout:Record<string,Solid>={
+ desk:{p:[0,.6,-1.65],s:[2.1,1.02,1]},
+ leftTable:{p:[-1.8,.6,.65],s:[1.15,1.02,1.6]},
+ rightTable:{p:[1.8,.6,.65],s:[1.15,1.02,1.6]},
+ leftSeat:{p:[-2.65,.4,.65],s:[.5,.65,1.6]},
+ rightSeat:{p:[2.65,.4,.65],s:[.5,.65,1.6]},
+};
+export function tournamentNearby(x:number,z:number):boolean {
+ return stationAt(buildings[4],[{at:[0,-.35]}],x,z)!==null;
+}
 export const tradingPostLayout:Record<string,Solid>={
  counter:{p:[0,.64,-1.85],s:[3.6,1.1,.95]},
  goods:{p:[-2.42,1.05,.05],s:[.7,1.92,1.95]},
@@ -111,7 +121,7 @@ export const places: Record<PlaceId, {title:string; name:string; at:Vec2; hint:s
  smosh:{title:'Story & Supper',name:'Smosh Story Finder',at:localPoint(buildings[1],-.25,1.2),hint:'The open ledger on the left holds a familiar story.',description:'Find that Smosh Reddit story you remember. Open the tavern’s story ledger to explore the live archive, the work behind it, and screenshots of the product.',status:'Live · Archive expanding'},
  bargainy:{title:'The trading post',name:'Bargainy',at:localPoint(buildings[2],0,-.35),hint:'An open negotiation notebook waits on the merchant’s counter.',description:'Practise a negotiation with Bargainy, then review the coaching debrief. The notebook holds the idea, the work behind it, and a view of the product.',status:'Bargainy · Practice & coaching'},
  atlas:{title:'The map lodge',name:'Comp Atlas',at:localPoint(buildings[3],0,1.2),hint:'A quiet place to plan the next match.',description:'This lodge will showcase the VALORANT research and scouting tools in Comp Atlas through screenshots and a planned video walkthrough. The product is not yet open to public visitors.',status:'In active development · showcase to come'},
- duel:{title:'The tournament yard',name:'DuelSync',at:localPoint(buildings[4],0,1.2),hint:'Walk into the covered courtyard.',description:'This open courtyard will introduce DuelSync, a desktop companion for tournament organizers. A bracket board and game tables will tell its story.',status:'Project stop · display to come'},
+ duel:{title:'The tournament yard',name:'DuelSync',at:localPoint(buildings[4],0,-.35),hint:'The organiser’s ledger waits beneath the Top Cut board.',description:'A companion for the organiser’s table. Read about local tournament management, deliberate publishing, and player-facing pairings and standings.',status:'DuelSync · Tournament companion'},
  education:{title:'The schoolhouse',name:'Education & skills',at:localPoint(buildings[5],0,-.4),hint:'Read the study ledger, then explore the skills table.',description:'Education and selected skills behind the projects.',status:'Education & skills'},
  future:{title:'The future clearing',name:'Ideas taking shape',at:[0,-26],hint:'Two projects on the horizon.',description:'Manart and an unnamed penguin board game: a place for ideas still taking shape.',status:'Bonus journal entry'},
  square:{title:'The old-tree square',name:'Welcome to the village',at:[0,4],hint:'Projects to the east. Experience and learning to the west.',description:'The old tree is the heart of the village. Two project streets branch east, while the workshop and schoolhouse lie west. Six discoveries open the northern garden gate.',status:'The heart of the village'},
@@ -119,12 +129,13 @@ export const places: Record<PlaceId, {title:string; name:string; at:Vec2; hint:s
  gate:{title:'The garden gate',name:'Beyond the village',at:[0,-14.7],hint:'Six stories open the way to what comes next.',description:'Find the four projects, the workshop, and the schoolhouse. Their six journal entries open this gate to the future clearing.',status:'A reward for exploring'},
 };
 export function nearbyPlace(x:number,z:number,gateOpen=false):PlaceId|null {
+ if(tournamentNearby(x,z))return 'duel';
  if(tradingPostNearby(x,z))return 'bargainy';
  if(workshopStationAt(x,z)!==null)return 'workshop';
  if(schoolhouseStationAt(x,z)!==null)return 'education';
  let best:PlaceId|null=null,distance=2.15;
  for(const [id,p] of Object.entries(places)) {
-  if(id==='workshop'||id==='education'||id==='bargainy')continue;
+  if(id==='workshop'||id==='education'||id==='bargainy'||id==='duel')continue;
   if(id==='future'&&!gateOpen||id==='gate'&&gateOpen)continue;
   const d=Math.hypot(x-p.at[0],z-p.at[1]);
   // The ledger is an indoor interaction; don't offer it from outside the side wall.
@@ -191,7 +202,7 @@ for(const b of buildings){
  else if(b.id==='education'){for(const item of Object.values(schoolhouseLayout))add(item.p,item.s);}
  else if(b.id==='smosh'){
   for(const item of Object.values(tavernLayout))add(item.p,item.s);
- }else if(b.id==='duel')for(const x of [-1.9,1.9])add([x,.55,-.5],[1.1,1,1.5]);
+ }else if(b.id==='duel'){for(const item of Object.values(tournamentLayout))add(item.p,item.s);}
 }
 export const solids:Solid[]=[
  {p:[0,-.15,0],s:[140,.3,130]},...buildingSolids,...hedges,

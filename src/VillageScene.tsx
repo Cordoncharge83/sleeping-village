@@ -7,6 +7,7 @@ import {Tavern} from './Tavern';
 import {Workshop} from './Workshop';
 import {Schoolhouse} from './Schoolhouse';
 import {TradingPost} from './TradingPost';
+import {TournamentYard} from './TournamentYard';
 
 function Shell({building}:{building:Building}){
  const yard=building.id==='duel';
@@ -26,7 +27,7 @@ function Shell({building}:{building:Building}){
   {[-2.85,2.85].flatMap(x=>[-3,3].map(z=><Box key={x+':'+z} p={[x,1.55,z]} s={[.24,3.1,.24]}/>))}
   {!yard&&[-3,3].map(x=><Box key={'corner'+x} p={[x,1.64,-3.01]} s={[.24,3.16,.24]}/>)}
   <Box p={[0,3.05,3]} s={[6.1,.23,.23]}/>
-  <Sign title={building.title} subtitle={building.subtitle} position={building.id==='smosh'?[0,3.65,4.65]:(building.id==='workshop'||building.id==='education'||building.id==='bargainy')?[0,3.65,3.16]:[0,2.64,3.16]} width={building.id==='smosh'?2.6:(building.id==='workshop'||building.id==='education'||building.id==='bargainy')?3.1:3.7}/>
+  <Sign title={building.title} subtitle={building.subtitle} position={building.id==='smosh'?[0,3.65,4.65]:(building.id==='workshop'||building.id==='education'||building.id==='bargainy'||building.id==='duel')?[0,3.65,3.16]:[0,2.64,3.16]} width={building.id==='smosh'?2.6:(building.id==='workshop'||building.id==='education'||building.id==='bargainy'||building.id==='duel')?3.1:3.7}/>
   <Model name="Lantern_Wall" position={[2.65,1.4,2.85]} scale={.45} rotation={Math.PI}/>
   <mesh position={[2.65,1.94,2.88]}><sphereGeometry args={[.055,8,6]}/><meshStandardMaterial color="#ffd69b" emissive="#ffad56" emissiveIntensity={2}/></mesh>
   <pointLight position={[1.8,2.05,1.4]} color="#ffc184" intensity={9} distance={6} decay={2}/>
@@ -43,18 +44,9 @@ function Furnishings({id}:{id:Building['id']}){
   <Model name="Book_Stack_1" position={[-1.6,1.14,-1.45]}/>
   <Sign title="SCOUT. STUDY. PLAN." subtitle="Comp Atlas · showcase to come" position={[0,1.8,-2.77]} width={3.4}/>
  </>;
- return <>
-  <Box p={[0,1.4,-2.85]} s={[3.5,2.8,.2]}/>
-  <Sign title="THE NEXT ROUND" subtitle="DuelSync · tournament tools" position={[0,2,-2.7]} width={3.1}/>
-  {[-1.9,1.9].map(x=><Table key={x} position={[x,.09,-.5]} scale={[1.1,1,1.5]}/>)}
-  {[-1,1].map(side=><group key={side}>
-   <Box p={[side*.9,1.05,-2.69]} s={[.7,.045,.025]} color="#d9c79d"/>
-   <Box p={[side*.9,.65,-2.69]} s={[.7,.045,.025]} color="#d9c79d"/>
-   <Box p={[side*.55,.85,-2.69]} s={[.045,.45,.025]} color="#d9c79d"/>
-   <Box p={[side*.3,.85,-2.69]} s={[.5,.045,.025]} color="#d9c79d"/>
-  </group>)}
- </>;
+ return <TournamentYard/>;
 }
+
 function Path({points,width,closed=false}:{points:Vec2[];width:number;closed?:boolean}){
  const geometry=useMemo(()=>{
   const curve=new THREE.CatmullRomCurve3(points.map(([x,z])=>new THREE.Vector3(x,.018,z)),closed,'centripetal');
