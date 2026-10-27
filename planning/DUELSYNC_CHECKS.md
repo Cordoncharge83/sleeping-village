@@ -6,6 +6,7 @@
 - Browser check: walked to the ledger and verified all three pages and navigation.
 - Collision checks cover the desk and tables, interaction boundaries, and camera obstruction behind the bracket board.
 - Furnished entrance screenshot: duelsync-yard-furnished.png.
-- Gallery product screenshot remains pending; no mock product image or QR code is presented as real.
+- Gallery uses the supplied desktop and mobile public tournament screenshot, with descriptive alternative text and the existing enlarge link.
+- My work heading updated to “From the tournament file to the players.”
 - Restored the normal village spawn and camera after inspection.
 - Final verification: production build, physics, camera, journal, and gate progression checks all passed.
