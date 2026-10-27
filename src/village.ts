@@ -167,6 +167,8 @@ export function currentArea(x:number,z:number):PlaceId|'arrival' {
  return best==='square'&&z>9?'arrival':best;
 }
 export const trees: [number,number,number,number][] = [
+ // Small trees in the gaps between homes, away from the walking lanes.
+ [-17,7,.85,0],[18,23,.8,1],[27,-10,.9,0],
  [0,-1,1.8,1],[-.5,27,1.25,1],[8.5,28,1.2,0],[-.5,22,1.25,0],[8.5,22,1.3,1],
  [-5,14,1.15,1],[5,13,1.1,0],[-15,5.5,1.2,0],[-22,-7,1.25,1],[-17,-11,1.2,1],
  [-7,-13,1.3,1],[4,-14.5,1.1,0],[-4,-14.5,1.2,1],[12,-12,1.25,1],

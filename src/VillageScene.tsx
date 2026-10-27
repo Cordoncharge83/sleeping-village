@@ -136,6 +136,13 @@ export function VillageScene({gateOpen,discoveryCount}:{gateOpen:boolean;discove
  <mesh position={[0,.035,-1]} rotation={[-Math.PI/2,0,0]} receiveShadow><circleGeometry args={[2.1,24]}/><meshStandardMaterial color="#43543a" roughness={1}/></mesh>
  <Clearing at={[13,11]} radius={3}/><Clearing at={[28,-1]} radius={2.8}/>
  {trees.map(([x,z,s,kind],i)=><Model key={'t'+i} name={kind?'MapleTree_1':'BirchTree_1'} position={[x,0,z]} scale={s} rotation={i*1.8} shadow={Math.abs(x)<25&&Math.abs(z)<34}/>)}
+ {/* Low garden clusters soften the gaps between houses without adding obstacles. */}
+ {([[-17.7,7.6],[18.7,23.5],[26.3,-10.6],[17,1.5],[-17.6,17]] as Vec2[]).map(([x,z],i)=><group key={'garden'+i} position={[x,0,z]}>
+  <Model name="Bush_Small" position={[0,0,0]} scale={.42} rotation={i*1.4} shadow={false}/>
+  <Model name="Grass_Small" position={[.65,0,.3]} scale={.85} shadow={false}/>
+  <Model name="Grass_Small" position={[-.5,0,-.35]} scale={.7} shadow={false}/>
+  {[-1,1].map(side=><mesh key={side} position={[side*.53,.09,.48]} scale={[.22,.12,.17]} rotation={[0,i,0]} receiveShadow><icosahedronGeometry args={[1,0]}/><meshStandardMaterial color="#7c8068" roughness={1}/></mesh>)}
+ </group>)}
  {undergrowth.map(([x,z],i)=><Model key={'g'+i} name={i%7===0?'Bush_Small':'Grass_Small'} position={[x,0,z]} scale={i%7===0?.35:.7+(i%3)*.15} rotation={i*2.4} shadow={false}/>)}
  {fenceLines.map((f,i)=><Fence key={i} {...f}/>)}
  {hedges.map((h,i)=>{const alongX=h.s[0]>h.s[2],length=alongX?h.s[0]:h.s[2],count=Math.ceil(length/2.5);return <group key={'hedge'+i}>

@@ -5,6 +5,7 @@ import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {clone} from 'three/addons/utils/SkeletonUtils.js';
 import assets from './assets.json';
 import {createSimulation,type Simulation} from './physics';
+import {InspectHighlights} from './InspectHighlights';
 import {VillageScene} from './VillageScene';
 import {SPAWN,nearbyPlace,workshopStationAt,schoolhouseStationAt,currentArea,type PlaceId} from './village';
 import {WALK_SPEED,RUN_SPEED} from './tuning';
@@ -52,7 +53,7 @@ function World(props:Props){
   gl.domElement.dataset.area=location;
   gl.domElement.dataset.position=`${p.x.toFixed(2)},${(p.y-.71).toFixed(2)},${p.z.toFixed(2)}`;
  });
- return <><VillageScene gateOpen={props.gateOpen} discoveryCount={props.discoveryCount}/><group ref={actor} position={[SPAWN[0],.02,SPAWN[2]]} rotation={[0,Math.PI,0]}><primitive object={traveler} scale={1.6}/></group></>;
+ return <><VillageScene gateOpen={props.gateOpen} discoveryCount={props.discoveryCount}/><InspectHighlights near={near} page={nearPage} active={props.active&&!props.overview}/><group ref={actor} position={[SPAWN[0],.02,SPAWN[2]]} rotation={[0,Math.PI,0]}><primitive object={traveler} scale={1.6}/></group></>;
 }
 function SunsetSky(){
  const dome=useRef<THREE.Mesh>(null);
