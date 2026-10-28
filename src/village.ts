@@ -96,7 +96,7 @@ export const buildings: Building[] = [
 export type Cottage={at:Vec2;rotation:number;width:number;depth:number;color:string};
 // Closed homes give the streets edges without adding more destinations to inspect.
 export const cottages:Cottage[]=[
- {at:[-7,20],rotation:-.2,width:5,depth:4.5,color:'#aa9576'},
+ {at:[-7,20],rotation:Math.PI/2,width:5,depth:4.5,color:'#aa9576'},
  {at:[13,27.5],rotation:Math.PI,width:5.2,depth:5,color:'#a89170'},
  {at:[-22,13],rotation:.2,width:4.8,depth:5,color:'#988976'},
  {at:[-10,-7],rotation:.12,width:5,depth:4.5,color:'#b09e7c'},

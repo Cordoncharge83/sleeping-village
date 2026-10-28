@@ -5,6 +5,7 @@ type Props={discovered:EntryId[];initialEntry:EntryId|null;initialPage:number;re
 export default function Journal({discovered,initialEntry,initialPage,revealAll,onClose,storageAvailable,newEntry}:Props){
  const [selected,setSelected]=useState<EntryId|null>(initialEntry),[page,setPage]=useState(initialEntry?Math.max(0,Math.min(initialPage,entries[initialEntry].pages.length-1)):0);
  const readingPage=useRef<HTMLElement>(null),previousSelection=useRef(selected);
+ useEffect(()=>{readingPage.current?.scrollTo(0,0);readingPage.current?.querySelector('.page-copy')?.scrollTo(0,0);},[selected,page]);
  useEffect(()=>{
   const focused=document.activeElement;
   if(previousSelection.current!==selected||(selected&&(focused===document.body||(focused instanceof HTMLButtonElement&&focused.disabled))))readingPage.current?.focus({preventScroll:true});
