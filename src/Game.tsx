@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {clone} from 'three/addons/utils/SkeletonUtils.js';
 import assets from './assets.json';
+import {publicAssetUrl} from './public-asset';
 import {createSimulation,type Simulation} from './physics';
 import {InspectHighlights} from './InspectHighlights';
 import {VillageScene} from './VillageScene';
@@ -14,7 +15,7 @@ import {atmosphere} from './atmosphere';
 
 type Props={active:boolean;overview:boolean;sensitivity:number;low:boolean;reset:number;gateOpen:boolean;discoveryCount:number;onNear:(near:PlaceId|null,page:number)=>void;onArea:(area:PlaceId|'arrival')=>void;onReady:()=>void;onError:(message:string)=>void};
 function World(props:Props){
- const gltf=useLoader(GLTFLoader,assets.Traveler);
+ const gltf=useLoader(GLTFLoader,publicAssetUrl(assets.Traveler));
  const traveler=useMemo(()=>{const o=clone(gltf.scene);o.traverse(n=>{if(n instanceof THREE.Mesh){n.castShadow=true;n.receiveShadow=true;}});return o;},[gltf]);
  const actor=useRef<THREE.Group>(null);const sim=useRef<Simulation|null>(null);
  const mixer=useMemo(()=>new THREE.AnimationMixer(traveler),[traveler]);

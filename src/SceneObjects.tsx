@@ -3,12 +3,13 @@ import {useLoader} from '@react-three/fiber';
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import assets from './assets.json';
+import {publicAssetUrl} from './public-asset';
 import {woodlandMaterial} from './atmosphere';
 import type {Vec3} from './village';
 
 type Asset=keyof typeof assets;
 export function Model({name,position=[0,0,0],rotation=0,scale=1,shadow=true}:{name:Asset;position?:Vec3;rotation?:number;scale?:number|Vec3;shadow?:boolean}){
- const gltf=useLoader(GLTFLoader,assets[name]);
+ const gltf=useLoader(GLTFLoader,publicAssetUrl(assets[name]));
  const object=useMemo(()=>{const o=gltf.scene.clone(true);o.traverse(n=>{if(n instanceof THREE.Mesh){n.castShadow=shadow;n.receiveShadow=true;n.material=Array.isArray(n.material)?n.material.map(woodlandMaterial):woodlandMaterial(n.material);}});return o;},[gltf,shadow]);
  // The loader cache owns shared source geometries and materials.
  return <primitive object={object} position={position} rotation={[0,rotation,0]} scale={scale} dispose={null}/>;

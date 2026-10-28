@@ -7,7 +7,8 @@
     "dev": "vite --host 127.0.0.1",
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "test": "node --experimental-strip-types scripts/physics-test.ts && node --experimental-strip-types scripts/camera-test.ts && node --experimental-strip-types scripts/journal-test.ts"
+    "test": "node --experimental-strip-types scripts/physics-test.ts && node --experimental-strip-types scripts/camera-test.ts && node --experimental-strip-types scripts/journal-test.ts",
+    "check:paths": "node scripts/check-paths.mjs"
   },
   "dependencies": {
     "@react-three/fiber": "^9.3.0",

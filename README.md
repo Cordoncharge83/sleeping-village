@@ -53,7 +53,18 @@ npm ci
 npm run dev
 ```
 
-Open **http://127.0.0.1:5173/** in a desktop browser. On Windows, once dependencies are present, you can also double-click **Start Village.bat**. Keep its terminal window open while playing; press **Ctrl+C** or close that window to stop the server.
+Open **http://127.0.0.1:5173/village/** in a desktop browser. On Windows, once dependencies are present, you can also double-click **Start Village.bat**. Keep its terminal window open while playing; press **Ctrl+C** or close that window to stop the server.
+
+The game is configured for **`/village/`** in development and production. The intended public URL is `https://portfolio.moudka.com/village/`. Model URLs and journal images use Vite’s base path; CSS fonts and compiled scripts are rewritten by Vite. The complete `dist/` directory must be served at that path by the host, including `assets/`, `fonts/`, and `images/`. This preparation does not deploy the game or configure Cloudflare routing. See [planning/VILLAGE_PATH_CHECKS.md](planning/VILLAGE_PATH_CHECKS.md).
+
+To check the production output locally:
+
+```sh
+npm run build
+npm run preview -- --port 5173 --strictPort
+# In a second terminal, while preview is running:
+npm run check:paths
+```
 
 The preview listens on this computer’s loopback address. Port 5173 must be available. If PowerShell blocks npm’s script wrapper, use `npm.cmd` for the same commands.
 

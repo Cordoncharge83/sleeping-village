@@ -1,6 +1,7 @@
 import {useEffect,useRef,useState,type KeyboardEvent} from 'react';
 import {entries,entryIds,mainEntryIds,discoveryCount,hasAllDiscoveries,type EntryId} from './journal-data';
 import {Modal,BookIcon} from './Modal';
+import {publicAssetUrl} from './public-asset';
 type Props={discovered:EntryId[];initialEntry:EntryId|null;initialPage:number;revealAll:boolean;onClose:()=>void;storageAvailable:boolean;newEntry:string|null};
 export default function Journal({discovered,initialEntry,initialPage,revealAll,onClose,storageAvailable,newEntry}:Props){
  const [selected,setSelected]=useState<EntryId|null>(initialEntry),[page,setPage]=useState(initialEntry?Math.max(0,Math.min(initialPage,entries[initialEntry].pages.length-1)):0);
@@ -26,7 +27,7 @@ export default function Journal({discovered,initialEntry,initialPage,revealAll,o
      <div className="page-topline">{entry?revealAll?'A page from the village':'A place discovered':'Notes from the village'}</div>
      <h1>{entry?entry.place:'The traveler’s journal'}</h1>
      {entry?<>
-      {selected==='smosh'?<figure className="pinned-photo"><img src="/images/smosh/story-grid.png" alt="Smosh Story Finder story cards with a revealed episode and timestamp"/><figcaption>A story, found again.</figcaption></figure>:<div className="entry-emblem"><BookIcon/><span>{entry.summary}</span></div>}
+      {selected==='smosh'?<figure className="pinned-photo"><img src={publicAssetUrl('/images/smosh/story-grid.png')} alt="Smosh Story Finder story cards with a revealed episode and timestamp"/><figcaption>A story, found again.</figcaption></figure>:<div className="entry-emblem"><BookIcon/><span>{entry.summary}</span></div>}
       <div className="journal-stamp">{entry.status}</div><p className="entry-title">{entry.title}</p>
       {entry.link&&<a className="wax-button" href={entry.link} target="_blank" rel="noopener noreferrer">Visit the live archive <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a>}
       {selected==='smosh'&&<small className="page-note">Independent fan-made project. Smosh and its branding belong to their respective owners.</small>}
@@ -47,7 +48,7 @@ export default function Journal({discovered,initialEntry,initialPage,revealAll,o
       </li>)}</ol><p className="page-note">{revealAll?'All four project entries include product screenshots.':'Walk up to a point of interest and press E. Open this journal again with J.'}</p>
      </>:<>
       <div className="page-topline">{entry.title}</div><div key={`${selected}-${page}`} className="page-copy"><h2>{current!.heading}</h2>
-       {current!.image&&<figure className="gallery-image"><a href={current!.image} target="_blank" rel="noopener noreferrer" aria-label="Enlarge screenshot in a new tab"><img src={current!.image} alt={current!.alt}/></a><figcaption>{current!.caption} · Select to enlarge</figcaption></figure>}
+       {current!.image&&<figure className="gallery-image"><a href={publicAssetUrl(current!.image)} target="_blank" rel="noopener noreferrer" aria-label="Enlarge screenshot in a new tab"><img src={publicAssetUrl(current!.image)} alt={current!.alt}/></a><figcaption>{current!.caption} · Select to enlarge</figcaption></figure>}
        {current!.paragraphs.map(p=><p key={p}>{p}</p>)}
       </div>
       <nav className="page-turner" aria-label="Turn entry pages"><button disabled={page===0} onClick={()=>turn(-1)} aria-label="Previous page">‹</button><span aria-live="polite">{current!.tab} · {page+1} / {entry.pages.length}</span><button disabled={page===entry.pages.length-1} onClick={()=>turn(1)} aria-label="Next page">›</button></nav>

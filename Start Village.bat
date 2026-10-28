@@ -5,7 +5,7 @@ if not exist node_modules\vite\bin\vite.js (
  pause
  exit /b 1
 )
-echo Open http://127.0.0.1:5173 in your browser.
+echo Open http://127.0.0.1:5173/village/ in your browser.
 echo Close this window or press Ctrl+C to stop the preview.
 call npm.cmd run dev
 pause
