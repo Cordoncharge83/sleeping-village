@@ -20,17 +20,17 @@ function World(props:Props){
  const actor=useRef<THREE.Group>(null);const sim=useRef<Simulation|null>(null);
  const mixer=useMemo(()=>new THREE.AnimationMixer(traveler),[traveler]);
  const actions=useMemo(()=>Object.fromEntries(gltf.animations.map(clip=>[clip.name,mixer.clipAction(clip)])),[gltf,mixer]);
- const current=useRef('Idle');const input=useRef(new Set<string>());const look=useRef({yaw:0,pitch:.23,drag:false});const near=useRef<PlaceId|null>(null);const nearPage=useRef(0);const area=useRef<PlaceId|'arrival'>('arrival');
+ const current=useRef('Idle');const input=useRef(new Set<string>());const look=useRef({yaw:0,pitch:.23});const near=useRef<PlaceId|null>(null);const nearPage=useRef(0);const area=useRef<PlaceId|'arrival'>('arrival');
  const {camera,gl}=useThree();
  const view=useMemo(()=>({pivot:new THREE.Vector3(),motion:new InterpolatedPosition(),camera:new FollowCamera()}),[]);
  useEffect(()=>{let alive=true;createSimulation().then(s=>{if(!alive){s.dispose();return;}sim.current=s;view.motion.reset(s.body.translation());view.camera.reset();props.onReady();}).catch(e=>props.onError(String(e)));return()=>{alive=false;sim.current?.dispose();sim.current=null;};},[]);
  useEffect(()=>{actions.Idle.play();return()=>{mixer.stopAllAction();mixer.uncacheRoot(traveler);};},[actions,mixer,traveler]);
  useEffect(()=>{const down=(e:KeyboardEvent)=>{if(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight'].includes(e.code)&&props.active){e.preventDefault();input.current.add(e.code);}};
- const up=(e:KeyboardEvent)=>input.current.delete(e.code);const clear=()=>{input.current.clear();look.current.drag=false;};
- const move=(e:MouseEvent)=>{if(props.active&&(document.pointerLockElement===gl.domElement||look.current.drag)){look.current.yaw-=e.movementX*.0022*props.sensitivity;look.current.pitch=THREE.MathUtils.clamp(look.current.pitch+e.movementY*.0018*props.sensitivity,.03,.7);}};
- const mouseDown=(e:MouseEvent)=>{if(e.button===2)look.current.drag=true;};const mouseUp=()=>{look.current.drag=false;};const context=(e:Event)=>e.preventDefault();
- window.addEventListener('keydown',down);window.addEventListener('keyup',up);window.addEventListener('blur',clear);window.addEventListener('mousemove',move);window.addEventListener('mouseup',mouseUp);gl.domElement.addEventListener('mousedown',mouseDown);gl.domElement.addEventListener('contextmenu',context);
- return()=>{clear();window.removeEventListener('keydown',down);window.removeEventListener('keyup',up);window.removeEventListener('blur',clear);window.removeEventListener('mousemove',move);window.removeEventListener('mouseup',mouseUp);gl.domElement.removeEventListener('mousedown',mouseDown);gl.domElement.removeEventListener('contextmenu',context);};},[props.active,props.sensitivity,gl]);
+ const up=(e:KeyboardEvent)=>input.current.delete(e.code);const clear=()=>input.current.clear();
+ const move=(e:MouseEvent)=>{if(props.active){look.current.yaw-=e.movementX*.0022*props.sensitivity;look.current.pitch=THREE.MathUtils.clamp(look.current.pitch+e.movementY*.0018*props.sensitivity,.03,.7);}};
+ const context=(e:Event)=>{if(props.active)e.preventDefault();};
+ window.addEventListener('keydown',down);window.addEventListener('keyup',up);window.addEventListener('blur',clear);window.addEventListener('mousemove',move);gl.domElement.addEventListener('contextmenu',context);
+ return()=>{clear();window.removeEventListener('keydown',down);window.removeEventListener('keyup',up);window.removeEventListener('blur',clear);window.removeEventListener('mousemove',move);gl.domElement.removeEventListener('contextmenu',context);};},[props.active,props.sensitivity,gl]);
  useEffect(()=>{input.current.clear();},[props.active]);
  useEffect(()=>{const s=sim.current;if(s){s.reset();view.motion.reset(s.body.translation());}look.current.yaw=0;look.current.pitch=.23;view.camera.reset();},[props.reset]);
  useFrame((_,rawDelta)=>{
@@ -53,6 +53,7 @@ function World(props:Props){
   if(props.overview){camera.position.set(6,76,43);camera.lookAt(6,0,-1);}else{camera.position.copy(view.camera.position);camera.lookAt(view.camera.target);}
   gl.domElement.dataset.area=location;
   gl.domElement.dataset.position=`${p.x.toFixed(2)},${(p.y-.71).toFixed(2)},${p.z.toFixed(2)}`;
+  gl.domElement.dataset.look=`${look.current.yaw.toFixed(3)},${look.current.pitch.toFixed(3)}`;
  });
  return <><VillageScene gateOpen={props.gateOpen} discoveryCount={props.discoveryCount}/><InspectHighlights near={near} page={nearPage} active={props.active&&!props.overview}/><group ref={actor} position={[SPAWN[0],.02,SPAWN[2]]} rotation={[0,Math.PI,0]}><primitive object={traveler} scale={1.6}/></group></>;
 }

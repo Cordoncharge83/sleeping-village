@@ -77,9 +77,5 @@ button,input,.journal-shortcut>span,.menu-choices button,.ink-button,.wax-button
  .journal-index button,.locked-entry{min-height:58px;padding:9px 0}.journal-index strong{font-size:19px}
 }
 
-/* Do not resume movement until the browser has recaptured the mouse. */
-.resume-overlay{position:absolute;inset:0;z-index:5;display:grid;place-items:center;background:#14251c99;backdrop-filter:blur(3px)}
-.resume-overlay>div{text-align:center;max-width:390px;padding:28px}
-.resume-overlay .paper-button{display:flex;align-items:center;justify-content:space-between;gap:26px;margin:auto;border:1px solid #b49865;background:linear-gradient(100deg,#ddc797,#f5e5bd,#dbc393);color:#403322;padding:14px 24px;font:22px var(--font-ui);box-shadow:0 3px 0 #31251b}
-.resume-overlay p{font:15px/1.5 var(--font-ui);color:#f1e2bf}
-.resume-overlay .text-button{color:#f1e2bf}
+/* Hide the cursor immediately on returning to play, including capture retries. */
+.is-playing,.is-playing *{cursor:none!important}

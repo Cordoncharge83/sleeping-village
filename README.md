@@ -89,14 +89,13 @@ The repository includes a static-only Cloudflare Worker configuration. No game s
 | WASD or arrow keys | Walk |
 | Shift while moving | Run |
 | Mouse | Look around after entering the village |
-| Right mouse button + drag | Look around when pointer capture is unavailable |
 | E near a point of interest | Discover or revisit an entry; read the notice at the square |
 | J | Open or close the journal |
 | Left / right arrows while reading an entry | Turn its pages |
 | M | Toggle the overhead village map |
 | Esc | Pause during play; close the current journal or menu |
 
-The pause menu includes the journal, map, settings, return to the entrance, main menu, and Back to portfolio. Movement pauses while reading entries or menus. Resuming waits for mouse capture; if the browser requires a fresh gesture after Escape, a Click to continue screen restores capture without resuming movement early.
+The pause menu includes the journal, map, settings, return to the entrance, main menu, and Back to portfolio. Movement pauses while reading entries or menus. Closing a menu resumes play and mouse-look immediately and hides the cursor. Native mouse capture is requested directly; browsers that require another gesture after Escape retry on the next movement key or canvas click. Ordinary mouse-look remains available during that retry, with no extra screen. Until native capture succeeds, mouse movement is limited by the browser window edges.
 
 ## Build and checks
 

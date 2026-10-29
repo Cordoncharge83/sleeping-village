@@ -1,36 +1,50 @@
 import assert from 'node:assert/strict';
 import {MouseCaptureSession,type CaptureTarget} from '../src/mouse-capture.ts';
 let lock:object|null=null;
-const events:string[]=[];
-const capture=new MouseCaptureSession(()=>lock,{waiting:()=>events.push('waiting'),ready:()=>events.push('ready'),failed:()=>events.push('failed')});
+const capture=new MouseCaptureSession(()=>lock);
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
 
-// A resolved request alone does not authorize movement if the cursor is still free.
-const empty:CaptureTarget={requestPointerLock:()=>Promise.resolve()};
-capture.request(empty);await tick();assert.deepEqual(events,['waiting']);
-lock=empty;assert.equal(capture.sync(),true);assert.deepEqual(events,['waiting','ready']);
-capture.sync();assert.equal(events.filter(e=>e==='ready').length,1,'Promise/event confirmations do not resume twice');
-capture.cancel();lock=null;events.length=0;
+// A denied Escape request can retry from the next ordinary input gesture.
+let attempts=0;
+const retry:CaptureTarget={requestPointerLock:()=>{
+ if(attempts++===0)return Promise.reject(new DOMException('Gesture needed','NotAllowedError'));
+ lock=retry;return Promise.resolve();
+}};
+capture.request(retry);await tick();assert.equal(capture.sync(),false);
+capture.request(retry);await tick();assert.equal(capture.sync(),true);assert.equal(attempts,2);
+capture.request(retry);assert.equal(attempts,2,'An already captured canvas is not requested again');
+capture.cancel();lock=null;
 
-// Escape can require a fresh gesture. The failed attempt stays out of play; retry can succeed.
-let attempt=0;
-const retry:CaptureTarget={requestPointerLock:()=>{if(attempt++===0)return Promise.reject(new DOMException('Click required','NotAllowedError'));lock=retry;return Promise.resolve();}};
-capture.request(retry);await tick();assert.deepEqual(events,['waiting','failed']);
-capture.request(retry);await tick();assert.deepEqual(events,['waiting','failed','waiting','ready']);
-capture.cancel();lock=null;events.length=0;
+// Rapid keyboard/click input must not stack native requests while one is pending.
+let resolvePending!:()=>void;
+attempts=0;
+const pending:CaptureTarget={requestPointerLock:()=>{attempts++;return new Promise<void>(resolve=>{resolvePending=resolve;});}};
+capture.request(pending);capture.request(pending);assert.equal(attempts,1);
+lock=pending;resolvePending();await tick();assert.equal(capture.sync(),true);
+capture.cancel();lock=null;
 
-// Older implementations signal capture solely through pointerlockchange.
-const legacy:CaptureTarget={requestPointerLock:()=>{}};
-capture.request(legacy);assert.deepEqual(events,['waiting']);capture.fail(new DOMException('Gesture needed','NotAllowedError'));assert.deepEqual(events,['waiting','failed']);lock=legacy;capture.sync();assert.deepEqual(events,['waiting','failed','ready']);
-capture.cancel();lock=null;events.length=0;
+// Legacy browsers use pointerlockerror and pointerlockchange instead of a promise.
+attempts=0;
+const legacy:CaptureTarget={requestPointerLock:()=>{attempts++;}};
+capture.request(legacy);capture.fail();capture.request(legacy);assert.equal(attempts,2);
+lock=legacy;assert.equal(capture.sync(),true);assert.equal(capture.sync(),true);
+capture.cancel();lock=null;
 
-// Returning to a menu invalidates a late result from an outstanding request.
-let resolveLate!:()=>void;
-const late:CaptureTarget={requestPointerLock:()=>new Promise<void>(resolve=>{resolveLate=resolve;})};
-capture.request(late);capture.cancel();lock=late;resolveLate();await tick();assert.equal(capture.sync(),false);assert.deepEqual(events,['waiting']);
-lock=null;events.length=0;
-const broken:CaptureTarget={requestPointerLock:()=>{throw new DOMException('Embedded document','WrongDocumentError');}};
-capture.request(broken);assert.deepEqual(events,['waiting','failed']);capture.cancel();events.length=0;
-capture.request(null);assert.deepEqual(events,['waiting','failed']);capture.cancel();events.length=0;
-lock=legacy;capture.request(legacy);assert.deepEqual(events,['ready'],'Already captured resumes immediately');
-console.log('PASS: capture required before play, Escape denial/retry, promise and event APIs, duplicate events, cancelled requests, unsupported capture, and already-captured resume.');
+// Returning to menus invalidates late completion; it never resumes gameplay.
+capture.request(pending);capture.cancel();lock=pending;resolvePending();await tick();assert.equal(capture.sync(),false);
+lock=null;
+
+// A stale rejection must not clear a newer request's pending guard.
+let rejectOld!:(reason:unknown)=>void;
+const old:CaptureTarget={requestPointerLock:()=>new Promise<void>((_,reject)=>{rejectOld=reject;})};
+capture.request(old);capture.cancel();attempts=0;capture.request(pending);
+rejectOld(new DOMException('Old failure','NotAllowedError'));await tick();capture.request(pending);
+assert.equal(attempts,1);capture.cancel();resolvePending();await tick();
+
+// Unsupported or embedded browsers cannot throw into the game loop or trap menus.
+attempts=0;
+const broken:CaptureTarget={requestPointerLock:()=>{attempts++;throw new DOMException('Embedded document','WrongDocumentError');}};
+assert.doesNotThrow(()=>capture.request(broken));capture.request(broken);assert.equal(attempts,2);
+assert.doesNotThrow(()=>capture.request(null));assert.equal(capture.sync(),false);
+capture.cancel();
+console.log('PASS: immediate resume capture retries, pending deduplication, promise and event APIs, cancelled requests, stale failures, and unsupported browsers.');
