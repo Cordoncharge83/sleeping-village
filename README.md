@@ -28,9 +28,10 @@ The entrance has a welcome/tutorial sign, and the square provides directions. Si
 
 - An animated traveler with walking and sprinting, an over-the-shoulder camera, collision handling, and camera clearance around walls and furniture. Movement is grounded, with no jumping or climbing.
 - A village with six open-front destinations, eight closed background cottages, branching paths, a central tree and benches, woodland borders, and a sunset palette with deeper forest greens and warm lantern light.
-- A detailed Story & Supper tavern with a discoverable ledger, serving counter, shelves, reading and supper tables, benches, terrace seating, candles, and other props.
+- A detailed Story & Supper tavern with a discoverable ledger, serving counter, shelves, reading and supper tables, a cream couch with mustard patterned pillows, crimson accents, terrace seating, candles, and other props.
 - Six main journal discoveries plus a bonus future-project chapter. The northern garden gate physically blocks passage until all six main entries are discovered, then opens automatically. New discoveries show a notice; revisiting an entry does not unlock it again. Unwritten entries show clues.
 - A journal with Contents as its single global bookmark. Each entry has its own page arrows, section label, and keyboard navigation.
+- Taped overview photographs for all four project entries, separate from their full gallery screenshots, plus a traveler favicon.
 - Matching welcome, pause, settings, map, notice, interaction prompts, and HUD, using leather, parchment, and cloth-bookmark styling.
 - The **Worn Traveler’s Journal** font pairing: IM Fell English for titles, Alegreya for reading, and Alegreya Sans for controls. Font files are bundled with the game.
 - Mouse sensitivity and low-graphics settings, modal keyboard navigation, reduced-motion styling, and stacked journal pages for narrow windows.

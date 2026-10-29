@@ -125,7 +125,12 @@ try {
    for(let i=0;i<90;i++)s.step(-Math.sin(b.rotation)*WALK_SPEED/60,-Math.cos(b.rotation)*WALK_SPEED/60);
    p=s.body.translation();
    assert.ok((p.x-b.at[0])*Math.sin(b.rotation)+(p.z-b.at[1])*Math.cos(b.rotation)>-1.5,'Serving counter blocks walking through it');
-   walkTo(localPoint(b,0,.15));walkTo(places[b.id].at);
+   // The wider couch must block the player while preserving the entrance and ledger route.
+   walkTo(localPoint(b,0,1.9));walkTo(localPoint(b,2.35,1.9));
+   for(let i=0;i<60;i++)s.step(-Math.sin(b.rotation)*WALK_SPEED/60,-Math.cos(b.rotation)*WALK_SPEED/60);
+   p=s.body.translation();
+   assert.ok((p.x-b.at[0])*Math.sin(b.rotation)+(p.z-b.at[1])*Math.cos(b.rotation)>1.6,'Couch arm blocks walking through the seating');
+   walkTo(localPoint(b,2.35,1.9));walkTo(localPoint(b,0,1.9));walkTo(localPoint(b,0,.15));walkTo(places[b.id].at);
   }
   if(b.id!=='duel'){
    const origin=localPoint(b,0,-2);

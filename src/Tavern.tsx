@@ -2,6 +2,7 @@ import {useEffect,useMemo} from 'react';
 import * as THREE from 'three';
 import {Model,Box,Sign,Bench,Table} from './SceneObjects';
 import {tavernLayout,type Vec3} from './village';
+import {SmoshCouch} from './SmoshCouch';
 
 function Mug({position,rotation=0}:{position:Vec3;rotation?:number}){return <group position={position} rotation={[0,rotation,0]}>
  <mesh castShadow><cylinderGeometry args={[.09,.07,.19,10]}/><meshStandardMaterial color="#b98659" roughness={.8}/></mesh>
@@ -34,8 +35,8 @@ function Ledger(){
  </group>;
 }
 export function Tavern(){return <>
- {/* A quiet red accent connects this room to the live archive. The middle stays open. */}
- <Box p={[0,.091,.3]} s={[1.65,.012,4.6]} color="#6d3930"/>
+ {/* Crimson, cream and mustard connect the room to the archive and its couch. */}
+ <Box p={[0,.091,.3]} s={[1.65,.012,4.6]} color="#9d3047"/>
  {[-.76,.76].map(x=><Box key={x} p={[x,.1,.3]} s={[.035,.008,4.4]} color="#bc9459"/>)}
  <Box p={tavernLayout.counter.p} s={tavernLayout.counter.s} color="#6e4633"/>
  <Box p={[0,1.21,-2.12]} s={[4.9,.13,.94]} color="#a77b4f"/>
@@ -50,18 +51,18 @@ export function Tavern(){return <>
  <Table position={[-1.55,.09,.15]} scale={[1.5,1,1.65]}/><Ledger/>
  <Model name="Book_Stack_1" position={[-1.85,1.12,-.38]} scale={.65} rotation={.2}/><Candle position={[-1.05,1.12,-.3]}/>
  <Sign title="THE STORY LEDGER" subtitle="Smosh Story Finder" position={[-1.55,.77,1.01]} width={1.36}/>
- <Bench position={[2.44,.09,.1]} rotation={Math.PI/2} length={2.65}/>
- <Table position={[1.57,.09,.05]} scale={[.85,1,1.7]}/>
- <Mug position={[1.55,1.22,.55]} rotation={-.5}/><Mug position={[1.65,1.22,-.45]} rotation={2}/><Candle position={[1.5,1.12,.05]}/>
+ <SmoshCouch/>
+ <Table position={[tavernLayout.supper.p[0],.09,tavernLayout.supper.p[2]]} scale={[.85,1,1.7]}/>
+ <Mug position={[1.25,1.22,.55]} rotation={-.5}/><Mug position={[1.38,1.22,-.45]} rotation={2}/><Candle position={[1.28,1.12,.05]}/>
  <Model name="Barrel" position={[-2.38,.09,-1.45]} scale={.7}/>
  <Model name="Lantern_Wall" position={[-2.68,1.4,.3]} scale={.5} rotation={Math.PI/2}/>
  <pointLight position={[-1.7,2,.2]} color="#ffbb79" intensity={8} distance={5} decay={2}/>
  {/* Canvas awning and terrace benches frame a generous central approach. */}
  <group position={[0,3.13,3.78]} rotation={[.12,0,0]}>
-  <Box p={[0,0,0]} s={[5.7,.055,1.65]} color="#7f4035"/>
+  <Box p={[0,0,0]} s={[5.7,.055,1.65]} color="#a2384c"/>
   {[-2,-1,0,1,2].map(x=><Box key={x} p={[x,.031,0]} s={[.05,.008,1.65]} color="#c39a62"/>)}
  </group>
- <Box p={[0,2.99,4.58]} s={[5.7,.25,.055]} color="#7f4035"/>
+ <Box p={[0,2.99,4.58]} s={[5.7,.25,.055]} color="#a2384c"/>
  {[-1,1].map(x=><Box key={x} p={[x,3.3,4.59]} s={[.075,.6,.075]}/>)}
  <Bench position={[-2.1,.08,4.7]} rotation={Math.PI/2}/><Bench position={[2.1,.08,4.7]} rotation={Math.PI/2}/>
  {[-2.55,2.55].map(x=><group key={x}>

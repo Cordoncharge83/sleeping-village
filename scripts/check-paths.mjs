@@ -21,6 +21,7 @@ const html=await htmlResponse.text();
 const entryPaths=[...html.matchAll(/(?:src|href)="([^"]+)"/g)].map(m=>m[1]);
 assert.ok(entryPaths.some(p=>p.endsWith('.js')),'Production entry script missing');
 assert.ok(!html.includes('/src/main.tsx'),'Use the built preview for this check');
+assert.match(html,/<link[^>]+rel="icon"[^>]+href="\/village\/favicon\.svg"/,'Favicon must resolve under /village/');
 for(const path of entryPaths){
  const url=new URL(path,base),bytes=await resource(url);
  if(url.pathname.endsWith('.css')){
@@ -41,8 +42,9 @@ for(const path of Object.values(models)){
  }
 }
 const journal=await readFile(new URL('../src/journal-data.ts',import.meta.url),'utf8');
-for(const [,path] of journal.matchAll(/image:'([^']+)'/g)){
+const journalImages=new Set([...journal.matchAll(/image:'([^']+)'/g)].map(m=>m[1]));
+for(const path of journalImages){
  const bytes=await resource(new URL(base.pathname+path.replace(/^\/+/,''),base));
  assert.equal(bytes.toString('hex',0,8),'89504e470d0a1a0a','Expected a PNG screenshot');
 }
-console.log(`PASS: /village/ production entry, bundles, fonts, ${Object.keys(models).length} models and their dependencies, and four journal screenshots (${checked.size} unique resources).`);
+console.log(`PASS: /village/ production entry, favicon, bundles, fonts, ${Object.keys(models).length} models and their dependencies, and ${journalImages.size} journal screenshots (${checked.size} unique resources).`);

@@ -27,7 +27,7 @@ export default function Journal({discovered,initialEntry,initialPage,onClose,sto
      <div className="page-topline">{entry?'A place discovered':'Notes from the village'}</div>
      <h1>{entry?entry.place:'The traveler’s journal'}</h1>
      {entry?<>
-      {selected==='smosh'?<figure className="pinned-photo"><img src={publicAssetUrl('/images/smosh/story-grid.png')} alt="Smosh Story Finder story cards with a revealed episode and timestamp"/><figcaption>A story, found again.</figcaption></figure>:<div className="entry-emblem"><BookIcon/><span>{entry.summary}</span></div>}
+      {entry.preview?<figure className="pinned-photo"><img src={publicAssetUrl(entry.preview.image)} alt={entry.preview.alt}/><figcaption>{entry.preview.caption}</figcaption></figure>:<div className="entry-emblem"><BookIcon/><span>{entry.summary}</span></div>}
       <div className="journal-stamp">{entry.status}</div><p className="entry-title">{entry.title}</p>
       {entry.link&&<a className="wax-button" href={entry.link} target="_blank" rel="noopener noreferrer">Visit the live archive <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a>}
       {selected==='smosh'&&<small className="page-note">Independent fan-made project. Smosh and its branding belong to their respective owners.</small>}
