@@ -36,6 +36,8 @@ The entrance has a welcome/tutorial sign, and the square provides directions. Si
 - The **Worn Traveler’s Journal** font pairing: IM Fell English for titles, Alegreya for reading, and Alegreya Sans for controls. Font files are bundled with the game.
 - Mouse sensitivity and low-graphics settings, modal keyboard navigation, reduced-motion styling, and stacked journal pages for narrow windows.
 - Automated checks for physics, camera movement, and discovery persistence, plus recorded visual checks in `planning/`.
+- Distance-based walking/running footsteps with earth, grass and wood textures; a paper-and-chime world interaction cue; stereo wind and leaves; and a quiet original magical ambient score. Sound is synthesized with Web Audio, with no extra asset downloads or dependencies.
+- Master mute and independent overall, effects, nature and music volumes in Pause → Settings. Sound preferences persist in this browser. Audio fades lower in menus and suspends when the page loses focus or is hidden.
 
 ### Saved discoveries
 
@@ -99,6 +101,8 @@ The repository includes a static-only Cloudflare Worker configuration. No game s
 The pause menu includes the journal, map, settings, return to the entrance, main menu, and Back to portfolio. Movement pauses while reading entries or menus. Closing a menu resumes play and mouse-look immediately and hides the cursor. Native mouse capture is requested directly; browsers that require another gesture after Escape retry on the next movement key or canvas click. Ordinary mouse-look remains available during that retry, with no extra screen. Until native capture succeeds, mouse movement is limited by the browser window edges.
 
 Gallery pages keep the same journal size, with larger screenshots and notes alongside them. After the sixth village story is discovered and its journal is closed, a brief announcement directs the player toward the newly opened northern garden gate.
+
+Sound starts from a normal user interaction, never automatically on page load. Footsteps follow actual distance traveled, so standing still or pushing against a wall stays quiet; menus stop footfalls immediately. The background is deliberately restrained, with music at 10% by default. All sound settings are stored separately from journal discoveries under `sleeping-village.sound.v1`.
 
 ## Build and checks
 

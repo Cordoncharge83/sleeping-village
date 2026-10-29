@@ -12,8 +12,9 @@ import {SPAWN,nearbyPlace,workshopStationAt,schoolhouseStationAt,currentArea,typ
 import {WALK_SPEED,RUN_SPEED} from './tuning';
 import {FollowCamera,InterpolatedPosition,PHYSICS_STEP} from './player-view';
 import {atmosphere} from './atmosphere';
+import type {VillageAudio} from './audio';
 
-type Props={active:boolean;overview:boolean;sensitivity:number;low:boolean;reset:number;gateOpen:boolean;discoveryCount:number;onNear:(near:PlaceId|null,page:number)=>void;onArea:(area:PlaceId|'arrival')=>void;onReady:()=>void;onError:(message:string)=>void};
+type Props={active:boolean;overview:boolean;sensitivity:number;low:boolean;reset:number;gateOpen:boolean;discoveryCount:number;audio:VillageAudio;onNear:(near:PlaceId|null,page:number)=>void;onArea:(area:PlaceId|'arrival')=>void;onReady:()=>void;onError:(message:string)=>void};
 function World(props:Props){
  const gltf=useLoader(GLTFLoader,publicAssetUrl(assets.Traveler));
  const traveler=useMemo(()=>{const o=clone(gltf.scene);o.traverse(n=>{if(n instanceof THREE.Mesh){n.castShadow=true;n.receiveShadow=true;}});return o;},[gltf]);
@@ -32,7 +33,7 @@ function World(props:Props){
  window.addEventListener('keydown',down);window.addEventListener('keyup',up);window.addEventListener('blur',clear);window.addEventListener('mousemove',move);gl.domElement.addEventListener('contextmenu',context);
  return()=>{clear();window.removeEventListener('keydown',down);window.removeEventListener('keyup',up);window.removeEventListener('blur',clear);window.removeEventListener('mousemove',move);gl.domElement.removeEventListener('contextmenu',context);};},[props.active,props.sensitivity,gl]);
  useEffect(()=>{input.current.clear();},[props.active]);
- useEffect(()=>{const s=sim.current;if(s){s.reset();view.motion.reset(s.body.translation());}look.current.yaw=0;look.current.pitch=.23;view.camera.reset();},[props.reset]);
+ useEffect(()=>{const s=sim.current;if(s){s.reset();view.motion.reset(s.body.translation());}look.current.yaw=0;look.current.pitch=.23;view.camera.reset();props.audio.resetSteps();},[props.reset]);
  useFrame((_,rawDelta)=>{
   const s=sim.current;if(!s||!actor.current)return;const dt=Math.min(rawDelta,.06),keys=input.current;
   s.setGateOpen(props.gateOpen);
@@ -42,6 +43,7 @@ function World(props:Props){
   const len=Math.hypot(x,z)||1;x/=len;z/=len;const yaw=look.current.yaw;
   const dx=x*Math.cos(yaw)+z*Math.sin(yaw),dz=-x*Math.sin(yaw)+z*Math.cos(yaw),speed=running?RUN_SPEED:WALK_SPEED;
   const p=view.motion.advance(dt,()=>{s.step(dx*speed*PHYSICS_STEP,dz*speed*PHYSICS_STEP);return s.body.translation();});
+  props.audio.step(p.x,p.z,dt,props.active,running);
   actor.current.position.set(p.x,p.y-.71,p.z);
   if(moving){const target=Math.atan2(dx,dz),a=actor.current.rotation.y;actor.current.rotation.y=a+Math.atan2(Math.sin(target-a),Math.cos(target-a))*(1-Math.exp(-12*dt));}
   const clip=moving?(running?'Run':'Walk'):'Idle';if(current.current!==clip){actions[current.current]?.fadeOut(.2);actions[clip].reset().fadeIn(.2).play();current.current=clip;}
@@ -54,6 +56,9 @@ function World(props:Props){
   gl.domElement.dataset.area=location;
   gl.domElement.dataset.position=`${p.x.toFixed(2)},${(p.y-.71).toFixed(2)},${p.z.toFixed(2)}`;
   gl.domElement.dataset.look=`${look.current.yaw.toFixed(3)},${look.current.pitch.toFixed(3)}`;
+  gl.domElement.dataset.audioState=props.audio.state;
+  gl.domElement.dataset.footsteps=String(props.audio.stepCount);
+  gl.domElement.dataset.interactions=String(props.audio.interactionCount);
  });
  return <><VillageScene gateOpen={props.gateOpen} discoveryCount={props.discoveryCount}/><InspectHighlights near={near} page={nearPage} active={props.active&&!props.overview}/><group ref={actor} position={[SPAWN[0],.02,SPAWN[2]]} rotation={[0,Math.PI,0]}><primitive object={traveler} scale={1.6}/></group></>;
 }

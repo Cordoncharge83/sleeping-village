@@ -84,6 +84,13 @@ button,input,.journal-shortcut>span,.menu-choices button,.ink-button,.wax-button
 /* Hide the cursor immediately on returning to play, including capture retries. */
 .is-playing,.is-playing *{cursor:none!important}
 
+.sound-settings{border:0;border-top:1px solid #9b805355;padding:14px 0 0;margin:24px 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px}
+.sound-settings legend{padding-right:12px;font:24px var(--font-title)}
+.settings .sound-settings label{margin:0;font-size:14px;line-height:1.35}
+.settings .sound-settings output{font-size:13px}
+.settings .sound-settings input[type=range]{margin:10px 0 0}
+.settings .sound-settings .check{grid-column:1/-1;font-size:16px}
+
 .gate-open-notice{position:absolute;z-index:4;top:23%;left:50%;transform:translateX(-50%);width:min(520px,calc(100vw - 40px));padding:20px 28px;text-align:center;pointer-events:none;color:#f8e6b9;background:linear-gradient(100deg,#20372bf2,#344b39f2,#20372bf2);border-block:1px solid #c5a46b;box-shadow:0 10px 35px #101a1644;animation:gate-revealed ease-in-out both}
 .gate-open-notice>span{display:block;font:12px var(--font-ui);text-transform:uppercase;letter-spacing:2px;color:#d4b778}
 .gate-open-notice strong{display:block;margin:10px 0;font:32px/1.15 var(--font-title);font-weight:400}
