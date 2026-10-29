@@ -144,7 +144,7 @@ Manart and the penguin board game remain future-project entries, with their actu
 
 Git tracks source, configuration, the lockfile, planning notes and screenshots, and the assets, fonts, and licenses needed to run the game. `.gitignore` excludes dependencies, caches, build/test output, original asset packs, local environment files and credentials, personal editor settings, temporary files, and obsolete cloud-transfer materials. Ignored files remain on disk. Keep `package-lock.json` and the files in `public/` tracked so a checkout stays reproducible.
 
-The first checkpoint, `6de0b7e`, captures the village and journal prototype as it existed when Git was introduced. Earlier iterations were not individually tracked. Development checkpoints are saved locally; no remote is configured and nothing has been pushed.
+The first checkpoint, `6de0b7e`, captures the village and journal prototype as it existed when Git was introduced. Earlier iterations were not individually tracked. Development checkpoints are tracked in Git and pushed to [Cordoncharge83/sleeping-village](https://github.com/Cordoncharge83/sleeping-village). The local `main` branch tracks `origin/main`; the repository contains the existing project history.
 
 Use `git status` and `git diff` to review pending changes, and `git log --oneline` to see checkpoints. To record a reviewed milestone:
 
