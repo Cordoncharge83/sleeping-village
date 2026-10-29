@@ -6,6 +6,8 @@ node_modules/
 
 # Generated builds, tooling caches, and test reports.
 /dist/
+/cloudflare-dist/
+.wrangler/
 /build/
 /coverage/
 /.nyc_output/

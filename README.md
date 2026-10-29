@@ -68,6 +68,20 @@ npm run check:paths
 
 The preview listens on this computer’s loopback address. Port 5173 must be available. If PowerShell blocks npm’s script wrapper, use `npm.cmd` for the same commands.
 
+### Deploy on Cloudflare
+
+The repository includes a static-only Cloudflare Worker configuration. No game server, database, or local Cloudflare tool installation is required. See [planning/CLOUDFLARE_DEPLOYMENT.md](planning/CLOUDFLARE_DEPLOYMENT.md) for dashboard steps and the final domain route.
+
+| Workers Builds setting | Value |
+| --- | --- |
+| Worker name | `sleeping-village` |
+| Repository and branch | `Cordoncharge83/sleeping-village`, `main` |
+| Root directory | Repository root (`/`) |
+| Build command | `npm run build:cloudflare` |
+| Deploy command | `npx wrangler deploy` |
+
+`build:cloudflare` packages the Vite build into `cloudflare-dist/village/`. This mirrors `/village/` in the deployed static asset paths; simply uploading `dist/` at the Worker root would lose that mapping. Generated output stays ignored. The initial `workers.dev` root redirects to `/village/`. Custom domain routes are deliberately left out until the regular portfolio has been deployed.
+
 ### Controls
 
 | Input | Action |
