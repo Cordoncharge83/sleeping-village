@@ -154,5 +154,5 @@ export function VillageScene({gateOpen,discoveryCount}:{gateOpen:boolean;discove
  <FutureClearing/>
  <GardenGate open={gateOpen} count={discoveryCount}/>
  <Box p={welcomePost.p} s={welcomePost.s}/><Sign title="WELCOME, TRAVELER" subtitle="E · Read the welcome sign" position={[6,1.8,19]} width={2.8}/>
- <Sign title="THE OLD-TREE SQUARE" subtitle="Learning & work ←    Projects →" position={[0,1.9,.1]} width={2.8}/>
+ <Sign title="THE OLD-TREE SQUARE" subtitle="" directions={{left:'Learning & work',right:'Projects'}} position={[0,1.9,.1]} width={3.4}/>
  </>;}

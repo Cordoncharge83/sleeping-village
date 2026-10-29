@@ -22,7 +22,7 @@ export default function Journal({discovered,initialEntry,initialPage,onClose,sto
   <div className="journal-shell" onKeyDown={keys}>
    <div className="journal-heading"><span>THE TRAVELER’S JOURNAL</span><button className="close-book" autoFocus onClick={onClose} aria-label="Close journal">×</button></div>
    <nav className="bookmarks" aria-label="Journal navigation"><button onClick={()=>choose(null)} aria-pressed={!selected} className={!selected?'active':''}>Contents</button></nav>
-   <div className={`open-book${current?.image?' gallery-spread':''}`}>
+   <div className={`open-book${current?.image?' gallery-spread':''}${current?.imageLayout==='portrait'?' portrait-gallery':''}`}>
     <section className="book-page left-page">
      <div className="page-topline">{entry?'A place discovered':'Notes from the village'}</div>
      <h1>{entry?entry.place:'The traveler’s journal'}</h1>
@@ -47,9 +47,8 @@ export default function Journal({discovered,initialEntry,initialPage,onClose,sto
        {unlocked(id)?<button onClick={()=>choose(id)}><span className="index-number">{id==='future'?'✦':String(i+1).padStart(2,'0')}</span><span><strong>{entries[id].title}</strong><small>{id==='future'?'Bonus chapter · ':''}{entries[id].place}</small></span><span aria-hidden="true">›</span></button>:<div className="locked-entry"><span className="index-number">{id==='future'?'✦':'?'}</span><span><strong>{id==='future'?'Beyond the garden gate':'Unwritten entry'}</strong><small>{entries[id].clue}</small></span></div>}
       </li>)}</ol><p className="page-note">Walk up to a point of interest and press E. Open this journal again with J.</p>
      </>:<>
-      <div className="page-topline">{entry.title}</div><div key={`${selected}-${page}`} className="page-copy"><h2>{current!.heading}</h2>
-       {current!.image&&<figure className="gallery-image"><a href={publicAssetUrl(current!.image)} target="_blank" rel="noopener noreferrer" aria-label="Enlarge screenshot in a new tab"><img src={publicAssetUrl(current!.image)} alt={current!.alt}/></a><figcaption>{current!.caption} · Select to enlarge</figcaption></figure>}
-       {current!.paragraphs.map(p=><p key={p}>{p}</p>)}
+      <div className="page-topline">{entry.title}</div><div key={`${selected}-${page}`} className="page-copy">{!current!.image&&<h2>{current!.heading}</h2>}
+       {current!.image?<><figure className="gallery-image"><a href={publicAssetUrl(current!.image)} target="_blank" rel="noopener noreferrer" aria-label="Enlarge screenshot in a new tab"><img src={publicAssetUrl(current!.image)} alt={current!.alt}/></a><figcaption>{current!.caption} · Select to enlarge</figcaption></figure><div className="gallery-notes"><h2>{current!.heading}</h2>{current!.paragraphs.map(p=><p key={p}>{p}</p>)}</div></>:current!.paragraphs.map(p=><p key={p}>{p}</p>)}
       </div>
       <nav className="page-turner" aria-label="Turn entry pages"><button disabled={page===0} onClick={()=>turn(-1)} aria-label="Previous page">‹</button><span aria-live="polite">{current!.tab} · {page+1} / {entry.pages.length}</span><button disabled={page===entry.pages.length-1} onClick={()=>turn(1)} aria-label="Next page">›</button></nav>
      </>}

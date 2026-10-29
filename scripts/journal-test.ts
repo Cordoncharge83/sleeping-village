@@ -39,3 +39,15 @@ assert.equal(saveDiscoveries(storage,[...mainEntryIds]),true);
 assert.equal(hasAllDiscoveries(loadDiscoveries(storage)),true,'Gate reopens from saved discoveries');
 assert.equal(hasAllDiscoveries(first.entries),false,'Reading entries must not create additional discovery records');
 console.log('Gate progression passed: all six required, bonus excluded, old saves preserved, reload restored.');
+
+// Whichever main entry comes last must trigger exactly one new-gate announcement.
+for(const last of mainEntryIds){
+ const before=mainEntryIds.filter(id=>id!==last),completion=discover(before,last);
+ assert.equal(completion.openedGate,true,`${last} can be the final discovery`);
+ assert.equal(discover(completion.entries,last).openedGate,false,'Re-reading does not announce again');
+ assert.equal(discover(completion.entries,'future').openedGate,false,'Bonus discovery does not announce again');
+ assert.equal(discover(before,'future').openedGate,false,'Bonus discovery cannot replace the missing main entry');
+}
+assert.equal(first.openedGate,false);
+assert.equal(discover(loadDiscoveries(storage),'smosh').openedGate,false,'An old completed save does not announce a new gate');
+console.log('Gate reveal passed: every final-entry order, duplicate and bonus discoveries, incomplete and completed saved journeys.');

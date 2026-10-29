@@ -97,6 +97,8 @@ The repository includes a static-only Cloudflare Worker configuration. No game s
 
 The pause menu includes the journal, map, settings, return to the entrance, main menu, and Back to portfolio. Movement pauses while reading entries or menus. Closing a menu resumes play and mouse-look immediately and hides the cursor. Native mouse capture is requested directly; browsers that require another gesture after Escape retry on the next movement key or canvas click. Ordinary mouse-look remains available during that retry, with no extra screen. Until native capture succeeds, mouse movement is limited by the browser window edges.
 
+Gallery pages keep the same journal size, with larger screenshots and notes alongside them. After the sixth village story is discovered and its journal is closed, a brief announcement directs the player toward the newly opened northern garden gate.
+
 ## Build and checks
 
 | Command | Purpose |

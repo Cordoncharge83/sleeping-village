@@ -17,16 +17,25 @@ export function Model({name,position=[0,0,0],rotation=0,scale=1,shadow=true}:{na
 export function Box({p,s,color='#584130',rotation=0}:{p:Vec3;s:Vec3;color?:string;rotation?:number}){
  return <mesh position={p} rotation={[0,rotation,0]} castShadow receiveShadow><boxGeometry args={s}/><meshStandardMaterial color={color} roughness={.95}/></mesh>;
 }
-export function Sign({title,subtitle,position,width=3,rotation=0}:{title:string;subtitle:string;position:Vec3;width?:number;rotation?:number}){
+export function Sign({title,subtitle,position,width=3,rotation=0,directions}:{title:string;subtitle:string;position:Vec3;width?:number;rotation?:number;directions?:{left:string;right:string}}){
  const texture=useMemo(()=>{
   const c=document.createElement('canvas');c.width=1024;c.height=256;const ctx=c.getContext('2d')!;
   ctx.fillStyle='#34483a';ctx.fillRect(0,0,1024,256);
   ctx.strokeStyle='#c5aa73';ctx.lineWidth=3;ctx.strokeRect(12,12,1000,232);
   ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#fff3d2';
   ctx.font='500 54px Georgia';ctx.fillText(title,512,89,950);
-  ctx.fillStyle='#e4ce9f';ctx.font='32px Arial';ctx.fillText(subtitle,512,176,940);
+  ctx.fillStyle='#e4ce9f';
+  if(directions){
+   ctx.font='bold 39px Arial';ctx.textAlign='left';ctx.fillText(directions.left,166,178,310);
+   ctx.textAlign='right';ctx.fillText(directions.right,858,178,310);
+   ctx.strokeStyle='#e4ce9f';ctx.lineWidth=8;ctx.lineCap='round';ctx.lineJoin='round';
+   for(const [tip,tail,head] of [[65,137,91],[959,887,933]]){
+    ctx.beginPath();ctx.moveTo(tail,178);ctx.lineTo(tip,178);ctx.lineTo(head,152);ctx.moveTo(tip,178);ctx.lineTo(head,204);ctx.stroke();
+   }
+   ctx.strokeStyle='#c5aa7377';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(512,146);ctx.lineTo(512,214);ctx.stroke();
+  }else{ctx.font='32px Arial';ctx.fillText(subtitle,512,176,940);}
   const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=4;return t;
- },[title,subtitle]);
+ },[title,subtitle,directions?.left,directions?.right]);
  useEffect(()=>()=>texture.dispose(),[texture]);
  return <group position={position} rotation={[0,rotation,0]}>
   <Box p={[0,0,0]} s={[width+.1,width/4+.08,.1]}/>

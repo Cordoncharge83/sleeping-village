@@ -51,11 +51,14 @@ button,input,.journal-shortcut>span,.menu-choices button,.ink-button,.wax-button
 .journal-index{min-height:0;overflow-y:auto;flex:1;padding-right:8px;overscroll-behavior:contain;scrollbar-width:thin}
 .journal-controls{height:48px;min-height:48px;overflow-y:auto;padding:16px 12px 2px}
 .journal-controls .discovery-inline{max-width:100%;font-size:14px}
-.gallery-spread .page-copy{display:flex;flex-direction:column}
-.gallery-spread .page-copy h2{flex-shrink:0;margin:16px 0}
-.gallery-spread .gallery-image{margin:6px 0 10px;min-height:100px;flex:1;display:flex;flex-direction:column}
-.gallery-spread .gallery-image a{min-height:0;flex:1;display:flex;justify-content:center;align-items:center;background:#f7f0df;box-shadow:0 3px 8px #694c2933}
-.gallery-spread .gallery-image img{width:100%;height:100%;min-height:0;max-height:100%;object-fit:contain;box-shadow:none}
+.gallery-spread .page-copy{display:grid;grid-template-columns:minmax(0,3fr) minmax(200px,1.1fr);gap:28px;align-items:stretch;padding:18px 0 0;overflow:hidden}
+.portrait-gallery .page-copy{grid-template-columns:minmax(0,1fr) minmax(220px,1fr)}
+.gallery-spread .gallery-notes{align-self:center;min-width:0}
+.gallery-spread .gallery-notes h2{font-size:30px;line-height:1.15;margin:0 0 20px}
+.gallery-spread .gallery-notes p{font-size:19px;line-height:1.55;margin:0}
+.gallery-spread .gallery-image{margin:0;min-width:0;min-height:0;display:flex;flex-direction:column}
+.gallery-spread .gallery-image a{min-height:0;flex:1;display:flex;justify-content:center;align-items:center;background:none;box-shadow:none}
+.gallery-spread .gallery-image img{width:auto;height:auto;max-width:100%;min-height:0;max-height:100%;object-fit:contain;box-shadow:0 3px 8px #694c2933}
 .gallery-spread .gallery-image figcaption{flex-shrink:0;margin-top:7px}
 .gallery-spread .page-copy>p{flex-shrink:0;margin:10px 0;font-size:18px}
 .menu-choices a{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 18px;text-align:left;border:1px solid #c2a37166;background:#241e1777;font:19px var(--font-ui);min-height:47px;color:inherit;text-decoration:none}
@@ -65,7 +68,7 @@ button,input,.journal-shortcut>span,.menu-choices button,.ink-button,.wax-button
  .book-page p,.page-copy p:first-of-type{font-size:17px;line-height:1.45;margin:12px 0}
  .entry-emblem{padding:24px 12px;margin:18px 0}.entry-emblem svg{width:48px;height:48px}
  .journal-controls{padding-top:14px}.journal-index button,.locked-entry{min-height:54px}
- .gallery-spread .page-copy>p{font-size:17px}
+ .gallery-spread .gallery-notes h2{font-size:27px}.gallery-spread .gallery-notes p{font-size:17px}
  .menu-choices a{min-height:41px;padding:10px 16px}
 }
 @media(max-width:700px){
@@ -73,9 +76,16 @@ button,input,.journal-shortcut>span,.menu-choices button,.ink-button,.wax-button
  .open-book>.left-page{display:none}.open-book>.right-page{grid-column:1/-1;min-height:0;padding:18px 22px}
  .book-page h2{font-size:28px;margin:14px 0}.book-page p,.page-copy p:first-of-type{font-size:18px;line-height:1.5}
  .journal-controls{height:54px;min-height:54px;font-size:10px;gap:8px;padding:14px 8px 0}.journal-controls .discovery-inline{font-size:12px}
- .gallery-spread .page-copy>p{font-size:16px}.gallery-image figcaption{font-size:11px}
+ .gallery-spread .page-copy{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(160px,1fr) auto;gap:14px;overflow-y:auto}
+ .gallery-spread .gallery-notes h2{font-size:25px;margin:0 0 10px}.gallery-spread .gallery-notes p{font-size:16px}.gallery-image figcaption{font-size:11px}
  .journal-index button,.locked-entry{min-height:58px;padding:9px 0}.journal-index strong{font-size:19px}
 }
 
 /* Hide the cursor immediately on returning to play, including capture retries. */
 .is-playing,.is-playing *{cursor:none!important}
+
+.gate-open-notice{position:absolute;z-index:4;top:23%;left:50%;transform:translateX(-50%);width:min(520px,calc(100vw - 40px));padding:20px 28px;text-align:center;pointer-events:none;color:#f8e6b9;background:linear-gradient(100deg,#20372bf2,#344b39f2,#20372bf2);border-block:1px solid #c5a46b;box-shadow:0 10px 35px #101a1644;animation:gate-revealed ease-in-out both}
+.gate-open-notice>span{display:block;font:12px var(--font-ui);text-transform:uppercase;letter-spacing:2px;color:#d4b778}
+.gate-open-notice strong{display:block;margin:10px 0;font:32px/1.15 var(--font-title);font-weight:400}
+.gate-open-notice p{margin:0;font:18px/1.4 var(--font-reading)}
+@keyframes gate-revealed{0%,100%{opacity:0}12%,78%{opacity:1}}
