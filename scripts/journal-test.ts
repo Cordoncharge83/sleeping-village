@@ -37,5 +37,5 @@ assert.equal(hasAllDiscoveries(['smosh','smosh','future']),false);
 for(const missing of mainEntryIds)assert.equal(hasAllDiscoveries(mainEntryIds.filter(id=>id!==missing)),false,`Missing ${missing} keeps the gate locked`);
 assert.equal(saveDiscoveries(storage,[...mainEntryIds]),true);
 assert.equal(hasAllDiscoveries(loadDiscoveries(storage)),true,'Gate reopens from saved discoveries');
-assert.equal(hasAllDiscoveries(first.entries),false,'Direct journal browsing must not mutate discovery records');
+assert.equal(hasAllDiscoveries(first.entries),false,'Reading entries must not create additional discovery records');
 console.log('Gate progression passed: all six required, bonus excluded, old saves preserved, reload restored.');

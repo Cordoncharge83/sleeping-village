@@ -2,7 +2,7 @@
 
 **A desktop-first 3D portfolio by Mouadh Bondka, built as a small woodland village you can explore in your browser.**
 
-Visitors guide a traveler through a village at sunset, discover projects and professional experience at its buildings, and collect their stories in a personal journal. The aim is to introduce Mouadh’s software engineering work through a coherent, playful experience, while giving recruiters and other visitors a direct way to browse every entry without playing.
+Visitors guide a traveler through a village at sunset, discover projects and professional experience at its buildings, and collect their stories in a personal journal. The aim is to introduce Mouadh’s software engineering work through a coherent, playful experience, with journal entries unlocked by visiting their displays.
 
 **Current status:** a working local prototype. The village, movement, camera, journal, and shared game UI are implemented. Project presentations are still being developed, and this portfolio has not been published.
 
@@ -22,7 +22,7 @@ The woodland entrance bends toward a compact square around an old tree. Two proj
 | Schoolhouse | Education and selected skills | Furnished study desk and ledger, chalkboards, bookcase, reading bench, and skills table; each display opens its matching journal page |
 | Future clearing | Manart and an unnamed penguin board game | Bonus chapter beyond the northern gate; opens after discovering all six main entries |
 
-The entrance has a welcome/tutorial sign, and the square provides directions. Six symbols on the garden gate show progress. All entries, including future projects, can also be read through **Browse all projects**, without changing exploration progress.
+The entrance has a welcome/tutorial sign, and the square provides directions. Six symbols on the garden gate show progress. Journal entries unlock through exploration. There is no in-game unlock-all or direct-browse mode; the separate regular portfolio provides a conventional presentation.
 
 ## What is built so far
 
@@ -40,7 +40,7 @@ The entrance has a welcome/tutorial sign, and the square provides directions. Si
 
 Discoveries are stored in the visitor’s browser under `sleeping-village.journal.v1`. They survive refreshing, and the gate reopens from the saved six discoveries; the traveler’s position and settings currently do not. Different browsers and site addresses have separate saves. Clearing site data removes the discoveries. Older saves retain their entries: a previously found future chapter remains readable but does not replace education in the six-entry gate requirement.
 
-If browser storage is unavailable, entries still work for the current visit and the journal explains that saving is unavailable. Direct browsing shows all entries without changing discovery progress. There is no account or cloud synchronization.
+If browser storage is unavailable, entries still work for the current visit and the journal explains that saving is unavailable. There is no account or cloud synchronization.
 
 ## Run locally
 
@@ -95,9 +95,8 @@ The repository includes a static-only Cloudflare Worker configuration. No game s
 | Left / right arrows while reading an entry | Turn its pages |
 | M | Toggle the overhead village map |
 | Esc | Pause during play; close the current journal or menu |
-| Browse all projects / All projects | Read every entry without exploring |
 
-The pause menu includes the journal, map, settings, return to the entrance, and main menu. Movement pauses while reading entries or menus.
+The pause menu includes the journal, map, settings, return to the entrance, main menu, and Back to portfolio. Movement pauses while reading entries or menus. Resuming waits for mouse capture; if the browser requires a fresh gesture after Escape, a Click to continue screen restores capture without resuming movement early.
 
 ## Build and checks
 
