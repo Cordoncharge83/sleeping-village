@@ -4,6 +4,8 @@ export type Vec3 = [number, number, number];
 export type PlaceId = 'workshop' | 'smosh' | 'bargainy' | 'atlas' | 'duel' | 'education' | 'future' | 'square' | 'welcome' | 'gate';
 export type Building = {id: Exclude<PlaceId, 'future' | 'square' | 'welcome' | 'gate'>; at: Vec2; rotation: number; title: string; subtitle: string};
 export type Solid = {p: Vec3; s: Vec3; rotation?: number};
+// The support sits behind the board and below its lettering.
+export const welcomePost:Solid={p:[6,.74,18.86],s:[.15,1.48,.15]};
 export const tavernLayout:Record<string,Solid>={
  counter:{p:[0,.65,-2.12],s:[4.7,1.05,.85]},
  ledger:{p:[-1.55,.62,.15],s:[1.5,1.06,1.65]},
@@ -224,7 +226,7 @@ export const solids:Solid[]=[
  {p:[-1.8,.3,-1],s:[.5,.6,2.2]}, {p:[1.8,.3,-1],s:[.5,.6,2.2]},
  ...fenceLines.map(({a,b})=>({p:[(a[0]+b[0])/2,.65,(a[1]+b[1])/2] as Vec3,s:[Math.hypot(b[0]-a[0],b[1]-a[1]),1.3,.14] as Vec3,rotation:-Math.atan2(b[1]-a[1],b[0]-a[0])})),
  {p:[-3,.25,-29],s:[3,.5,3]}, {p:[3.5,.55,-29],s:[2,1.1,2]},
- {p:[6,.9,19],s:[.15,1.8,.15]},
+ welcomePost,
  {p:[-2.6,1.6,GATE_Z],s:[.4,3.2,.4]}, {p:[2.6,1.6,GATE_Z],s:[.4,3.2,.4]},
  {p:[BOUNDS.left,3,0],s:[.5,6,70]}, {p:[BOUNDS.right,3,0],s:[.5,6,70]},
  {p:[6,3,BOUNDS.back],s:[71,6,.5]}, {p:[6,3,BOUNDS.front],s:[71,6,.5]},

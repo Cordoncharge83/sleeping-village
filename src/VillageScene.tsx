@@ -1,6 +1,6 @@
 import {useEffect,useMemo} from 'react';
 import * as THREE from 'three';
-import {buildings,cottages,hedges,fenceLines,paths,trees,GATE_Z,type Cottage,type Building,type Vec2,type Vec3} from './village';
+import {buildings,cottages,hedges,fenceLines,paths,trees,GATE_Z,welcomePost,type Cottage,type Building,type Vec2,type Vec3} from './village';
 import {atmosphere} from './atmosphere';
 import {Model,Box,Sign,Bench} from './SceneObjects';
 import {Tavern} from './Tavern';
@@ -153,6 +153,6 @@ export function VillageScene({gateOpen,discoveryCount}:{gateOpen:boolean;discove
  <Bench position={[-1.8,0,-1]} rotation={Math.PI/2} length={2.2}/><Bench position={[1.8,0,-1]} rotation={Math.PI/2} length={2.2}/>
  <FutureClearing/>
  <GardenGate open={gateOpen} count={discoveryCount}/>
- <Box p={[6,.9,19]} s={[.15,1.8,.15]}/><Sign title="WELCOME, TRAVELER" subtitle="E · Read the welcome sign" position={[6,1.8,19]} width={2.8}/>
+ <Box p={welcomePost.p} s={welcomePost.s}/><Sign title="WELCOME, TRAVELER" subtitle="E · Read the welcome sign" position={[6,1.8,19]} width={2.8}/>
  <Sign title="THE OLD-TREE SQUARE" subtitle="Learning & work ←    Projects →" position={[0,1.9,.1]} width={2.8}/>
  </>;}
