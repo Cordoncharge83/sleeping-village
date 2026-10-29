@@ -22,6 +22,7 @@ node_modules/
 # Original asset packs stay local. The selected assets needed to run the game
 # are committed under public/assets/, together with their licenses and receipts.
 /asset-packs/
+/Audio design/
 
 # Old cloud-transfer files and generated archives; keep their local copies.
 /CLOUD_HANDOFF.md

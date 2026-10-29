@@ -1,0 +1,25 @@
+THE SLEEPING VILLAGE — FOOTSTEP RECORDINGS
+
+Wood: “Footsteps - Wood” by Fewes, Freesound #234263.
+https://freesound.org/people/Fewes/sounds/234263/
+Licensed under Creative Commons Attribution 3.0:
+https://creativecommons.org/licenses/by/3.0/
+This recording combines “Footsteps” by jmdh (CC0) and a recording by D W
+(attribution required). Credit to both original contributors:
+https://freesound.org/people/jmdh/sounds/178990/
+https://freesound.org/people/D%20W/sounds/152788/
+
+Grass: “Right Grass/Grassy Footstep 4” by Ali_6868, Freesound #384869.
+https://freesound.org/people/Ali_6868/sounds/384869/
+Creative Commons Zero (CC0 1.0).
+
+Path impacts: “footsteps simulation” by minimilka, Freesound #698584.
+https://freesound.org/people/minimilka/sounds/698584/
+Creative Commons Zero (CC0 1.0).
+https://creativecommons.org/publicdomain/zero/1.0/
+
+Adaptations for this game: individual impacts extracted from the supplied
+recordings, converted to mono, filtered to reduce rumble/sharpness, gently
+level-matched, trimmed with short fades and resampled to 22050 Hz PCM WAV.
+Source file hashes and exact edit ranges are recorded in receipt.json.
+These credits describe the recordings, without implying endorsement.

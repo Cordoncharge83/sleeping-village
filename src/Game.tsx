@@ -13,6 +13,7 @@ import {WALK_SPEED,RUN_SPEED} from './tuning';
 import {FollowCamera,InterpolatedPosition,PHYSICS_STEP} from './player-view';
 import {atmosphere} from './atmosphere';
 import type {VillageAudio} from './audio';
+import type {Gait} from './footsteps';
 
 type Props={active:boolean;overview:boolean;sensitivity:number;low:boolean;reset:number;gateOpen:boolean;discoveryCount:number;audio:VillageAudio;onNear:(near:PlaceId|null,page:number)=>void;onArea:(area:PlaceId|'arrival')=>void;onReady:()=>void;onError:(message:string)=>void};
 function World(props:Props){
@@ -43,11 +44,11 @@ function World(props:Props){
   const len=Math.hypot(x,z)||1;x/=len;z/=len;const yaw=look.current.yaw;
   const dx=x*Math.cos(yaw)+z*Math.sin(yaw),dz=-x*Math.sin(yaw)+z*Math.cos(yaw),speed=running?RUN_SPEED:WALK_SPEED;
   const p=view.motion.advance(dt,()=>{s.step(dx*speed*PHYSICS_STEP,dz*speed*PHYSICS_STEP);return s.body.translation();});
-  props.audio.step(p.x,p.z,dt,props.active,running);
   actor.current.position.set(p.x,p.y-.71,p.z);
   if(moving){const target=Math.atan2(dx,dz),a=actor.current.rotation.y;actor.current.rotation.y=a+Math.atan2(Math.sin(target-a),Math.cos(target-a))*(1-Math.exp(-12*dt));}
-  const clip=moving?(running?'Run':'Walk'):'Idle';if(current.current!==clip){actions[current.current]?.fadeOut(.2);actions[clip].reset().fadeIn(.2).play();current.current=clip;}
+  const clip:Gait=moving?(running?'Run':'Walk'):'Idle';if(current.current!==clip){actions[current.current]?.fadeOut(.2);actions[clip].reset().fadeIn(.2).play();current.current=clip;}
   actions.Walk.timeScale=3.2;actions.Run.timeScale=3.4;if(props.active)mixer.update(dt);else mixer.update(dt*.3);
+  props.audio.step({x:p.x,z:p.z,delta:dt,active:props.active,clip,time:actions[clip].time,duration:actions[clip].getClip().duration});
   const isNear=nearbyPlace(p.x,p.z,props.gateOpen),page=isNear==='workshop'?(workshopStationAt(p.x,p.z)??0):isNear==='education'?(schoolhouseStationAt(p.x,p.z)??0):0;if(isNear!==near.current||page!==nearPage.current){near.current=isNear;nearPage.current=page;props.onNear(isNear,page);}
   const location=currentArea(p.x,p.z);if(location!==area.current){area.current=location;props.onArea(location);}
   view.pivot.set(p.x,p.y+.55,p.z);
@@ -58,6 +59,7 @@ function World(props:Props){
   gl.domElement.dataset.look=`${look.current.yaw.toFixed(3)},${look.current.pitch.toFixed(3)}`;
   gl.domElement.dataset.audioState=props.audio.state;
   gl.domElement.dataset.footsteps=String(props.audio.stepCount);
+  gl.domElement.dataset.footstepBanks=String(props.audio.footstepBanks);
   gl.domElement.dataset.interactions=String(props.audio.interactionCount);
  });
  return <><VillageScene gateOpen={props.gateOpen} discoveryCount={props.discoveryCount}/><InspectHighlights near={near} page={nearPage} active={props.active&&!props.overview}/><group ref={actor} position={[SPAWN[0],.02,SPAWN[2]]} rotation={[0,Math.PI,0]}><primitive object={traveler} scale={1.6}/></group></>;

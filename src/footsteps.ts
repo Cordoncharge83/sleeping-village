@@ -17,24 +17,32 @@ export function footstepSurfaceAt(x:number,z:number):GroundSound{
  return 'grass';
 }
 
-/** Accumulate actual travel, never key presses: walls, idle and teleports stay quiet. */
+export type Gait='Idle'|'Walk'|'Run';
+export type FootstepFrame={x:number;z:number;delta:number;active:boolean;clip:Gait;time:number;duration:number};
+// Heel contacts in Traveler_animated.glb, expressed as fractions of a full stride.
+// Use the action's actual local time, including its playback speed and loop wrap.
+export const FOOT_CONTACTS={Walk:[{phase:0,pan:-.09},{phase:.5,pan:.09}],Run:[{phase:.45,pan:.09},{phase:.95,pan:-.09}]} as const;
+
+/** Animation contacts provide cadence; actual travel gates impacts at walls/idle. */
 export class FootstepTracker{
- private last:{x:number;z:number}|null=null;
- private distance=0;
- private first=true;
- private still=0;
- private foot=0;
- reset(){this.last=null;this.distance=0;this.first=true;this.still=0;}
- update(x:number,z:number,delta:number,active:boolean,running:boolean){
-  const previous=this.last;this.last={x,z};
-  if(!active||!previous){this.distance=0;this.first=true;this.still=0;return null;}
+ private last:FootstepFrame|null=null;
+ private sinceStep=Infinity;
+ reset(){this.last=null;this.sinceStep=Infinity;}
+ update(frame:FootstepFrame){
+  const previous=this.last;this.last=frame;
+  const {x,z,delta,active,clip,time,duration}=frame;
+  this.sinceStep+=Math.max(0,delta);
+  if(!active||!previous||!previous.active||clip==='Idle'||delta<=0||duration<=0)return null;
   const travel=Math.hypot(x-previous.x,z-previous.z);
-  if(travel>1.5){this.distance=0;this.first=true;return null;}
-  if(travel<.0005){this.still+=delta;if(this.still>.12){this.distance=0;this.first=true;}return null;}
-  this.still=0;this.distance+=travel;
-  const stride=this.first ? .14 : running ? 1.35 : 1.05;
-  if(this.distance<stride)return null;
-  this.distance%=stride;this.first=false;this.foot=1-this.foot;
-  return {surface:footstepSurfaceAt(x,z),running,pan:this.foot ? .09 : -.09};
+  if(travel>1.5||travel/delta<.08)return null;
+  let start=previous.clip===clip?previous.time/duration:-.000001,end=time/duration;
+  if(end<start)end+=1;
+  // Ignore seek/reset jumps instead of replaying missed contacts.
+  if(end-start>.5||this.sinceStep<.08)return null;
+  for(const contact of FOOT_CONTACTS[clip]){
+   const crossing=contact.phase+(contact.phase<=start?1:0);
+   if(crossing>start&&crossing<=end){this.sinceStep=0;return {surface:footstepSurfaceAt(x,z),running:clip==='Run',pan:contact.pan};}
+  }
+  return null;
  }
 }

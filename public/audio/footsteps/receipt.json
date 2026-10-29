@@ -1,0 +1,99 @@
+{
+  "sourceRate": 44100,
+  "outputRate": 22050,
+  "format": "mono PCM16 WAV",
+  "processing": "Individual impacts cut from supplied recordings; DC/high-pass 70 Hz; low-pass 4800 Hz; gentle level matching, 2 ms attack and 25 ms release fades; resampled to 22050 Hz. No generated impacts.",
+  "sources": [
+    {
+      "surface": "earth",
+      "file": "698584__minimilka__footsteps-simulation.wav",
+      "sha256": "79586eea3c26dc41e52a7894da70c5b084ebb12c954e6ca83a7ddc157e82405f",
+      "sourceCutsSeconds": [
+        [
+          0.764847,
+          0.965
+        ],
+        [
+          1.288498,
+          1.485
+        ],
+        [
+          1.781808,
+          1.985
+        ],
+        [
+          3.353464,
+          3.555
+        ],
+        [
+          3.892704,
+          4.1
+        ],
+        [
+          4.438713,
+          4.64
+        ],
+        [
+          4.94572,
+          5.16
+        ],
+        [
+          5.500867,
+          5.71
+        ]
+      ],
+      "outputFile": "earth.wav",
+      "outputSha256": "7dce08918dacd156a92f4f83bd74d0fcffc0e0a1e6729477357330e7be000f1a"
+    },
+    {
+      "surface": "wood",
+      "file": "234263__fewes__footsteps-wood.ogg",
+      "sha256": "d5a5f83620bdd0317dcff09ae6cdd2d172d929d9c034fb9864d32b67ae07d40c",
+      "sourceCutsSeconds": [
+        [
+          0.482205,
+          0.71
+        ],
+        [
+          0.881763,
+          1.105
+        ],
+        [
+          1.379201,
+          1.605
+        ],
+        [
+          1.801378,
+          2.025
+        ],
+        [
+          2.299053,
+          2.56
+        ],
+        [
+          2.683702,
+          2.92
+        ],
+        [
+          3.133963,
+          3.375
+        ]
+      ],
+      "outputFile": "wood.wav",
+      "outputSha256": "a2533ca107ec1980720e3a911d56e10f73f088b22d71159204ab66f5a108a841"
+    },
+    {
+      "surface": "grass",
+      "file": "384869__ali_6868__right-grassgrassy-footstep-4.wav",
+      "sha256": "b77d3b663d9287248680bdce91bc775a118d981d7d6ead2cbd21b2f1434daf58",
+      "sourceCutsSeconds": [
+        [
+          0.416,
+          0.706
+        ]
+      ],
+      "outputFile": "grass.wav",
+      "outputSha256": "3b1f7a426b8b6db18b0186b53a40fd9d1635192e2c1d0bbf626b85a2e96dd8a3"
+    }
+  ]
+}

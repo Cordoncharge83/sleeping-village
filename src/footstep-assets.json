@@ -1,0 +1,84 @@
+{
+  "earth": {
+    "file": "/audio/footsteps/earth.wav",
+    "sampleRate": 22050,
+    "clips": [
+      {
+        "offset": 0,
+        "length": 4414
+      },
+      {
+        "offset": 4414,
+        "length": 4333
+      },
+      {
+        "offset": 8747,
+        "length": 4481
+      },
+      {
+        "offset": 13228,
+        "length": 4444
+      },
+      {
+        "offset": 17672,
+        "length": 4571
+      },
+      {
+        "offset": 22243,
+        "length": 4439
+      },
+      {
+        "offset": 26682,
+        "length": 4725
+      },
+      {
+        "offset": 31407,
+        "length": 4612
+      }
+    ]
+  },
+  "wood": {
+    "file": "/audio/footsteps/wood.wav",
+    "sampleRate": 22050,
+    "clips": [
+      {
+        "offset": 0,
+        "length": 5023
+      },
+      {
+        "offset": 5023,
+        "length": 4923
+      },
+      {
+        "offset": 9946,
+        "length": 4979
+      },
+      {
+        "offset": 14925,
+        "length": 4931
+      },
+      {
+        "offset": 19856,
+        "length": 5754
+      },
+      {
+        "offset": 25610,
+        "length": 5211
+      },
+      {
+        "offset": 30821,
+        "length": 5315
+      }
+    ]
+  },
+  "grass": {
+    "file": "/audio/footsteps/grass.wav",
+    "sampleRate": 22050,
+    "clips": [
+      {
+        "offset": 0,
+        "length": 6395
+      }
+    ]
+  }
+}

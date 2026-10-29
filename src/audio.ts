@@ -1,5 +1,6 @@
-import {AMBIENT_CHORDS,CHORD_SECONDS,footstepSamples,interactionSamples,noteFrequency,reverbSamples,windSamples,type GroundSound,type SoundPreferences} from './audio-design';
-import {FootstepTracker} from './footsteps';
+import {AMBIENT_CHORDS,CHORD_SECONDS,interactionSamples,noteFrequency,reverbSamples,windSamples,type SoundPreferences} from './audio-design';
+import {FootstepTracker,type FootstepFrame} from './footsteps';
+import {loadFootstepBank,preloadFootsteps,type FootstepBank} from './footstep-bank';
 
 function bufferFrom(context:BaseAudioContext,channels:Float32Array[],sampleRate=22050){
  const buffer=context.createBuffer(channels.length,channels[0].length,sampleRate);
@@ -34,9 +35,8 @@ export function createVillageSoundGraph(context:BaseAudioContext){
  flutter.frequency.value=.19;flutterDepth.gain.value=.115;flutter.connect(flutterDepth);flutterDepth.connect(leafGain.gain);
  wind.start();swell.start();flutter.start();
 
- const stepBuffers=Object.fromEntries((['earth','grass','wood'] as const).map(surface=>[surface,Array.from({length:4},(_,i)=>bufferFrom(context,[footstepSamples(surface,175+i*937+surface.length*51)]))])) as Record<GroundSound,AudioBuffer[]>;
  const interaction=bufferFrom(context,[interactionSamples()]);
- return {master,effects,ambience,music,footsteps,background,musicInput,stepBuffers,interaction,
+ return {master,effects,ambience,music,footsteps,background,musicInput,interaction,
   dispose:()=>{for(const source of [wind,swell,flutter]){try{source.stop();}catch{}}master.disconnect();},
  };
 }
@@ -91,10 +91,12 @@ export class VillageAudio{
  private interactions=0;
  private feet=new Set<ReturnType<typeof playSoundBuffer>>();
  private cues=new Set<ReturnType<typeof playSoundBuffer>>();
- constructor(preferences:SoundPreferences){this.preferences={...preferences};}
+ private stepBuffers:FootstepBank={};
+ constructor(preferences:SoundPreferences){this.preferences={...preferences};void preloadFootsteps();}
  get state(){return this.failed?'unavailable':this.context?.state??'idle';}
  get stepCount(){return this.steps;}
  get interactionCount(){return this.interactions;}
+ get footstepBanks(){return Object.keys(this.stepBuffers).length;}
  private audible(){const p=this.preferences;return this.visible&&this.scene!=='welcome'&&!p.muted&&p.master>0&&(p.effects>0||p.ambience>0||p.music>0);}
  private levels(){
   const c=this.context,g=this.graph;if(!c||!g)return;const p=this.preferences,now=c.currentTime;
@@ -120,6 +122,7 @@ export class VillageAudio{
   try{
    if(!this.context){
     const c=new AudioContext();this.context=c;this.graph=createVillageSoundGraph(c);this.nextChord=c.currentTime+.05;
+    void loadFootstepBank(c).then(bank=>{if(this.context===c)this.stepBuffers=bank;}).catch(()=>{});
     this.scheduler=window.setInterval(()=>this.schedule(),700);
    }
    this.levels();const current=this.context;
@@ -133,11 +136,13 @@ export class VillageAudio{
  }
  configure(preferences:SoundPreferences){this.preferences={...preferences};if(preferences.muted||preferences.effects===0||preferences.master===0){this.stopFeet();this.stopCues();}this.levels();this.sleepIfSilent();}
  setVisible(visible:boolean){this.visible=visible;if(!visible){this.tracker.reset();this.stopFeet();this.stopCues();}this.levels();if(visible&&this.context)this.unlock();else this.sleepIfSilent();}
- step(x:number,z:number,delta:number,active:boolean,running:boolean){
-  const step=this.tracker.update(x,z,delta,active&&this.scene==='play',running),c=this.context,g=this.graph;
+ step(frame:FootstepFrame){
+  const step=this.tracker.update({...frame,active:frame.active&&this.scene==='play'}),c=this.context,g=this.graph;
   if(!step||!c||!g||c.state!=='running'||!this.audible()||this.preferences.effects===0)return;
-  const variation=this.steps%4,buffer=g.stepBuffers[step.surface][variation];
-  const voice=playSoundBuffer(c,g.footsteps,buffer,c.currentTime,step.running ? .84 : .67,step.pan,.96+variation*.025+(step.running ? .04 : 0));
+  const buffers=this.stepBuffers[step.surface]??this.stepBuffers.earth;
+  if(!buffers?.length)return; // Never queue late impacts while recordings load.
+  const variation=this.steps%4,buffer=buffers[(this.steps*5+Math.floor(this.steps/buffers.length))%buffers.length];
+  const voice=playSoundBuffer(c,g.footsteps,buffer,c.currentTime,(step.running ? .67 : .52)*[1,.96,1.03,.98][variation],step.pan,[1,.985,1.015,.995][variation]);
   this.feet.add(voice);voice.source.addEventListener('ended',()=>this.feet.delete(voice),{once:true});this.steps++;
  }
  interact(){
@@ -152,6 +157,7 @@ export class VillageAudio{
  dispose(){
   if(this.scheduler!==null)window.clearInterval(this.scheduler);if(this.suspendTimer!==null)window.clearTimeout(this.suspendTimer);
   this.scheduler=null;this.suspendTimer=null;this.stopFeet();this.stopCues();this.graph?.dispose();this.graph=null;
+  this.stepBuffers={};
   const old=this.context;this.context=null;if(old&&old.state!=='closed')void old.close().catch(()=>{});
  }
 }

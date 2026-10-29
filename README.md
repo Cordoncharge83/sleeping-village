@@ -102,7 +102,7 @@ The pause menu includes the journal, map, settings, return to the entrance, main
 
 Gallery pages keep the same journal size, with larger screenshots and notes alongside them. After the sixth village story is discovered and its journal is closed, a brief announcement directs the player toward the newly opened northern garden gate.
 
-Sound starts from a normal user interaction, never automatically on page load. Footsteps follow actual distance traveled, so standing still or pushing against a wall stays quiet; menus stop footfalls immediately. The background is deliberately restrained, with music at 10% by default. All sound settings are stored separately from journal discoveries under `sleeping-village.sound.v1`.
+Sound starts from a normal user interaction, never automatically on page load. Recorded footfalls follow the traveler's walk/run animation contacts, including playback speed changes and loop boundaries. Actual movement gates the impacts, so standing still or pushing against a wall stays quiet; menus stop footfalls immediately. Three small WAV banks contain 16 trimmed impacts for earth, grass and wood (157 KB total). They preload without blocking entry; a missing recording does not prevent the other audio or the game from running. The background is deliberately restrained, with music at 10% by default. All sound settings are stored separately from journal discoveries under `sleeping-village.sound.v1`.
 
 ## Build and checks
 
@@ -147,6 +147,8 @@ The selected environment assets come from Quaternius’s **Medieval Village Mega
 The ready-to-run asset subset is committed under `public/assets/`; a normal checkout does not need the complete source packs. To add or rebuild the selected subset, restore the original packs under the ignored `asset-packs/` directory and use the asset preparation tools. That optional preparation workflow uses Python and Pillow; neither is required to run the already prepared game. Receipts under `public/assets/` record source and processed hashes.
 
 The locally bundled fonts and their SIL Open Font License files are in [public/fonts/](public/fonts/). Smosh Story Finder is an independent fan-made project; Smosh branding and content belong to their respective owners.
+
+Footsteps use the supplied Freesound recordings by Fewes (including original contributions by jmdh and D W), Ali_6868 and minimilka. License links, attribution and editing notes are in [public/audio/footsteps/CREDITS.txt](public/audio/footsteps/CREDITS.txt), also accessible from Sound settings. [receipt.json](public/audio/footsteps/receipt.json) records source hashes, cut ranges and output hashes. The untouched source recordings stay in the ignored local `Audio design/` folder. Wind, interaction sounds and the quiet original score still use native Web Audio synthesis, with no added runtime dependencies.
 
 ## What is still planned
 

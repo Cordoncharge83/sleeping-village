@@ -19,21 +19,6 @@ function finish(samples:Float32Array,peak:number){
  return samples;
 }
 
-/** Original shoe impacts: low body, a short textured crunch, and a soft scuff. */
-export function footstepSamples(surface:GroundSound,seed:number,sampleRate=22050){
- const samples=new Float32Array(Math.ceil(sampleRate*.23)),random=randomSequence(seed);
- let low=0,smooth=0;const pitch=.94+random()*.12;
- for(let i=0;i<samples.length;i++){
-  const t=i/sampleRate,n=random()*2-1;low+=(n-low)*.065;smooth+=(n-smooth)*.38;
-  const grit=smooth-low,attack=1-Math.exp(-t/.0018);
-  const body=Math.sin(2*Math.PI*(92*pitch*t-28*t*t))*Math.exp(-t/.038);
-  if(surface==='wood')samples[i]=attack*(.55*Math.sin(2*Math.PI*148*pitch*t)*Math.exp(-t/.04)+.2*Math.sin(2*Math.PI*267*pitch*t)*Math.exp(-t/.028)+grit*.65*Math.exp(-t/.024));
-  else if(surface==='grass')samples[i]=attack*(body*.33+grit*.95*Math.exp(-t/.063)*(.75+.25*Math.sin(t*280)));
-  else samples[i]=attack*(body*.6+grit*1.1*Math.exp(-t/.049)+low*.7*Math.exp(-t/.08));
- }
- return finish(samples,surface==='grass'?.43:.55);
-}
-
 /** A papery opening sound followed by a small, warm magical chime. */
 export function interactionSamples(sampleRate=22050){
  const samples=new Float32Array(Math.ceil(sampleRate*.65)),random=randomSequence(319);let smooth=0;

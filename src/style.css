@@ -90,6 +90,8 @@ button,input,.journal-shortcut>span,.menu-choices button,.ink-button,.wax-button
 .settings .sound-settings output{font-size:13px}
 .settings .sound-settings input[type=range]{margin:10px 0 0}
 .settings .sound-settings .check{grid-column:1/-1;font-size:16px}
+.sound-credits{grid-column:1/-1;font:12px var(--font-ui);color:#79664a}
+.sound-credits a{color:inherit;text-underline-offset:3px}
 
 .gate-open-notice{position:absolute;z-index:4;top:23%;left:50%;transform:translateX(-50%);width:min(520px,calc(100vw - 40px));padding:20px 28px;text-align:center;pointer-events:none;color:#f8e6b9;background:linear-gradient(100deg,#20372bf2,#344b39f2,#20372bf2);border-block:1px solid #c5a46b;box-shadow:0 10px 35px #101a1644;animation:gate-revealed ease-in-out both}
 .gate-open-notice>span{display:block;font:12px var(--font-ui);text-transform:uppercase;letter-spacing:2px;color:#d4b778}

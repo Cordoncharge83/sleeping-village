@@ -47,4 +47,10 @@ for(const path of journalImages){
  const bytes=await resource(new URL(base.pathname+path.replace(/^\/+/,''),base));
  assert.equal(bytes.toString('hex',0,8),'89504e470d0a1a0a','Expected a PNG screenshot');
 }
-console.log(`PASS: /village/ production entry, favicon, bundles, fonts, ${Object.keys(models).length} models and their dependencies, and ${journalImages.size} journal screenshots (${checked.size} unique resources).`);
+const footsteps=JSON.parse(await readFile(new URL('../src/footstep-assets.json',import.meta.url),'utf8'));
+for(const asset of Object.values(footsteps)){
+ const bytes=await resource(new URL(base.pathname+asset.file.replace(/^\/+/,''),base));
+ assert.equal(bytes.toString('ascii',0,4),'RIFF','Expected a recorded footstep WAV');
+}
+await resource(new URL('audio/footsteps/CREDITS.txt',base));
+console.log(`PASS: /village/ production entry, favicon, bundles, fonts, ${Object.keys(models).length} models and their dependencies, ${journalImages.size} journal screenshots, recorded footsteps and credits (${checked.size} unique resources).`);
