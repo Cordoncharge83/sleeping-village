@@ -30,12 +30,12 @@ The final entry, game and Three.js bundles together add 2,682 gzip bytes compare
 
 ## Views
 
-![Low cottage with shutters, canopy, flower box and firewood](cottage-variety-low-home.png)
+![Low cottage with shutters, canopy, flower box and firewood](cottage-variety-low-home.jpg)
 
-![Timber-framed home and loft window](cottage-variety-timber.png)
+![Timber-framed home and loft window](cottage-variety-timber.jpg)
 
-![Narrow two-storey home](cottage-variety-tall-home.png)
+![Narrow two-storey home](cottage-variety-tall-home.jpg)
 
-![Storehouse and timber lean-to](cottage-variety-storehouse.png)
+![Storehouse and timber lean-to](cottage-variety-storehouse.jpg)
 
-![Village entrance after the changes](cottage-variety-entrance.png)
+![Village entrance after the changes](cottage-variety-entrance.jpg)
