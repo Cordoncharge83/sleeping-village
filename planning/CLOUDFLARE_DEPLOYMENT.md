@@ -2,7 +2,7 @@
 
 ## First deployment
 
-Use Cloudflare Workers (static assets), matching the regular portfolio’s existing approach. Nothing has been deployed by this configuration change.
+The game and regular portfolio use separate Cloudflare Workers with static assets. The game is published at https://portfolio.moudka.com/village/; the original workers.dev address remains available. The following describes the original deployment setup.
 
 1. Open Workers & Pages in the Cloudflare dashboard, then Create application and Import a repository (Get started).
 2. Connect GitHub if needed and select Cordoncharge83/sleeping-village.
@@ -20,11 +20,13 @@ npm run build:cloudflare first builds the game, then mirrors dist into cloudflar
 
 cloudflare-dist is generated and ignored, along with local .wrangler state. The repository’s Vite base remains /village/.
 
-## Final domain, after the regular portfolio is deployed
+## Custom domain routing
 
-Keep the portfolio Worker on the Custom Domain portfolio.moudka.com. Add two Routes to the sleeping-village Worker: portfolio.moudka.com/village/* and portfolio.moudka.com/village. The hostname must be in the Cloudflare-managed zone with its DNS proxied, and the routes must not be attached to the regular portfolio Worker. Path routes take precedence over the portfolio Custom Domain while preserving its other URLs. No custom-domain route is hard-coded in this game repo yet.
+The hostname already has a proxied CNAME record to mouadhb.pages.dev, the older portfolio. That record remains intact. The new portfolio Worker owns the route portfolio.moudka.com/*, while sleeping-village owns the more specific portfolio.moudka.com/village and portfolio.moudka.com/village/* routes. Both repositories record their routes in wrangler.jsonc so later deployments preserve the split. Other hostnames and DNS records are unchanged.
 
-Do not attach the entire portfolio.moudka.com Custom Domain to the village Worker; that would take over the portfolio root. The / redirect in this package only affects requests reaching this Worker, so the final path routes leave the regular homepage untouched.
+The portfolio's production build variable NEXT_PUBLIC_VILLAGE_URL is https://portfolio.moudka.com/village/, enabling its navigation and village card. Its public/_redirects also normalizes /village to /village/ while preserving the existing /cv redirect. This handles bare game links with query strings, which do not match the exact game route.
+
+Do not attach the entire portfolio.moudka.com hostname to the village Worker. The / redirect in this package only affects requests reaching this Worker, so the path routes leave the regular homepage and project pages with the portfolio Worker. No Worker script, proxy layer, additional DNS record, or local package install is required.
 
 ## Verification of this preparation
 

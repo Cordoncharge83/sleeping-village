@@ -4,7 +4,7 @@
 
 Visitors guide a traveler through a village at sunset, discover projects and professional experience at its buildings, and collect their stories in a personal journal. The aim is to introduce Mouadh’s software engineering work through a coherent, playful experience, with journal entries unlocked by visiting their displays.
 
-**Current status:** a working browser prototype [deployed on Cloudflare](https://sleeping-village.mouadh-bondka-2.workers.dev/village/). The village, movement, camera, journal, project displays and game UI are implemented; content and visual polish continue.
+**Current status:** a working browser prototype [deployed on Cloudflare at portfolio.moudka.com/village/](https://portfolio.moudka.com/village/). The village, movement, camera, journal, project displays and game UI are implemented; content and visual polish continue. The original workers.dev address remains available.
 
 ![The village layout based on the hand-drawn map](planning/village-sketch-layout.png)
 

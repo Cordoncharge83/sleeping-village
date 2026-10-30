@@ -2,6 +2,10 @@
   "name": "sleeping-village",
   "compatibility_date": "2026-10-29",
   "workers_dev": true,
+  "routes": [
+    {"pattern": "portfolio.moudka.com/village", "zone_name": "moudka.com"},
+    {"pattern": "portfolio.moudka.com/village/*", "zone_name": "moudka.com"}
+  ],
   "assets": {
     "directory": "./cloudflare-dist",
     "not_found_handling": "404-page",
