@@ -35,6 +35,14 @@ Do not attach the entire portfolio.moudka.com hostname to the village Worker. Th
 - Local preview does not emulate Cloudflare’s _redirects parser; live root redirects are checked after the first Cloudflare deployment.
 - Temporary asset preview stopped after verification.
 
+## Custom-domain verification (30 October 2026)
+
+- Both repositories record their routes. The portfolio's production build setting NEXT_PUBLIC_VILLAGE_URL enables its header link, Now strip and village card. The existing proxied portfolio DNS record remains unchanged.
+- `npm run check:paths -- https://portfolio.moudka.com/` passes for all 80 game resources, including the 18 models and their dependencies, fonts, screenshots, favicon and recorded footsteps.
+- `npm run check:domain` passes ten checks: portfolio homepage and village link, project and experience pages, shared content JSON/CORS, both bare village URL redirects (with and without a query string), the game entry and asset prefix, missing game assets, an unrelated portfolio path and the original CV redirect. Portfolio project/experience URLs use their canonical form without a trailing slash.
+- Browser check: the homepage's Village link opens the game at /village/. Entering starts the real scene and loads all three footstep banks; a short walk moves the traveler and produces recorded footsteps, with no browser errors. Escape opens pause and Back to portfolio returns to the homepage.
+- No local preview servers or new local dependencies were needed. The regular portfolio's dependency install/build ran on its existing Cloudflare pipeline.
+
 ## Official documentation
 
 - https://developers.cloudflare.com/workers/ci-cd/builds/

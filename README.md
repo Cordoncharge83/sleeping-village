@@ -59,7 +59,7 @@ npm run dev
 
 Open **http://127.0.0.1:5173/village/** in a desktop browser. On Windows, once dependencies are present, you can also double-click **Start Village.bat**. Keep its terminal window open while playing; press **Ctrl+C** or close that window to stop the server.
 
-The game is configured for **`/village/`** in development and production. The intended public URL is `https://portfolio.moudka.com/village/`. Model URLs and journal images use Vite’s base path; CSS fonts and compiled scripts are rewritten by Vite. The complete `dist/` directory must be served at that path by the host, including `assets/`, `fonts/`, and `images/`. This preparation does not deploy the game or configure Cloudflare routing. See [planning/VILLAGE_PATH_CHECKS.md](planning/VILLAGE_PATH_CHECKS.md).
+The game is configured for **`/village/`** in development and production. Its public URL is `https://portfolio.moudka.com/village/`. Model URLs and journal images use Vite’s base path; CSS fonts and compiled scripts are rewritten by Vite. The complete `dist/` directory must be served at that path by the host, including `assets/`, `fonts/`, `audio/`, and `images/`. Local builds only generate files; Cloudflare publishes pushes to `main` using the settings below. See [planning/VILLAGE_PATH_CHECKS.md](planning/VILLAGE_PATH_CHECKS.md).
 
 To check the production output locally:
 
@@ -84,7 +84,7 @@ The repository includes a static-only Cloudflare Worker configuration. No game s
 | Build command | `npm run build:cloudflare` |
 | Deploy command | `npx wrangler deploy` |
 
-`build:cloudflare` packages the Vite build into `cloudflare-dist/village/`. This mirrors `/village/` in the deployed static asset paths; simply uploading `dist/` at the Worker root would lose that mapping. Generated output stays ignored. The initial `workers.dev` root redirects to `/village/`. Custom domain routes are deliberately left out until the regular portfolio has been deployed.
+`build:cloudflare` packages the Vite build into `cloudflare-dist/village/`. This mirrors `/village/` in the deployed static asset paths; simply uploading `dist/` at the Worker root would lose that mapping. Generated output stays ignored. The original `workers.dev` root redirects to `/village/`. `wrangler.jsonc` assigns the two village path routes on `portfolio.moudka.com`; the regular portfolio Worker serves the homepage and other paths through its own broader route.
 
 ### Controls
 
@@ -113,6 +113,8 @@ Sound starts from a normal user interaction, never automatically on page load. R
 | `npm run build` | Check TypeScript and generate the static site in `dist/` |
 | `npm run preview` | Serve the generated build locally after building |
 | `npm test` | Run physics, camera, and journal persistence checks |
+| `npm run check:paths -- <origin>` | Validate all game assets under `/village/` on a local preview or live host |
+| `npm run check:domain` | Check the live portfolio/game split, links, redirects and content at the custom domain |
 
 The tests cover a continuous trip through every village stop, movement speed, entrances, rotated walls, furniture, closed cottages, locked/open gate collision, fence bypass prevention, bounds and reset; sprint camera behavior at multiple frame rates and uneven timings; and journal save/reload, gate progression, old saves, duplicate discoveries, invalid records, and unavailable storage. Browser checks and screenshots are recorded in [planning/SKETCH_LAYOUT_CHECKS.md](planning/SKETCH_LAYOUT_CHECKS.md), [planning/JOURNAL_CHECKS.md](planning/JOURNAL_CHECKS.md), and the other planning notes.
 
