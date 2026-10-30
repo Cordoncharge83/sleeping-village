@@ -61,6 +61,8 @@ function World(props:Props){
   gl.domElement.dataset.footsteps=String(props.audio.stepCount);
   gl.domElement.dataset.footstepBanks=String(props.audio.footstepBanks);
   gl.domElement.dataset.interactions=String(props.audio.interactionCount);
+  gl.domElement.dataset.drawCalls=String(gl.info.render.calls);
+  gl.domElement.dataset.triangles=String(gl.info.render.triangles);
  });
  return <><VillageScene gateOpen={props.gateOpen} discoveryCount={props.discoveryCount}/><InspectHighlights near={near} page={nearPage} active={props.active&&!props.overview}/><group ref={actor} position={[SPAWN[0],.02,SPAWN[2]]} rotation={[0,Math.PI,0]}><primitive object={traveler} scale={1.6}/></group></>;
 }

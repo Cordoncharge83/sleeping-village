@@ -1,6 +1,6 @@
 import {useEffect,useMemo} from 'react';
 import * as THREE from 'three';
-import {buildings,cottages,hedges,fenceLines,paths,trees,GATE_Z,welcomePost,type Cottage,type Building,type Vec2,type Vec3} from './village';
+import {buildings,cottages,hedges,fenceLines,paths,trees,GATE_Z,welcomePost,type Building,type Vec2,type Vec3} from './village';
 import {atmosphere} from './atmosphere';
 import {Model,Box,Sign,Bench} from './SceneObjects';
 import {Tavern} from './Tavern';
@@ -9,6 +9,7 @@ import {Schoolhouse} from './Schoolhouse';
 import {TradingPost} from './TradingPost';
 import {MapLodge} from './MapLodge';
 import {TournamentYard} from './TournamentYard';
+import {Cottages} from './Cottages';
 
 function Shell({building}:{building:Building}){
  const yard=building.id==='duel';
@@ -73,29 +74,6 @@ function Fence({a,b}:{a:Vec2;b:Vec2}){
   {Array.from({length:count+1},(_,i)=><Box key={i} p={[-length/2+i*length/count,.67,0]} s={[.19,1.34,.19]} color="#6c533d"/>)}
  </group>;
 }
-function ClosedCottage({cottage:c}:{cottage:Cottage}){
- const gable=useMemo(()=>{
-  const g=new THREE.BufferGeometry(),vertices:number[]=[];
-  for(const side of [-1,1])vertices.push(-c.width/2,3,side*c.depth/2,c.width/2,3,side*c.depth/2,0,5.25,side*c.depth/2);
-  g.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));g.computeVertexNormals();return g;
- },[c]);
- useEffect(()=>()=>gable.dispose(),[gable]);
- return <group position={[c.at[0],0,c.at[1]]} rotation={[0,c.rotation,0]}>
- <Box p={[0,1.5,0]} s={[c.width,3,c.depth]} color={c.color}/>
- <mesh geometry={gable} castShadow receiveShadow><meshStandardMaterial color={c.color} side={THREE.DoubleSide} roughness={1}/></mesh>
- <Box p={[0,4.04,c.depth/2+.02]} s={[.14,2.15,.12]}/>
- <Model name="Roof_RoundTiles_6x6" position={[0,3.25,0]} scale={[c.width/7,.46,c.depth/7]}/>
- <Box p={[0,.18,0]} s={[c.width+.12,.36,c.depth+.12]} color="#747567"/>
- {[-1,1].map(side=><Box key={side} p={[side*(c.width/2-.1),1.6,c.depth/2+.02]} s={[.18,2.8,.16]}/>)}
- <Box p={[0,2.9,c.depth/2+.02]} s={[c.width,.18,.16]}/>
- <Box p={[.35,1,c.depth/2+.04]} s={[1.05,1.9,.12]} color="#574b3b"/>
- <Box p={[.7,1.02,c.depth/2+.12]} s={[.09,.09,.06]} color="#ba9860"/>
- <Box p={[-1.15,1.8,c.depth/2+.07]} s={[.85,.95,.12]} color="#4b4231"/>
- <mesh position={[-1.15,1.8,c.depth/2+.14]}><planeGeometry args={[.65,.75]}/><meshStandardMaterial color="#c4a775" emissive="#b97e38" emissiveIntensity={.35}/></mesh>
- <Box p={[-1.15,1.8,c.depth/2+.16]} s={[.065,.8,.05]}/>
- <Box p={[-1.15,1.8,c.depth/2+.16]} s={[.7,.065,.05]}/>
- <Box p={[c.width*.28,3.8,-c.depth*.2]} s={[.65,1.7,.7]} color="#777366"/>
- </group>;}
 function GardenGate({open,count}:{open:boolean;count:number}){return <group position={[0,0,GATE_Z]}>
  {[-1,1].map(side=><group key={side}>
   <Box p={[side*2.6,1.6,0]} s={[.4,3.2,.4]} color="#62503c"/>
@@ -148,7 +126,7 @@ export function VillageScene({gateOpen,discoveryCount}:{gateOpen:boolean;discove
  {hedges.map((h,i)=>{const alongX=h.s[0]>h.s[2],length=alongX?h.s[0]:h.s[2],count=Math.ceil(length/2.5);return <group key={'hedge'+i}>
   {Array.from({length:count},(_,j)=><mesh key={j} position={[h.p[0]+(alongX?-length/2+(j+.5)*length/count:0),h.p[1]-.15,h.p[2]+(alongX?0:-length/2+(j+.5)*length/count)]} scale={alongX?[1.9,h.s[1]*.6,1.2]:[1.2,h.s[1]*.6,1.9]} castShadow receiveShadow><icosahedronGeometry args={[1,1]}/><meshStandardMaterial color={j%3===0?'#304b32':'#35543a'} roughness={1}/></mesh>)}
  </group>;})}
- {cottages.map((c,i)=><ClosedCottage key={'home'+i} cottage={c}/>)}
+ <Cottages/>
  {buildings.map(b=><group key={b.id} position={[b.at[0],0,b.at[1]]} rotation={[0,b.rotation,0]}><EntranceApron/><Shell building={b}/><Furnishings id={b.id}/></group>)}
  <Bench position={[-1.8,0,-1]} rotation={Math.PI/2} length={2.2}/><Bench position={[1.8,0,-1]} rotation={Math.PI/2} length={2.2}/>
  <FutureClearing/>

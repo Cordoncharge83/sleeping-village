@@ -1,4 +1,5 @@
 // One shared layout drives the visible village, collision geometry, and route checks.
+import {cottageSolids} from './cottage-design.ts';
 export type Vec2 = [number, number];
 export type Vec3 = [number, number, number];
 export type PlaceId = 'workshop' | 'smosh' | 'bargainy' | 'atlas' | 'duel' | 'education' | 'future' | 'square' | 'welcome' | 'gate';
@@ -95,23 +96,23 @@ export const buildings: Building[] = [
  {id:'duel', at:[33,-1], rotation:-Math.PI/2, title:'THE TOURNAMENT YARD', subtitle:'DuelSync'},
  {id:'education', at:[-20,0], rotation:Math.PI/2, title:'THE SCHOOLHOUSE', subtitle:'Education & skills'},
 ];
-export type Cottage={at:Vec2;rotation:number;width:number;depth:number;color:string};
+export type Cottage={at:Vec2;rotation:number;width:number;depth:number;color:string;style:'cottage'|'tall'|'timber'|'storehouse';height:number;roofRise:number;accent:string;crossRoof?:boolean};
 // Closed homes give the streets edges without adding more destinations to inspect.
 export const cottages:Cottage[]=[
- {at:[-7,20],rotation:Math.PI/2,width:5,depth:4.5,color:'#aa9576'},
- {at:[13,27.5],rotation:Math.PI,width:5.2,depth:5,color:'#a89170'},
- {at:[-22,13],rotation:.2,width:4.8,depth:5,color:'#988976'},
- {at:[-10,-7],rotation:.12,width:5,depth:4.5,color:'#b09e7c'},
- {at:[7,-11.5],rotation:0,width:4.6,depth:4.4,color:'#a39277'},
- {at:[12,0],rotation:Math.PI,width:5,depth:5,color:'#b29a79'},
- {at:[21.5,1],rotation:Math.PI,width:4.5,depth:4,color:'#9b8e78'},
- {at:[34,17],rotation:-Math.PI/2,width:5,depth:4.6,color:'#aa967d'},
+ {at:[-7,20],rotation:Math.PI/2,width:5,depth:4.5,color:'#b5ae88',style:'cottage',height:2.55,roofRise:1.5,accent:'#5c7463',crossRoof:true},
+ {at:[13,27.5],rotation:Math.PI,width:5.2,depth:5,color:'#c1ae89',style:'timber',height:3.05,roofRise:1.85,accent:'#775648'},
+ {at:[-22,13],rotation:.2,width:4.8,depth:5,color:'#a7ad94',style:'cottage',height:2.7,roofRise:1.65,accent:'#687b76'},
+ {at:[-10,-7],rotation:.12,width:4.35,depth:4.5,color:'#b7a999',style:'tall',height:4.25,roofRise:1.75,accent:'#536b70'},
+ {at:[7,-11.5],rotation:0,width:4.6,depth:4.4,color:'#c4b79a',style:'cottage',height:2.6,roofRise:1.5,accent:'#8b6254',crossRoof:true},
+ {at:[12,0],rotation:Math.PI,width:5,depth:5,color:'#c0ad87',style:'timber',height:3.1,roofRise:1.9,accent:'#526e64'},
+ {at:[21.5,1],rotation:Math.PI,width:4.25,depth:4,color:'#b6a18b',style:'tall',height:4.05,roofRise:1.65,accent:'#7a615c'},
+ {at:[34,17],rotation:-Math.PI/2,width:5,depth:4.6,color:'#a39980',style:'storehouse',height:3.1,roofRise:1.55,accent:'#65715a'},
 ];
-export function localPoint(building: Building, x:number, z:number): Vec2 {
+export function localPoint(building: Pick<Building,'at'|'rotation'>, x:number, z:number): Vec2 {
  const c=Math.cos(building.rotation),s=Math.sin(building.rotation);
  return [building.at[0]+x*c+z*s,building.at[1]-x*s+z*c];
 }
-export function localSolid(building:Building, p:Vec3, s:Vec3):Solid {
+export function localSolid(building:Pick<Building,'at'|'rotation'>, p:Vec3, s:Vec3):Solid {
  const [x,z]=localPoint(building,p[0],p[2]);
  return {p:[x,p[1],z],s,rotation:building.rotation};
 }
@@ -220,7 +221,7 @@ for(const b of buildings){
 }
 export const solids:Solid[]=[
  {p:[0,-.15,0],s:[140,.3,130]},...buildingSolids,...hedges,
- ...cottages.map(c=>({p:[c.at[0],2,c.at[1]] as Vec3,s:[c.width,4,c.depth] as Vec3,rotation:c.rotation})),
+ ...cottages.flatMap(c=>cottageSolids(c).map(s=>localSolid(c,s.p,s.s))),
  ...trees.map(([x,z,s])=>({p:[x,1.7,z] as Vec3,s:[.65*s,3.4,.65*s] as Vec3})),
  // Low bench silhouettes around the landmark; the front crossing stays open.
  {p:[-1.8,.3,-1],s:[.5,.6,2.2]}, {p:[1.8,.3,-1],s:[.5,.6,2.2]},

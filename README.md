@@ -4,7 +4,7 @@
 
 Visitors guide a traveler through a village at sunset, discover projects and professional experience at its buildings, and collect their stories in a personal journal. The aim is to introduce Mouadh’s software engineering work through a coherent, playful experience, with journal entries unlocked by visiting their displays.
 
-**Current status:** a working local prototype. The village, movement, camera, journal, and shared game UI are implemented. Project presentations are still being developed, and this portfolio has not been published.
+**Current status:** a working browser prototype [deployed on Cloudflare](https://sleeping-village.mouadh-bondka-2.workers.dev/village/). The village, movement, camera, journal, project displays and game UI are implemented; content and visual polish continue.
 
 ![The village layout based on the hand-drawn map](planning/village-sketch-layout.png)
 
@@ -28,6 +28,7 @@ The entrance has a welcome/tutorial sign, and the square provides directions. Si
 
 - An animated traveler with walking and sprinting, an over-the-shoulder camera, collision handling, and camera clearance around walls and furniture. Movement is grounded, with no jumping or climbing.
 - A village with six open-front destinations, eight closed background cottages, branching paths, a central tree and benches, woodland borders, and a sunset palette with deeper forest greens and warm lantern light.
+- Four background home designs: low cottages with door canopies and flower boxes, narrow two-storey homes, timber-framed homes with loft windows, and a storehouse with broad doors and a lean-to. They reuse the existing roof asset and textures, with shared batches for colored walls, trim, windows and firewood. See [the visual and loading checks](planning/COTTAGE_VARIETY_CHECKS.md).
 - A detailed Story & Supper tavern with a discoverable ledger, serving counter, shelves, reading and supper tables, a cream couch with mustard patterned pillows, crimson accents, terrace seating, candles, and other props.
 - Six main journal discoveries plus a bonus future-project chapter. The northern garden gate physically blocks passage until all six main entries are discovered, then opens automatically. New discoveries show a notice; revisiting an entry does not unlock it again. Unwritten entries show clues.
 - A journal with Contents as its single global bookmark. Each entry has its own page arrows, section label, and keyboard navigation.
@@ -36,7 +37,7 @@ The entrance has a welcome/tutorial sign, and the square provides directions. Si
 - The **Worn Traveler’s Journal** font pairing: IM Fell English for titles, Alegreya for reading, and Alegreya Sans for controls. Font files are bundled with the game.
 - Mouse sensitivity and low-graphics settings, modal keyboard navigation, reduced-motion styling, and stacked journal pages for narrow windows.
 - Automated checks for physics, camera movement, and discovery persistence, plus recorded visual checks in `planning/`.
-- Distance-based walking/running footsteps with earth, grass and wood textures; a paper-and-chime world interaction cue; stereo wind and leaves; and a quiet original magical ambient score. Sound is synthesized with Web Audio, with no extra asset downloads or dependencies.
+- Recorded walking/running footsteps synchronized to the animation, with earth, grass and wood sounds; a paper-and-chime world interaction cue; stereo wind and leaves; and a quiet original magical ambient score. The three recorded banks total 157 KB; background sound and interaction cues use native Web Audio synthesis, with no added dependencies.
 - Master mute and independent overall, effects, nature and music volumes in Pause → Settings. Sound preferences persist in this browser. Audio fades lower in menus and suspends when the page loses focus or is hidden.
 
 ### Saved discoveries

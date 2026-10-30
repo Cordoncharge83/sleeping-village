@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {createSimulation} from '../src/physics.ts';
-import {SPAWN,BOUNDS,buildings,localPoint,places,nearbyPlace,workshopStations,workshopStationAt,schoolhouseStations,schoolhouseStationAt,GATE_Z,type Vec2} from '../src/village.ts';
+import {SPAWN,BOUNDS,buildings,cottages,localPoint,places,nearbyPlace,workshopStations,workshopStationAt,schoolhouseStations,schoolhouseStationAt,GATE_Z,type Vec2} from '../src/village.ts';
+import {cottageEnvelope} from '../src/cottage-design.ts';
 import {WALK_SPEED,RUN_SPEED} from '../src/tuning.ts';
 const s=await createSimulation();
 function settle(){for(let i=0;i<30;i++)s.step(0,0);}
@@ -148,6 +149,17 @@ try {
  for(let i=0;i<120;i++)s.step(0,WALK_SPEED/60);
  assert.ok(s.body.translation().z<-2.5,'Closed cottage cannot be entered');
  assert.ok(s.cameraDistance({x:12,y:1.4,z:-4},{x:0,y:0,z:1},4)<1.5,'Cottage blocks the camera');
+ // Every background design stays closed, including its taller walls and lower roofs.
+ for(const c of cottages){
+  const b=cottageEnvelope(c),start=localPoint(c,b.x,c.depth/2+1.2);
+  s.body.setTranslation({x:start[0],y:.74,z:start[1]},true);s.body.setNextKinematicTranslation({x:start[0],y:.74,z:start[1]});s.world.step();settle();
+  for(let i=0;i<60;i++)s.step(-Math.sin(c.rotation)*WALK_SPEED/60,-Math.cos(c.rotation)*WALK_SPEED/60);
+  const p=s.body.translation(),localZ=(p.x-c.at[0])*Math.sin(c.rotation)+(p.z-c.at[1])*Math.cos(c.rotation);
+  assert.ok(localZ>c.depth/2+.2,`${c.style} door remains solid`);
+  const origin=localPoint(c,b.x,c.depth/2+1),direction={x:-Math.sin(c.rotation),y:0,z:-Math.cos(c.rotation)};
+  for(const y of [1.5,c.height+.32])assert.ok(s.cameraDistance({x:origin[0],y,z:origin[1]},direction,2)<1.2,`${c.style} wall/roof stops the camera at height ${y}`);
+ }
+ s.body.setTranslation({x:12,y:.74,z:-4},true);s.body.setNextKinematicTranslation({x:12,y:.74,z:-4});s.world.step();settle();
  walkTo([12,-4]);walkTo([10,-6]);walkTo([4,-4]);walkTo([0,-6]);walkTo([1,-10]);walkTo([0,-14]);
  assert.equal(nearbyPlace(0,-14),'gate');
  for(let i=0;i<120;i++)s.step(0,-RUN_SPEED/60);
