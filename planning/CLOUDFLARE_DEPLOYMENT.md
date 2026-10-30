@@ -22,7 +22,7 @@ cloudflare-dist is generated and ignored, along with local .wrangler state. The 
 
 ## Custom domain routing
 
-The hostname already has a proxied CNAME record to mouadhb.pages.dev, the older portfolio. That record remains intact. The new portfolio Worker owns the route portfolio.moudka.com/*, while sleeping-village owns the more specific portfolio.moudka.com/village and portfolio.moudka.com/village/* routes. Both repositories record their routes in wrangler.jsonc so later deployments preserve the split. Other hostnames and DNS records are unchanged.
+The hostname uses a proxied AAAA record named portfolio with value 100:: and TTL Auto. This Cloudflare-documented placeholder supports Worker routes without a real origin; it replaces the old CNAME to mouadhb.pages.dev. Keep the record proxied. The portfolio Worker owns the route portfolio.moudka.com/*, while sleeping-village owns the more specific portfolio.moudka.com/village and portfolio.moudka.com/village/* routes. Both repositories record their routes in wrangler.jsonc so later deployments preserve the split. Other hostnames and DNS records are unchanged.
 
 The portfolio's production build variable NEXT_PUBLIC_VILLAGE_URL is https://portfolio.moudka.com/village/, enabling its navigation and village card. Its public/_redirects also normalizes /village to /village/ while preserving the existing /cv redirect. This handles bare game links with query strings, which do not match the exact game route.
 
@@ -37,11 +37,19 @@ Do not attach the entire portfolio.moudka.com hostname to the village Worker. Th
 
 ## Custom-domain verification (30 October 2026)
 
-- Both repositories record their routes. The portfolio's production build setting NEXT_PUBLIC_VILLAGE_URL enables its header link, Now strip and village card. The existing proxied portfolio DNS record remains unchanged.
+- Both repositories record their routes. The portfolio's production build setting NEXT_PUBLIC_VILLAGE_URL enables its header link, Now strip and village card. The initial verification used the existing proxied portfolio CNAME; the cleanup below subsequently removed that dependency.
 - `npm run check:paths -- https://portfolio.moudka.com/` passes for all 80 game resources, including the 18 models and their dependencies, fonts, screenshots, favicon and recorded footsteps.
 - `npm run check:domain` passes ten checks: portfolio homepage and village link, project and experience pages, shared content JSON/CORS, both bare village URL redirects (with and without a query string), the game entry and asset prefix, missing game assets, an unrelated portfolio path and the original CV redirect. Portfolio project/experience URLs use their canonical form without a trailing slash.
 - Browser check: the homepage's Village link opens the game at /village/. Entering starts the real scene and loads all three footstep banks; a short walk moves the traveler and produces recorded footsteps, with no browser errors. Escape opens pause and Back to portfolio returns to the homepage.
 - No local preview servers or new local dependencies were needed. The regular portfolio's dependency install/build ran on its existing Cloudflare pipeline.
+
+## Old portfolio cleanup (30 October 2026)
+
+- Replaced only portfolio.moudka.com's proxied CNAME to mouadhb.pages.dev with a proxied AAAA placeholder, 100:: (TTL Auto). The Cloudflare UI confirmed the replacement.
+- Removed portfolio.moudka.com from the old mouadhb Pages project's custom domains. The project now has no custom domain, and the new sites no longer depend on its deployment.
+- After these changes, all ten check:domain checks and all 80 check:paths resources passed on the custom domain. Both original workers.dev addresses also returned the correct applications. During the DNS change, an immediate probe briefly received the old Pages HTML; subsequent verification passed after Cloudflare applied the change.
+- The old Pages project's permanent deletion is staged, awaiting the required final confirmation. It still serves mouadhb.pages.dev until deleted. Its GitHub repository, Cordoncharge83/dev-journey-archives, is retained.
+- No local preview server was started and no packages were installed.
 
 ## Official documentation
 
@@ -49,3 +57,5 @@ Do not attach the entire portfolio.moudka.com hostname to the village Worker. Th
 - https://developers.cloudflare.com/workers/static-assets/routing/advanced/serving-a-subdirectory/
 - https://developers.cloudflare.com/workers/static-assets/redirects/
 - https://developers.cloudflare.com/workers/configuration/routing/routes/
+- https://developers.cloudflare.com/workers/best-practices/workers-best-practices/
+- https://developers.cloudflare.com/pages/configuration/custom-domains/
