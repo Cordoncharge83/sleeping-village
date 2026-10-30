@@ -48,7 +48,8 @@ Do not attach the entire portfolio.moudka.com hostname to the village Worker. Th
 - Replaced only portfolio.moudka.com's proxied CNAME to mouadhb.pages.dev with a proxied AAAA placeholder, 100:: (TTL Auto). The Cloudflare UI confirmed the replacement.
 - Removed portfolio.moudka.com from the old mouadhb Pages project's custom domains. The project now has no custom domain, and the new sites no longer depend on its deployment.
 - After these changes, all ten check:domain checks and all 80 check:paths resources passed on the custom domain. Both original workers.dev addresses also returned the correct applications. During the DNS change, an immediate probe briefly received the old Pages HTML; subsequent verification passed after Cloudflare applied the change.
-- The old Pages project's permanent deletion is staged, awaiting the required final confirmation. It still serves mouadhb.pages.dev until deleted. Its GitHub repository, Cordoncharge83/dev-journey-archives, is retained.
+- After the user's final confirmation, permanently deleted the old mouadhb Pages project, including its deployments and settings. Cloudflare returned to the application list with mouadhb absent. Its GitHub repository, Cordoncharge83/dev-journey-archives, is retained.
+- Re-ran check:domain and check:paths after deletion: all ten custom-domain checks and all 80 game resources passed.
 - No local preview server was started and no packages were installed.
 
 ## Official documentation
