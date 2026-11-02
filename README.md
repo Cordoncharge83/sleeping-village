@@ -1,6 +1,8 @@
-# The Sleeping Village
+# The Woodland Village
 
 **A desktop-first 3D portfolio by Mouadh Bondka, built as a small woodland village you can explore in your browser.**
+
+The game's public name is **The Woodland Village**. The existing repository, local folder, Cloudflare Worker and browser-storage keys retain their `sleeping-village` identifiers for deployment and saved-data compatibility; these are technical identifiers, not the displayed game title.
 
 Visitors guide a traveler through a village at sunset, discover projects and professional experience at its buildings, and collect their stories in a personal journal. The aim is to introduce Mouadh’s software engineering work through a coherent, playful experience, with journal entries unlocked by visiting their displays.
 

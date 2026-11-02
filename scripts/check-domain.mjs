@@ -19,10 +19,10 @@ const checks=[
   if(url.search)assert.equal(target.search,url.search,'Preserve query strings');
  }]),
  ['Game owns /village/ and uses its own asset prefix',async()=>{
-  const {response,text}=await get('/village/');assert.equal(response.status,200);assert.match(text,/<title[^>]*>The Sleeping Village/);assert.match(text,/src="\/village\/assets\/[^" ]+\.js"/);
+  const {response,text}=await get('/village/');assert.equal(response.status,200);assert.match(text,/<title[^>]*>The Woodland Village/);assert.match(text,/src="\/village\/assets\/[^" ]+\.js"/);
  }],
  ['Missing game assets return 404',async()=>{const {response}=await get('/village/assets/domain-check-missing.txt');assert.equal(response.status,404);}],
- ['Unrelated paths remain with the portfolio',async()=>{const {response,text}=await get('/villager');assert.equal(response.status,404);assert.ok(!text.includes('<title>The Sleeping Village'));}],
+ ['Unrelated paths remain with the portfolio',async()=>{const {response,text}=await get('/villager');assert.equal(response.status,404);assert.ok(!text.includes('<title>The Woodland Village'));}],
  ['Existing CV redirect is preserved',async()=>{const {response,url}=await get('/cv');assert.equal(response.status,302);assert.equal(new URL(response.headers.get('location'),url).pathname,'/cv.pdf');}],
 ];
 const results=await Promise.allSettled(checks.map(async([name,run])=>{await run();return name;}));

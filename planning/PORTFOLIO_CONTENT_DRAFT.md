@@ -1,4 +1,4 @@
-# Sleeping Village — portfolio content draft
+# The Woodland Village — portfolio content draft
 
 Drafted 23 October 2026. Smosh Story Finder was implemented locally on 24 October with live-site screenshots and a verified public link; the other sections remain content drafts. Nothing has been published from this portfolio project.
 
