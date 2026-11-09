@@ -2,9 +2,10 @@ import {useEffect,useRef,useState,type KeyboardEvent} from 'react';
 import {entries,entryIds,mainEntryIds,discoveryCount,hasAllDiscoveries,type EntryId} from './journal-data';
 import {Modal,BookIcon} from './Modal';
 import {publicAssetUrl} from './public-asset';
-type Props={discovered:EntryId[];initialEntry:EntryId|null;initialPage:number;onClose:()=>void;storageAvailable:boolean;newEntry:string|null};
-export default function Journal({discovered,initialEntry,initialPage,onClose,storageAvailable,newEntry}:Props){
+type Props={touchMode:boolean;discovered:EntryId[];initialEntry:EntryId|null;initialPage:number;onClose:()=>void;storageAvailable:boolean;newEntry:string|null};
+export default function Journal({touchMode,discovered,initialEntry,initialPage,onClose,storageAvailable,newEntry}:Props){
  const [selected,setSelected]=useState<EntryId|null>(initialEntry),[page,setPage]=useState(initialEntry?Math.max(0,Math.min(initialPage,entries[initialEntry].pages.length-1)):0);
+ const [details,setDetails]=useState(false);
  const readingPage=useRef<HTMLElement>(null),previousSelection=useRef(selected);
  useEffect(()=>{readingPage.current?.scrollTo(0,0);readingPage.current?.querySelector('.page-copy')?.scrollTo(0,0);},[selected,page]);
  useEffect(()=>{
@@ -15,14 +16,14 @@ export default function Journal({discovered,initialEntry,initialPage,onClose,sto
  const unlocked=(id:EntryId)=>discovered.includes(id)||(id==='future'&&hasAllDiscoveries(discovered));
  const entry=selected&&unlocked(selected)?entries[selected]:null;
  const current=entry?.pages[page]??null;
- function choose(id:EntryId|null){setSelected(id);setPage(0);}
+ function choose(id:EntryId|null){setDetails(false);setSelected(id);setPage(0);}
  function turn(direction:number){if(entry)setPage(p=>Math.max(0,Math.min(entry.pages.length-1,p+direction)));}
  function keys(e:KeyboardEvent){if(!entry)return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();turn(e.key==='ArrowRight'?1:-1);}}
  return <Modal onClose={onClose} label="Traveler’s journal" className="journal-modal">
   <div className="journal-shell" onKeyDown={keys}>
    <div className="journal-heading"><span>THE TRAVELER’S JOURNAL</span><button className="close-book" autoFocus onClick={onClose} aria-label="Close journal">×</button></div>
-   <nav className="bookmarks" aria-label="Journal navigation"><button onClick={()=>choose(null)} aria-pressed={!selected} className={!selected?'active':''}>Contents</button></nav>
-   <div className={`open-book${current?.image?' gallery-spread':''}${current?.imageLayout==='portrait'?' portrait-gallery':''}`}>
+   <nav className="bookmarks" aria-label="Journal navigation"><button onClick={()=>choose(null)} aria-pressed={!selected&&!details} className={!selected&&!details?'active':''}>Contents</button><button className="compact-details" aria-pressed={details} onClick={()=>setDetails(!details)}>{details?'Back to reading':entry?'Entry details':'About the journal'}</button></nav>
+   <div className={`open-book${details?' show-details':''}${current?.image?' gallery-spread':''}${current?.imageLayout==='portrait'?' portrait-gallery':''}`}>
     <section className="book-page left-page">
      <div className="page-topline">{entry?'A place discovered':'Notes from the village'}</div>
      <h1>{entry?entry.place:'The traveler’s journal'}</h1>
@@ -45,7 +46,7 @@ export default function Journal({discovered,initialEntry,initialPage,onClose,sto
       <div className="page-topline">Places & their stories</div><h2>Contents</h2>
       <ol className="journal-index">{entryIds.map((id,i)=><li key={id}>
        {unlocked(id)?<button onClick={()=>choose(id)}><span className="index-number">{id==='future'?'✦':String(i+1).padStart(2,'0')}</span><span><strong>{entries[id].title}</strong><small>{id==='future'?'Bonus chapter · ':''}{entries[id].place}</small></span><span aria-hidden="true">›</span></button>:<div className="locked-entry"><span className="index-number">{id==='future'?'✦':'?'}</span><span><strong>{id==='future'?'Beyond the garden gate':'Unwritten entry'}</strong><small>{entries[id].clue}</small></span></div>}
-      </li>)}</ol><p className="page-note">Walk up to a point of interest and press E. Open this journal again with J.</p>
+      </li>)}</ol><p className="page-note">{touchMode?'Walk up to a display and tap its prompt. Tap Journal to return here.':'Walk up to a point of interest and press E. Open this journal again with J.'}</p>
      </>:<>
       <div className="page-topline">{entry.title}</div><div key={`${selected}-${page}`} className="page-copy">{!current!.image&&<h2>{current!.heading}</h2>}
        {current!.image?<><figure className="gallery-image"><a href={publicAssetUrl(current!.image)} target="_blank" rel="noopener noreferrer" aria-label="Enlarge screenshot in a new tab"><img src={publicAssetUrl(current!.image)} alt={current!.alt}/></a><figcaption>{current!.caption} · Select to enlarge</figcaption></figure><div className="gallery-notes"><h2>{current!.heading}</h2>{current!.paragraphs.map(p=><p key={p}>{p}</p>)}</div></>:current!.paragraphs.map(p=><p key={p}>{p}</p>)}

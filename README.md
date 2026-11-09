@@ -1,6 +1,6 @@
 # The Woodland Village
 
-**A desktop-first 3D portfolio by Mouadh Bondka, built as a small woodland village you can explore in your browser.**
+**A 3D portfolio for desktop and touchscreens by Mouadh Bondka, built as a small woodland village you can explore in your browser.**
 
 The game's public name is **The Woodland Village**. The existing repository, local folder, Cloudflare Worker and browser-storage keys retain their `sleeping-village` identifiers for deployment and saved-data compatibility; these are technical identifiers, not the displayed game title.
 
@@ -59,7 +59,7 @@ npm ci
 npm run dev
 ```
 
-Open **http://127.0.0.1:5173/village/** in a desktop browser. On Windows, once dependencies are present, you can also double-click **Start Village.bat**. Keep its terminal window open while playing; press **Ctrl+C** or close that window to stop the server.
+Open **http://127.0.0.1:5173/village/** in a browser. On Windows, once dependencies are present, you can also double-click **Start Village.bat**. Keep its terminal window open while playing; press **Ctrl+C** or close that window to stop the server.
 
 The game is configured for **`/village/`** in development and production. Its public URL is `https://portfolio.moudka.com/village/`. Model URLs and journal images use Vite’s base path; CSS fonts and compiled scripts are rewritten by Vite. The complete `dist/` directory must be served at that path by the host, including `assets/`, `fonts/`, `audio/`, and `images/`. Local builds only generate files; Cloudflare publishes pushes to `main` using the settings below. See [planning/VILLAGE_PATH_CHECKS.md](planning/VILLAGE_PATH_CHECKS.md).
 
@@ -89,6 +89,8 @@ The repository includes a static-only Cloudflare Worker configuration. No game s
 `build:cloudflare` packages the Vite build into `cloudflare-dist/village/`. This mirrors `/village/` in the deployed static asset paths; simply uploading `dist/` at the Worker root would lose that mapping. Generated output stays ignored. The original `workers.dev` root redirects to `/village/`. `wrangler.jsonc` assigns the two village path routes on `portfolio.moudka.com`; the regular portfolio Worker serves the homepage and other paths through its own broader route.
 
 ### Controls
+
+On a phone or tablet, drag the left stick to walk. Push to its outer edge to run and ease back to walk again. Swipe on the right side to turn the camera while moving. Tap a nearby display’s prompt to inspect it. Journal, Map and Pause are in the top bar. Touch-first devices start with low graphics, which can be changed in Settings alongside swipe sensitivity.
 
 | Input | Action |
 | --- | --- |
@@ -164,7 +166,7 @@ Footsteps use the supplied Freesound recordings by Fewes (including original con
 - Give the remaining buildings their own more complete displays and interactions.
 - Continue usability, accessibility, browser, and performance testing before publishing.
 
-Manart and the penguin board game remain future-project entries, with their actual development stages stated clearly. The portfolio itself is still a prototype, with desktop mouse-and-keyboard play as its primary experience.
+Manart and the penguin board game remain future-project entries, with their actual development stages stated clearly. The portfolio itself is still a prototype with both touch and mouse-and-keyboard controls.
 
 ## Local files and version history
 

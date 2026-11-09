@@ -131,6 +131,6 @@ export function VillageScene({gateOpen,discoveryCount}:{gateOpen:boolean;discove
  <Bench position={[-1.8,0,-1]} rotation={Math.PI/2} length={2.2}/><Bench position={[1.8,0,-1]} rotation={Math.PI/2} length={2.2}/>
  <FutureClearing/>
  <GardenGate open={gateOpen} count={discoveryCount}/>
- <Box p={welcomePost.p} s={welcomePost.s}/><Sign title="WELCOME, TRAVELER" subtitle="E · Read the welcome sign" position={[6,1.8,19]} width={2.8}/>
+ <Box p={welcomePost.p} s={welcomePost.s}/><Sign title="WELCOME, TRAVELER" subtitle="A guide to the village" position={[6,1.8,19]} width={2.8}/>
  <Sign title="THE OLD-TREE SQUARE" subtitle="" directions={{left:'Learning & work',right:'Projects'}} position={[0,1.9,.1]} width={3.4}/>
  </>;}

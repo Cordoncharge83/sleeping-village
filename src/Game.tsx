@@ -13,9 +13,10 @@ import {WALK_SPEED,RUN_SPEED} from './tuning';
 import {FollowCamera,InterpolatedPosition,PHYSICS_STEP} from './player-view';
 import {atmosphere} from './atmosphere';
 import type {VillageAudio} from './audio';
+import type {TouchInput} from './touch-input';
 import type {Gait} from './footsteps';
 
-type Props={active:boolean;overview:boolean;sensitivity:number;low:boolean;reset:number;gateOpen:boolean;discoveryCount:number;audio:VillageAudio;onNear:(near:PlaceId|null,page:number)=>void;onArea:(area:PlaceId|'arrival')=>void;onReady:()=>void;onError:(message:string)=>void};
+type Props={touch:TouchInput;active:boolean;overview:boolean;sensitivity:number;low:boolean;reset:number;gateOpen:boolean;discoveryCount:number;audio:VillageAudio;onNear:(near:PlaceId|null,page:number)=>void;onArea:(area:PlaceId|'arrival')=>void;onReady:()=>void;onError:(message:string)=>void};
 function World(props:Props){
  const gltf=useLoader(GLTFLoader,publicAssetUrl(assets.Traveler));
  const traveler=useMemo(()=>{const o=clone(gltf.scene);o.traverse(n=>{if(n instanceof THREE.Mesh){n.castShadow=true;n.receiveShadow=true;}});return o;},[gltf]);
@@ -29,10 +30,10 @@ function World(props:Props){
  useEffect(()=>{actions.Idle.play();return()=>{mixer.stopAllAction();mixer.uncacheRoot(traveler);};},[actions,mixer,traveler]);
  useEffect(()=>{const down=(e:KeyboardEvent)=>{if(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight'].includes(e.code)&&props.active){e.preventDefault();input.current.add(e.code);}};
  const up=(e:KeyboardEvent)=>input.current.delete(e.code);const clear=()=>input.current.clear();
- const move=(e:MouseEvent)=>{if(props.active){look.current.yaw-=e.movementX*.0022*props.sensitivity;look.current.pitch=THREE.MathUtils.clamp(look.current.pitch+e.movementY*.0018*props.sensitivity,.03,.7);}};
+ const move=(e:PointerEvent)=>{if(props.active&&e.pointerType==='mouse'){look.current.yaw-=e.movementX*.0022*props.sensitivity;look.current.pitch=THREE.MathUtils.clamp(look.current.pitch+e.movementY*.0018*props.sensitivity,.03,.7);}};
  const context=(e:Event)=>{if(props.active)e.preventDefault();};
- window.addEventListener('keydown',down);window.addEventListener('keyup',up);window.addEventListener('blur',clear);window.addEventListener('mousemove',move);gl.domElement.addEventListener('contextmenu',context);
- return()=>{clear();window.removeEventListener('keydown',down);window.removeEventListener('keyup',up);window.removeEventListener('blur',clear);window.removeEventListener('mousemove',move);gl.domElement.removeEventListener('contextmenu',context);};},[props.active,props.sensitivity,gl]);
+ window.addEventListener('keydown',down);window.addEventListener('keyup',up);window.addEventListener('blur',clear);window.addEventListener('pointermove',move);gl.domElement.addEventListener('contextmenu',context);
+ return()=>{clear();window.removeEventListener('keydown',down);window.removeEventListener('keyup',up);window.removeEventListener('blur',clear);window.removeEventListener('pointermove',move);gl.domElement.removeEventListener('contextmenu',context);};},[props.active,props.sensitivity,gl]);
  useEffect(()=>{input.current.clear();},[props.active]);
  useEffect(()=>{const s=sim.current;if(s){s.reset();view.motion.reset(s.body.translation());}look.current.yaw=0;look.current.pitch=.23;view.camera.reset();props.audio.resetSteps();},[props.reset]);
  useFrame((_,rawDelta)=>{
@@ -40,8 +41,16 @@ function World(props:Props){
   s.setGateOpen(props.gateOpen);
   let x=Number(keys.has('KeyD')||keys.has('ArrowRight'))-Number(keys.has('KeyA')||keys.has('ArrowLeft'));
   let z=Number(keys.has('KeyS')||keys.has('ArrowDown'))-Number(keys.has('KeyW')||keys.has('ArrowUp'));
-  if(!props.active){x=0;z=0;}const running=keys.has('ShiftLeft')||keys.has('ShiftRight');const moving=x!==0||z!==0;
-  const len=Math.hypot(x,z)||1;x/=len;z/=len;const yaw=look.current.yaw;
+  const touch=props.touch;
+  if(props.active){
+   x+=touch.x;z+=touch.z;
+   look.current.yaw-=touch.lookX*.008*props.sensitivity;
+   look.current.pitch=THREE.MathUtils.clamp(look.current.pitch+touch.lookY*.005*props.sensitivity,.03,.7);
+  }else{x=0;z=0;}
+  touch.lookX=touch.lookY=0;
+  const running=touch.running||keys.has('ShiftLeft')||keys.has('ShiftRight');
+  const moving=x!==0||z!==0;
+  const len=Math.max(1,Math.hypot(x,z));x/=len;z/=len;const yaw=look.current.yaw;
   const dx=x*Math.cos(yaw)+z*Math.sin(yaw),dz=-x*Math.sin(yaw)+z*Math.cos(yaw),speed=running?RUN_SPEED:WALK_SPEED;
   const p=view.motion.advance(dt,()=>{s.step(dx*speed*PHYSICS_STEP,dz*speed*PHYSICS_STEP);return s.body.translation();});
   actor.current.position.set(p.x,p.y-.71,p.z);

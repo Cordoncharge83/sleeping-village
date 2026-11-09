@@ -98,3 +98,67 @@ button,input,.journal-shortcut>span,.menu-choices button,.ink-button,.wax-button
 .gate-open-notice strong{display:block;margin:10px 0;font:32px/1.15 var(--font-title);font-weight:400}
 .gate-open-notice p{margin:0;font:18px/1.4 var(--font-reading)}
 @keyframes gate-revealed{0%,100%{opacity:0}12%,78%{opacity:1}}
+
+/* Two independent thumb surfaces leave the HUD and interaction prompt tappable. */
+.touch-controls {
+ position:absolute; inset:0; pointer-events:none; user-select:none; -webkit-user-select:none;
+ --stick-size:clamp(96px,18vmin,124px);
+ --thumb-bottom:max(38px,calc(env(safe-area-inset-bottom) + 24px));
+}
+.touch-stick,.touch-look {pointer-events:auto; touch-action:none; -webkit-tap-highlight-color:transparent}
+.touch-stick {
+ position:absolute; bottom:var(--thumb-bottom); left:max(18px,calc(env(safe-area-inset-left) + 10px));
+ width:var(--stick-size); aspect-ratio:1; border-radius:50%; border:1px solid #ead4a2a8;
+ background:radial-gradient(circle,#342d2290 45%,#342d22b3 46%,#342d2277 49%);
+ box-shadow:inset 0 0 0 4px #392a1d55,0 2px 8px #17211866;
+}
+.touch-knob {
+ position:absolute; inset:30%; border-radius:50%; border:1px solid #eed7a6;
+ background:radial-gradient(at 36% 27%,#e5cf9f,#ae8e5d); box-shadow:0 2px 5px #241b17aa;
+ transform:translate(var(--stick-x,0px),var(--stick-y,0px)); pointer-events:none;
+}
+.touch-stick[data-running] {border-color:#ffe6a6; box-shadow:inset 0 0 0 3px #efd09666}
+.touch-look {position:absolute; inset:0 0 0 48%}
+.touch-caption {
+ position:absolute; font:14px/1 var(--font-ui); color:#f4e4c4; padding:4px 8px; border-radius:3px;
+ white-space:nowrap; pointer-events:none; background:#263128ba;
+}
+.touch-stick .touch-caption {left:50%; top:calc(100% + 4px); transform:translateX(-50%)}
+.touch-look .touch-caption {right:max(22px,env(safe-area-inset-right)); bottom:var(--thumb-bottom)}
+[data-touch] .controls,[data-touch] kbd,[data-touch] .leather-cover>small,
+[data-touch] .journal-controls>span:not(.discovery-inline),.bookmarks .compact-details {display:none}
+[data-touch] .journal-controls:not(:has(.discovery-inline)) {display:none}
+[data-touch] .game-hud {
+ padding:max(8px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) 8px max(12px,env(safe-area-inset-left));
+}
+[data-touch] .game-hud button,[data-touch] .close-book,[data-touch] .page-turner button {min-height:44px; min-width:44px}
+[data-touch] .welcome .touch-intro {font:15px/1.4 var(--font-ui);max-width:30ch}
+[data-touch].is-playing .game-footer {display:none}
+[data-touch] .interact {
+ left:auto; right:max(16px,env(safe-area-inset-right)); bottom:max(80px,calc(env(safe-area-inset-bottom) + 68px));
+ transform:none; max-width:min(48vw,290px); min-height:48px; white-space:normal; padding:10px 14px;
+}
+[data-touch] .location {top:calc(max(8px,env(safe-area-inset-top)) + 66px);left:max(16px,env(safe-area-inset-left))}
+@media(max-width:700px){
+ .bookmarks .compact-details {display:block}
+ .open-book.show-details>.left-page {display:flex;grid-column:1/-1}
+ .open-book.show-details>.right-page {display:none}
+ [data-touch] .game-hud {gap:4px}
+ [data-touch] .village-mark {min-width:0}
+ [data-touch] .journal-shortcut {gap:6px}
+ [data-touch] .journal-shortcut small {white-space:nowrap;font-size:11px}
+}
+@media(max-height:520px) and (orientation:landscape){
+ [data-touch] .welcome {top:68px;bottom:max(10px,env(safe-area-inset-bottom));transform:none;overflow:auto;width:min(440px,85%);}
+ [data-touch] .welcome h1 {font-size:36px;margin:4px 0}
+ [data-touch] .welcome h1 br {display:none}
+ [data-touch] .welcome p {margin:5px 0}
+ [data-touch] .welcome .touch-intro {max-width:100%}
+ [data-touch] .welcome .menu-choices {margin:10px 0}
+ [data-touch] .game-footer {display:none}
+ [data-touch] .location p {display:none}
+ [data-touch] .location h2 {font-size:20px;margin:2px 0}
+ [data-touch] .map-legend {top:66px;bottom:12px;max-height:none}
+ [data-touch] .gallery-spread .page-copy {display:block;overflow-y:auto}
+ [data-touch] .gallery-spread .gallery-image img {max-height:45dvh}
+}
