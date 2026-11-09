@@ -56,7 +56,8 @@ function World(props:Props){
   actor.current.position.set(p.x,p.y-.71,p.z);
   if(moving){const target=Math.atan2(dx,dz),a=actor.current.rotation.y;actor.current.rotation.y=a+Math.atan2(Math.sin(target-a),Math.cos(target-a))*(1-Math.exp(-12*dt));}
   const clip:Gait=moving?(running?'Run':'Walk'):'Idle';if(current.current!==clip){actions[current.current]?.fadeOut(.2);actions[clip].reset().fadeIn(.2).play();current.current=clip;}
-  actions.Walk.timeScale=3.2;actions.Run.timeScale=3.4;if(props.active)mixer.update(dt);else mixer.update(dt*.3);
+  // A partly pushed stick moves slower; slow the stride (and its footsteps) with it instead of sliding.
+  const pace=Math.hypot(x,z)||1;actions.Walk.timeScale=3.2*pace;actions.Run.timeScale=3.4*pace;if(props.active)mixer.update(dt);else mixer.update(dt*.3);
   props.audio.step({x:p.x,z:p.z,delta:dt,active:props.active,clip,time:actions[clip].time,duration:actions[clip].getClip().duration});
   const isNear=nearbyPlace(p.x,p.z,props.gateOpen),page=isNear==='workshop'?(workshopStationAt(p.x,p.z)??0):isNear==='education'?(schoolhouseStationAt(p.x,p.z)??0):0;if(isNear!==near.current||page!==nearPage.current){near.current=isNear;nearPage.current=page;props.onNear(isNear,page);}
   const location=currentArea(p.x,p.z);if(location!==area.current){area.current=location;props.onArea(location);}

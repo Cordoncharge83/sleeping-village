@@ -139,6 +139,8 @@ button,input,.journal-shortcut>span,.menu-choices button,.ink-button,.wax-button
  transform:none; max-width:min(48vw,290px); min-height:48px; white-space:normal; padding:10px 14px;
 }
 [data-touch] .location {top:calc(max(8px,env(safe-area-inset-top)) + 66px);left:max(16px,env(safe-area-inset-left))}
+/* A touch that misses the stick reaches the canvas: it must not zoom the page or raise iOS selection or the loupe. Menus stay zoomable. */
+[data-touch].is-playing {touch-action:none; -webkit-user-select:none; user-select:none; -webkit-touch-callout:none}
 @media(max-width:700px){
  .bookmarks .compact-details {display:block}
  .open-book.show-details>.left-page {display:flex;grid-column:1/-1}
@@ -149,12 +151,24 @@ button,input,.journal-shortcut>span,.menu-choices button,.ink-button,.wax-button
  [data-touch] .journal-shortcut small {white-space:nowrap;font-size:11px}
 }
 @media(max-height:520px) and (orientation:landscape){
- [data-touch] .welcome {top:68px;bottom:max(10px,env(safe-area-inset-bottom));transform:none;overflow:auto;width:min(440px,85%);}
+ /* The desktop vignette reaches outside the panel: here it would scroll sideways and, without the transform,
+    fall behind the canvas. Draw it over the scene instead, and share a row between the buttons so both fit ~270px tall. */
+ [data-touch] .welcome {
+  top:68px;bottom:auto;max-height:calc(100dvh - 68px - max(10px,env(safe-area-inset-bottom)));transform:none;
+  overflow:hidden auto;overscroll-behavior:contain;width:min(444px,85%);
+ }
+ [data-touch] .welcome::before {display:none}
+ [data-touch]:has(>.welcome) .world::after {
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 430px 270px at calc(8% + 222px) 162px,#15251bd9 15%,#15251b80 50%,transparent 72%);
+ }
+ [data-touch] .welcome .eyebrow {display:block}
  [data-touch] .welcome h1 {font-size:36px;margin:4px 0}
- [data-touch] .welcome h1 br {display:none}
+ [data-touch] .welcome h1 br,[data-touch] .welcome p br {display:none}
  [data-touch] .welcome p {margin:5px 0}
  [data-touch] .welcome .touch-intro {max-width:100%}
- [data-touch] .welcome .menu-choices {margin:10px 0}
+ [data-touch] .welcome .menu-choices {margin:8px 0 2px;grid-template-columns:1fr 1fr}
+ [data-touch] .welcome .menu-choices button {min-height:44px}
  [data-touch] .game-footer {display:none}
  [data-touch] .location p {display:none}
  [data-touch] .location h2 {font-size:20px;margin:2px 0}
