@@ -159,6 +159,94 @@ button,input,.journal-shortcut>span,.menu-choices button,.ink-button,.wax-button
  [data-touch] .location p {display:none}
  [data-touch] .location h2 {font-size:20px;margin:2px 0}
  [data-touch] .map-legend {top:66px;bottom:12px;max-height:none}
- [data-touch] .gallery-spread .page-copy {display:block;overflow-y:auto}
- [data-touch] .gallery-spread .gallery-image img {max-height:45dvh}
+}
+
+/* Safari's tab and address bars can leave a landscape phone only ~270px tall. */
+@media (orientation:landscape) and (max-height:520px) {
+ [data-touch] .modal-surface {
+  --side-gap:max(8px,env(safe-area-inset-left),env(safe-area-inset-right));
+  --top-gap:max(6px,env(safe-area-inset-top));
+  --bottom-gap:max(6px,env(safe-area-inset-bottom));
+  --dialog-height:calc(100dvh - var(--top-gap) - var(--bottom-gap));
+  inset:var(--top-gap) var(--side-gap) var(--bottom-gap);
+  max-width:calc(100% - 2 * var(--side-gap));
+  max-height:var(--dialog-height);
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+ }
+
+ /* Keep all seven pause actions on the cover, including the primary return action. */
+ [data-touch] .cover-modal {width:680px}
+ [data-touch] .leather-cover {display:grid;grid-template-columns:auto 1fr;column-gap:16px;padding:12px 20px 6px;text-align:left}
+ [data-touch] .leather-cover>svg,[data-touch] .leather-cover>.eyebrow {display:none}
+ [data-touch] .leather-cover h2 {margin:0 0 2px;font-size:26px}
+ [data-touch] .leather-cover>p {margin:0;align-self:center}
+ [data-touch] .leather-cover .menu-choices {
+  grid-column:1/-1;margin:10px 0 4px;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;
+ }
+ [data-touch] .leather-cover .menu-choices>* {min-height:44px;padding:6px 12px;font-size:17px}
+ [data-touch] .leather-cover .paper-button {grid-column:span 2}
+ [data-touch] .cover-footer {grid-column:1/-1;margin:0;gap:16px}
+ [data-touch] .cover-footer button {min-height:44px;font-size:14px}
+ [data-touch] .leather-cover::before {display:none}
+
+ /* A single reading surface with one toolbar and a persistent page turner. */
+ [data-touch] .journal-modal {height:var(--dialog-height)}
+ [data-touch] .journal-shell {
+  grid-template-columns:minmax(0,1fr) auto auto;
+  grid-template-rows:auto minmax(0,1fr) auto;
+  gap:0 10px;padding:2px 10px 9px;
+ }
+ [data-touch] .journal-heading {display:contents}
+ [data-touch] .journal-heading>span {grid-area:1/1;align-self:center;padding-left:8px}
+ [data-touch] .close-book {grid-area:1/3;align-self:center}
+ [data-touch] .bookmarks {grid-area:1/2;align-self:center;gap:6px;padding:0}
+ [data-touch] .bookmarks button {min-height:44px;padding:6px 14px;margin:0;transform:none}
+ [data-touch] .bookmarks .compact-details {display:block}
+ [data-touch] .open-book {grid-area:2/1/3/-1;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr)}
+ [data-touch] .book-page {padding:10px 20px}
+ [data-touch] .open-book>.left-page,[data-touch] .show-details>.right-page {display:none}
+ [data-touch] .open-book.show-details>.left-page {display:flex}
+ [data-touch] .right-page {display:block;overflow-y:auto}
+ [data-touch] .journal-index {overflow:visible;margin:0;padding:0}
+ [data-touch] .right-page:has(.page-turner) {
+  display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:minmax(0,1fr) 44px;
+  gap:4px 12px;padding-bottom:4px;overflow:hidden;
+ }
+ [data-touch] .show-details>.right-page:has(.page-turner) {display:none}
+ [data-touch] .page-copy {grid-area:1/1/2/-1;overflow-y:auto}
+ [data-touch] .page-copy h2 {font-size:24px;margin:0 0 6px}
+ [data-touch] .page-copy p {font-size:17px;line-height:1.4;margin:0 0 10px}
+ [data-touch] .right-page:has(.page-turner)>.page-topline {
+  grid-area:2/1;align-self:center;border:0;padding:0;font-size:11px;
+ }
+ [data-touch] .page-turner {grid-area:2/2;margin:0;padding:0;border:0}
+ [data-touch] .gallery-spread .page-copy {
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto;
+  align-items:start;gap:16px;padding:0;overflow-y:auto;
+ }
+ [data-touch] .gallery-spread .gallery-image a {display:block;flex:none}
+ [data-touch] .gallery-spread .gallery-image img {
+  width:100%;height:clamp(90px,44dvh,200px);max-height:none;object-fit:contain;
+ }
+ [data-touch] .gallery-spread .gallery-notes {align-self:start}
+ [data-touch] .journal-controls {
+  grid-area:3/1/4/-1;height:auto;min-height:0;max-height:2.5em;padding:6px 4px 0;
+ }
+ [data-touch] .journal-controls .discovery-inline {font-size:13px}
+
+ /* Longer notes scroll between their title and return button. */
+ [data-touch] .note-modal {width:660px}
+ [data-touch] .note-modal .parchment {
+  max-height:var(--dialog-height);padding:10px 18px;display:grid;
+  grid-template-rows:auto minmax(0,1fr) auto;gap:6px;
+ }
+ [data-touch] .note-modal .eyebrow {display:none}
+ [data-touch] .note-modal h2 {margin:0;font-size:25px}
+ [data-touch] .note-body {min-height:0;overflow-y:auto;overscroll-behavior:contain}
+ [data-touch] .note-body>p {margin:4px 0 10px;line-height:1.4}
+ [data-touch] .settings label {margin:10px 0}
+ [data-touch] .settings .sound-settings {margin:12px 0;gap:8px 20px}
+ [data-touch] .settings .sound-settings label {margin:0}
+ [data-touch] .note-modal .ink-button {margin:0;min-height:44px;padding:6px 12px}
 }
